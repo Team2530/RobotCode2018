@@ -21,7 +21,46 @@ public:
 		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
 		m_chooser.AddObject("My Auto", &m_myAuto);
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+	} {
+		// Wait until here to initialize systems that depend on WPILib
+			//std::printf("RobotInit start in %s, line %i\n", __FILE__, __LINE__);
+/**			drivetrain = std::make_shared<DriveTrain>();
+			dumper = std::make_shared<Dumper>();
+			intake = std::make_shared<Intake>();
+			tracker = std::make_shared<Tracker>();
+			led = std::make_shared<LED>();
+
+			vision = std::make_shared<Vision>();
+		    lifter = std::make_shared<Lifter>();
+
+		    cameraservo = std::make_shared<CameraServo>();
+
+			oi = std::make_unique<OI>();
+
+			chooserDo.AddDefault("Cross BaseLine", new DriveToFieldPosition(new CrossBaseLineFieldPosition())); //starting action
+			chooserDo.AddObject("Do Nothing", new DoNothing());//^^
+			chooserDo.AddObject("Deliver Gear", new DeliverGear());
+			SmartDashboard::PutData("Autonomous modes", &chooserDo);
+
+			chooserGear.AddObject("Left Gear", &leftGear);//choose which gear to go to
+			chooserGear.AddDefault("Middle Gear", &middleGear);//^^
+			chooserGear.AddObject("Right Gear", &rightGear);//^^
+			SmartDashboard::PutData("Choose Gear", &chooserGear);
+
+			chooserPos.AddObject("Left", &left); //starting position
+			chooserPos.AddDefault("Middle", &middle);//^^
+			chooserPos.AddObject("Right", &right);//^^
+			SmartDashboard::PutData("Start Position", &chooserPos);
+
+			chooserAngle.AddDefault("Start facing forward", &start0);
+			chooserAngle.AddObject("Start with taco forward", &start_90);
+			SmartDashboard::PutData("Starting orientation", &chooserAngle);
+
+			chooserBot.AddDefault("Miracle Max", &max);
+			chooserBot.AddObject("Zomberdinck", &zomber);
+			SmartDashboard::PutData("This Robot", &chooserBot);
 	}
+**/
 
 	/**
 	 * This function is called once each time the robot enters Disabled
