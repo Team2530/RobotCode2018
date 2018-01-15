@@ -11,4 +11,11 @@
 
 OI::OI() {
 	// Process operator interface input here.
+
+	//XBOX Controller Stuff Here PLEEEEAAASE
+
+	//OK, JOYSTICK Stuff Here Please
+	//also,,,,, need drive straight button on joystick eventually
+	stick = new Joystick(0);
 }
+

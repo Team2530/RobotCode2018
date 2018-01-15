@@ -6,8 +6,12 @@
 /*----------------------------------------------------------------------------*/
 
 #pragma once
+//#include <AHRS.h>
+#include <Joystick.h>
 
 class OI {
 public:
 	OI();
+	Joystick* stick;
+
 };

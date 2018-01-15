@@ -14,16 +14,16 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
 	leftSide = new SpeedControllerGroup(*frontLeftController, *backLeftController);//CHANGE POINTER TO REFERENCE = *
 	rightSide = new SpeedControllerGroup(*frontRightController, *backRightController);
 	robotDrive = new DifferentialDrive(*leftSide, *rightSide); //pointer to reference again :)
-	//frc::SpeedControllerGroup leftSide{frontLeftController, backLeftController};
-	//frc::SpeedControllerGroup rightSide{frontRightController, backRightController};
-	//frc::DifferentialDrive robotDrive{leftSide, -rightSide};
-}
 
+}
 void DriveTrain::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new MySpecialCommand());
+	// SetDefaultCommand(new SkidStearWithJoystick());
+
 }
-		//robotDrive.ArcadeDrive(stick.GetY(), stick.GetX());
+void DriveTrain::Drive(Joystick* stick){
+	robotDrive->ArcadeDrive(stick->GetY(), stick->GetZ());
+}
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

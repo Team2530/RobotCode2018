@@ -25,7 +25,7 @@ private:
 public:
 	DriveTrain();
 	void InitDefaultCommand();
-
+	void Drive(Joystick* stick);
 	void TeleopPeriodic();
 };
 
