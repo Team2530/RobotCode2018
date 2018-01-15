@@ -1,5 +1,13 @@
 #include "DriveTrain.h"
 #include "../RobotMap.h"
+#include "WPILib.h"
+#include <IterativeRobot.h>
+#include <LiveWindow/LiveWindow.h>
+#include <SmartDashboard/SendableChooser.h>
+#include <SmartDashboard/SmartDashboard.h>
+#include <Drive/DifferentialDrive.h>
+#include <Joystick.h>
+#include <Spark.h>
 
 DriveTrain::DriveTrain() : Subsystem("ExampleSubsystem") {
 
