@@ -14,4 +14,5 @@ public:
 	OI();
 	Joystick* stick;
 
+	JoystickButton *B3;
 };

@@ -9,6 +9,8 @@
 
 #include <WPILib.h>
 
+#include <Commands/GoStraight.h>
+
 OI::OI() {
 	// Process operator interface input here.
 
@@ -17,5 +19,8 @@ OI::OI() {
 	//OK, JOYSTICK Stuff Here Please
 	//also,,,,, need drive straight button on joystick eventually
 	stick = new Joystick(0);
+
+	B3 = new frc::JoystickButton(joy,12);
+	B3->WhileHeld(new )
 }
 
