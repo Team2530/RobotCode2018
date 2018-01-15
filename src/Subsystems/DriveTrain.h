@@ -4,7 +4,8 @@
 #include <Commands/Subsystem.h>
 #include "WPILib.h"
 #include <Joystick.h>
-#include <VictorSPX.h>
+#include <ctre/Phoenix.h>
+#include "HAL/HAL.h"
 
 class DriveTrain : public Subsystem {
 private:
@@ -13,10 +14,10 @@ private:
 	static constexpr int kFrontRightChannel = 0;
 	static constexpr int kBackRightChannel = 3;
 
-	VictorSPX* frontLeftController;
-	VictorSPX* backLeftController;
-	VictorSPX* frontRightController;
-	VictorSPX* backRightController;
+	WPI_TalonSRX* frontLeftController;
+	WPI_VictorSPX* backLeftController;
+	WPI_TalonSRX* frontRightController;
+	WPI_VictorSPX* backRightController;
 	SpeedControllerGroup* leftSide;
 	SpeedControllerGroup* rightSide;
 	DifferentialDrive* robotDrive;
@@ -25,9 +26,7 @@ public:
 	DriveTrain();
 	void InitDefaultCommand();
 
-	void TeleopPeriodic() {
-		robotDrive.ArcadeDrive(stick.GetY(), stick.GetX());
-	}
+	void TeleopPeriodic();
 };
 
 #endif  // DriveTrain_H
