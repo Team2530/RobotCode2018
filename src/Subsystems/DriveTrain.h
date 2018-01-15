@@ -4,6 +4,7 @@
 #include <Commands/Subsystem.h>
 #include "WPILib.h"
 #include <Joystick.h>
+#include <VictorSPX.h>
 
 class DriveTrain : public Subsystem {
 private:
@@ -15,7 +16,7 @@ private:
 	VictorSPX* frontLeftController;
 	VictorSPX* backLeftController;
 	VictorSPX* frontRightController;
-	VictorSPX* backLeftController;
+	VictorSPX* backRightController;
 	SpeedControllerGroup* leftSide;
 	SpeedControllerGroup* rightSide;
 	DifferentialDrive* robotDrive;

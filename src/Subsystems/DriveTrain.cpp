@@ -11,7 +11,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
 	frontRightController = new VictorSPX(kFrontRightChannel);
 	backLeftController = new VictorSPX(kBackLeftChannel);
 	backRightController = new VictorSPX(kBackRightChannel);
-	leftSide = new SpeedControllerGroup(frontLeftCOntroller, backLeftController);
+	leftSide = new SpeedControllerGroup(frontLeftController, backLeftController);
 	rightSide = new SpeedControllerGroup(frontRightController, backRightController);
 	robotDrive = new DifferentialDrive(leftSide, -rightSide);
 	//frc::SpeedControllerGroup leftSide{frontLeftController, backLeftController};
