@@ -2,16 +2,23 @@
 #define DriveTrain_H
 
 #include <Commands/Subsystem.h>
+#include "WPILib.h"
+#include <Joystick.h>
 
 class DriveTrain : public Subsystem {
 private:
-	frc::VictorSP frontLeftMotor{1};
-	frc::VictorSP frontRightMotor{0};
-	frc::VictorSP backLeftMotor{2};
-	frc::VictorSP backRightMotor{3};
-	frc::SpeedControllerGroup leftSide{frontLeftMotor, backLeftMotor};
-	frc::SpeedControllerGroup rightSide{frontRightMotor, backRightMotor};
-	frc::DifferentialDrive robotDrive{leftSide, rightSide};
+	static constexpr int kFrontLeftChannel = 1;
+	static constexpr int kBackLeftChannel = 2;
+	static constexpr int kFrontRightChannel = 0;
+	static constexpr int kBackRightChannel = 3;
+
+	VictorSPX* frontLeftController;
+	VictorSPX* backLeftController;
+	VictorSPX* frontRightController;
+	VictorSPX* backLeftController;
+	SpeedControllerGroup* leftSide;
+	SpeedControllerGroup* rightSide;
+	DifferentialDrive* robotDrive;
 
 public:
 	DriveTrain();
