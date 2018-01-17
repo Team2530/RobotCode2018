@@ -1,9 +1,9 @@
 #ifndef GoStraight_H
 #define GoStraight_H
 
-#include "../CommandBase.h"
+#include <Commands/Command.h>
 
-class GoStraight : public CommandBase {
+class GoStraight : public Command {
 public:
 	GoStraight();
 	void Initialize();

@@ -1,7 +1,7 @@
 #include "GoStraight.h"
 
 GoStraight::GoStraight() {
-	Requires(Robot::DriveTrain.get())
+	Requires(Robot::DriveTrain.get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }

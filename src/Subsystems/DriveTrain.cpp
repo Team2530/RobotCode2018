@@ -27,6 +27,6 @@ void DriveTrain::Drive(Joystick* stick){
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void DriveTrain::DriveStraight() {
+void DriveTrain::DriveStraight(Joystick* stick) {
 	robotDrive->ArcadeDrive(stick->GetY(), 0);
 }
