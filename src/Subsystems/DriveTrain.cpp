@@ -22,11 +22,14 @@ void DriveTrain::InitDefaultCommand() {
 
 }
 void DriveTrain::Drive(Joystick* stick){
-	robotDrive->ArcadeDrive(stick->GetY(), stick->GetZ());
+	double stickY = stick->GetY();
+	double stickZ = stick->GetZ();
+	robotDrive->ArcadeDrive(stickY, stickZ);
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::DriveStraight(Joystick* stick) {
-	robotDrive->ArcadeDrive(stick->GetY(), 0);
+	double stickY = stick->GetY();
+	robotDrive->ArcadeDrive(stickY, 0);
 }
