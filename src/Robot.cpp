@@ -11,13 +11,12 @@
 #include <SmartDashboard/SendableChooser.h>
 #include <SmartDashboard/SmartDashboard.h>
 #include <TimedRobot.h>
+#include <Robot.h>
 
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
 
-class Robot : public frc::TimedRobot {
-public:
-	void RobotInit() override {
+	void Robot::RobotInit() override {
 		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
 		m_chooser.AddObject("My Auto", &m_myAuto);
 		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
@@ -30,9 +29,9 @@ public:
 	 * when
 	 * the robot is disabled.
 	 */
-	void DisabledInit() override {}
+	void Robot::DisabledInit() override {}
 
-	void DisabledPeriodic() override {
+	void Robot::DisabledPeriodic() override {
 		frc::Scheduler::GetInstance()->Run();
 	}
 
@@ -50,7 +49,7 @@ public:
 	 * comparisons
 	 * to the if-else structure below with additional strings & commands.
 	 */
-	void AutonomousInit() override {
+	void Robot::AutonomousInit() override {
 		std::string autoSelected = frc::SmartDashboard::GetString(
 				"Auto Selector", "Default");
 		if (autoSelected == "My Auto") {
@@ -66,11 +65,11 @@ public:
 		}
 	}
 
-	void AutonomousPeriodic() override {
+	void Robot::AutonomousPeriodic() override {
 		frc::Scheduler::GetInstance()->Run();
 	}
 
-	void TeleopInit() override {
+	void Robot::TeleopInit() override {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -81,17 +80,9 @@ public:
 		}
 	}
 
-	void TeleopPeriodic() override { frc::Scheduler::GetInstance()->Run(); }
+	void Robot::TeleopPeriodic() override { frc::Scheduler::GetInstance()->Run(); }
 
-	void TestPeriodic() override {}
+	void Robot::TestPeriodic() override {}
 
-private:
-	// Have it null by default so that if testing teleop it
-	// doesn't have undefined behavior and potentially crash.
-	frc::Command* m_autonomousCommand = nullptr;
-	ExampleCommand m_defaultAuto;
-	MyAutoCommand m_myAuto;
-	frc::SendableChooser<frc::Command*> m_chooser;
-};
 
 START_ROBOT_CLASS(Robot)

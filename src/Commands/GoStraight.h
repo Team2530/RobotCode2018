@@ -2,6 +2,8 @@
 #define GoStraight_H
 
 #include <Commands/Command.h>
+#include <DriveTrain.h>
+#include <Robot.h>
 
 class GoStraight : public Command {
 public:
