@@ -12,15 +12,18 @@
 #include <Commands/GoStraight.h>
 
 OI::OI() {
+
 	// Process operator interface input here.
 
 	//XBOX Controller Stuff Here PLEEEEAAASE
 
 	//OK, JOYSTICK Stuff Here Please
+
 	//also,,,,, need drive straight button on joystick eventually
-	stick = new Joystick(0);
+	stick = new frc::Joystick(0);
 	//Need grabber sometime soon :)
-	B3 = new frc::JoystickButton(joy,12);
-	B3->WhileHeld(new )
+	B3 = new frc::JoystickButton(stick,3);
+
+	B3->WhileHeld(new GoStraight);
 }
 

@@ -8,6 +8,7 @@
 #pragma once
 //#include <AHRS.h>
 #include <Joystick.h>
+#include <Buttons/JoystickButton.h>
 
 class OI {
 public:

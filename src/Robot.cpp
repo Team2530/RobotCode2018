@@ -16,11 +16,11 @@
 #include "Commands/ExampleCommand.h"
 #include "Commands/MyAutoCommand.h"
 
-	void Robot::RobotInit() override {
-		m_chooser.AddDefault("Default Auto", &m_defaultAuto);
-		m_chooser.AddObject("My Auto", &m_myAuto);
-		frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-	}
+	//void Robot::RobotInit() override {
+		//m_chooser.AddDefault("Default Auto", &m_defaultAuto);
+		//m_chooser.AddObject("My Auto", &m_myAuto);
+		//frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
+	//}
 
 	/**
 	 * This function is called once each time the robot enters Disabled
@@ -29,9 +29,10 @@
 	 * when
 	 * the robot is disabled.
 	 */
-	void Robot::DisabledInit() override {}
+	void Robot::DisabledInit() {
+	}
 
-	void Robot::DisabledPeriodic() override {
+	void Robot::DisabledPeriodic() {
 		frc::Scheduler::GetInstance()->Run();
 	}
 
@@ -49,7 +50,7 @@
 	 * comparisons
 	 * to the if-else structure below with additional strings & commands.
 	 */
-	void Robot::AutonomousInit() override {
+	void Robot::AutonomousInit()  {
 		std::string autoSelected = frc::SmartDashboard::GetString(
 				"Auto Selector", "Default");
 		if (autoSelected == "My Auto") {
@@ -65,11 +66,11 @@
 		}
 	}
 
-	void Robot::AutonomousPeriodic() override {
+	void Robot::AutonomousPeriodic()  {
 		frc::Scheduler::GetInstance()->Run();
 	}
 
-	void Robot::TeleopInit() override {
+	void Robot::TeleopInit()  {
 		// This makes sure that the autonomous stops running when
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
@@ -80,9 +81,9 @@
 		}
 	}
 
-	void Robot::TeleopPeriodic() override { frc::Scheduler::GetInstance()->Run(); }
+	void Robot::TeleopPeriodic()  { frc::Scheduler::GetInstance()->Run(); }
 
-	void Robot::TestPeriodic() override {}
+	void Robot::TestPeriodic()  {}
 
 
 START_ROBOT_CLASS(Robot)

@@ -7,7 +7,7 @@
 #include "SMOL.H"
 
 SMOL::SMOL() {
-	Requires(Robot::SMOL.get())
+	Requires(Robot::sol.get())
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
