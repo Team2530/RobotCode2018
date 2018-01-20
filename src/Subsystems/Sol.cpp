@@ -8,7 +8,7 @@ Sol::Sol() : Subsystem("Sol") {
 
 void Sol::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new MySpecialCommand());
+	//SetDefaultCommand(new MySpecialCommand());
 
 }
 

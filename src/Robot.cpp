@@ -15,7 +15,8 @@
 
 
 
-
+    std::shared_ptr<DriveTrain> Robot::drivetrain;
+    std::shared_ptr<Sol> Robot::sol;
 
 	void Robot::DisabledInit() {
 	}

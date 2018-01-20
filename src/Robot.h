@@ -13,7 +13,9 @@
 class Robot : public frc::TimedRobot {
 public:
 
-
+	//Stuffffff
+	static std::shared_ptr<DriveTrain> drivetrain;
+	static std::shared_ptr<Sol> sol;
 
 	void RobotInit() override ;
 

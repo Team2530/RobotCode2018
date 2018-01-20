@@ -4,10 +4,10 @@
  *  Created on: Jan 15, 2018
  *      Author: akeaa
  */
-#include "SMOL.H"
+#include "SMOL.h"
 
 SMOL::SMOL() {
-	Requires(Robot::sol.get())
+	Requires(Robot::sol.get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
@@ -19,7 +19,7 @@ void SMOL::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void SMOL::Execute() {
-	Robot::SMOL->SMOL();
+	//Robot::smol->SMOL();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -34,7 +34,7 @@ void SMOL::End() {
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void GoStraight::Interrupted() {
+void SMOL::Interrupted() {
 
 }
 

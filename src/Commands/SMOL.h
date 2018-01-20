@@ -8,8 +8,8 @@
 #ifndef SRC_COMMANDS_SMOL_H_
 #define SRC_COMMANDS_SMOL_H_
 
-#include <OI.cpp>
-#include <robot.cpp>
+#include <OI.h>
+#include <robot.h>
 
 #include "Commands/Command.h"
 

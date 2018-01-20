@@ -28,7 +28,8 @@ public:
 	void InitDefaultCommand();
 	void Drive(Joystick* stick);
 	void TeleopPeriodic();
-	void DriveStraight(Joystick* stick);
+	void DriveStraight();
+	void Stop();
 };
 
 #endif  // DriveTrain_H
