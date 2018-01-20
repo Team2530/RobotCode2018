@@ -17,21 +17,21 @@ public:
 	static std::shared_ptr<DriveTrain> drivetrain;
 	static std::shared_ptr<Sol> sol;
 
-	void RobotInit() override ;
+	virtual void RobotInit() override ;
 
-	void DisabledInit() override ;
+	virtual void DisabledInit() override ;
 
-	void DisabledPeriodic() override ;
+	virtual void DisabledPeriodic() override ;
 
-	void AutonomousInit() override ;
+	virtual void AutonomousInit() override ;
 
-	void AutonomousPeriodic() override ;
+	virtual void AutonomousPeriodic() override ;
 
-	void TeleopInit() override ;
+	virtual void TeleopInit() override ;
 
-	void TeleopPeriodic() override ;
+	virtual void TeleopPeriodic() override ;
 
-	void TestPeriodic() override ;
+	virtual void TestPeriodic() override ;
 
 private:
 	frc::Command* m_autonomousCommand = nullptr;
