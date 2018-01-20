@@ -1,7 +1,7 @@
 #ifndef DeliverLow_H
 #define DeliverLow_H
 
-#include "Command.h"
+#include "Commands/Command.h"
 
 class DeliverLow : public Command {
 public:

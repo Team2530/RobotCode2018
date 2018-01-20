@@ -1,7 +1,7 @@
 #ifndef DoNothing_H
 #define DoNothing_H
 
-#include "Command.h"
+#include "Commands/Command.h"
 
 class DoNothing : public Command {
 public:

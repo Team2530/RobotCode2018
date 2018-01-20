@@ -1,7 +1,7 @@
 #ifndef DeliverHigh_H
 #define DeliverHigh_H
 
-#include "Command.h"
+#include "Commands/Command.h"
 
 class DeliverHigh : public Command {
 public:

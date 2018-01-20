@@ -1,7 +1,7 @@
 #ifndef CrossAutoLine_H
 #define CrossAutoLine_H
 
-#include "Command.h"
+#include "Commands/Command.h"
 
 class CrossAutoLine : public Command {
 public:
