@@ -1,40 +1,38 @@
 /*
- * SMOL.cpp
+ * GrabCube.cpp
  *
  *  Created on: Jan 15, 2018
- *      Author: akeaa
+ *      Author: Team2530
  */
-#include "SMOL.h"
+#include <Commands/GrabCube.h>
 
-SMOL::SMOL() {
+GrabCube::GrabCube() {
 	Requires(Robot::sol.get());
-	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void SMOL::Initialize() {
+void GrabCube::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void SMOL::Execute() {
-	//Robot::smol->SMOL();
+void GrabCube::Execute() {
+	//Robot::GrabCube->GrabCube();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool SMOL::IsFinished() {
+bool GrabCube::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void SMOL::End() {
+void GrabCube::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void SMOL::Interrupted() {
+void GrabCube::Interrupted() {
 
 }
 

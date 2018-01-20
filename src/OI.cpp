@@ -10,12 +10,20 @@
 #include <WPILib.h>
 
 #include <Commands/GoStraight.h>
+#include <Commands/GrabCube.h>
+#include <Commands/ReleaseCube.h>
 
 OI::OI() {
 
 	// Process operator interface input here.
 
 	//XBOX Controller Stuff Here PLEEEEAAASE
+	xbox = new frc::XboxController(1);//is this zero? is this zero?
+
+	R2 = new frc::JoystickButton(xbox, 12);
+	L2 = new frc::JoystickButton(xbox, 6);
+
+	R2->WhenPressed(new GrabCube());
 
 	//OK, JOYSTICK Stuff Here Please
 
@@ -23,6 +31,7 @@ OI::OI() {
 	stick = new frc::Joystick(0);
 	//Need grabber sometime soon :)
 	B3 = new frc::JoystickButton(stick,3);
+
 
 	B3->WhileHeld(new GoStraight);
 }
