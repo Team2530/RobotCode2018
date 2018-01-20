@@ -5,17 +5,17 @@
  *      Author: akeaa
  */
 
-#ifndef SRC_COMMANDS_SMOL_H_
-#define SRC_COMMANDS_SMOL_H_
+#ifndef SRC_COMMANDS_GRABCUBE_H_
+#define SRC_COMMANDS_GRABCUBE_H_
 
 #include <OI.h>
 #include <robot.h>
 
 #include "Commands/Command.h"
 
-class SMOL : public Command {
-
-	SMOL();
+class GrabCube : public Command {
+public:
+	GrabCube();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -23,4 +23,4 @@ class SMOL : public Command {
 	void Interrupted();
 };
 
-#endif /* SRC_COMMANDS_SMOL_H_ */
+#endif /* SRC_COMMANDS_GRABCUBE_H_ */

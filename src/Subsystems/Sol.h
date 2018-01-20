@@ -7,13 +7,15 @@
 
 class Sol : public Subsystem {
 private:
-//	static constexpr int SMOL=0;//this is a placeholder port
+	static constexpr int solenoidChannel=0;//this is a placeholder port
 
-	frc::Solenoid *SMOL = new Solenoid(0);
+	frc::Solenoid *SMOL;
 
 public:
 	Sol();
 	void InitDefaultCommand();
+	void Grab();
+	void Release();
 };
 
 #endif  // SOL_H

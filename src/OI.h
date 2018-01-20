@@ -8,12 +8,19 @@
 #pragma once
 //#include <AHRS.h>
 #include <Joystick.h>
+#include <XboxController.h>
 #include <Buttons/JoystickButton.h>
 
 class OI {
 public:
 	OI();
-	Joystick* stick;
+	Joystick* GetJoystick();
+	XboxController* GetXbox();
 
-	JoystickButton *B3;
+	Joystick* stick;
+	XboxController* xbox;
+
+	JoystickButton* B3;
+	JoystickButton* R2;
+	JoystickButton* L2;
 };
