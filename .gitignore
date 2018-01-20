@@ -6,3 +6,4 @@
 Debug/\.metadata/\.plugins/org\.eclipse\.cdt\.make\.core/
 
 *.o
+/Debug/
