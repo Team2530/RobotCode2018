@@ -44,7 +44,7 @@ void DriveTrain::Stop(){
 }
 
 double DriveFunction(double inSpeed) {
-	double outSpeed = inSpeed^3;
+	double outSpeed = inSpeed^3 + .1*inSpeed;
 	return outspeed;
 }
 
