@@ -12,10 +12,13 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <TimedRobot.h>
 #include <Robot.h>
+#include <Commands/DoNothing.h>
 
 
 
-
+	void Robot::RobotInit() {
+		AutoChooser.AddObject("Do Nothing", new DoNothing());
+	}
 
 	void Robot::DisabledInit() {
 	}

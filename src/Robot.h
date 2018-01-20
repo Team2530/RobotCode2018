@@ -5,6 +5,7 @@
 //Commands
 #include "Commands/GoStraight.h"
 #include "Commands/SkidStearWithJoystick.h"
+#include <SmartDashboard/SendableChooser.h>
 
 //Subsystems
 #include "Subsystems/DriveTrain.h"
@@ -34,6 +35,7 @@ public:
 private:
 	frc::Command* m_autonomousCommand = nullptr;
 	frc::SendableChooser<frc::Command*> m_chooser;
+	frc::SendableChooser<frc::Command*> AutoChooser;
 };
 
 
