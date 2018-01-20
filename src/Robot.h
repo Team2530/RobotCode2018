@@ -2,9 +2,19 @@
 #ifndef SRC_ROBOT_H_
 #define SRC_ROBOT_H_
 
+//Commands
+#include "Commands/GoStraight.h"
+#include "Commands/SkidStearWithJoystick.h"
+
+//Subsystems
+#include "Subsystems/DriveTrain.h"
+#include "Subsystems/Sol.h"
 
 class Robot : public frc::TimedRobot {
 public:
+
+
+
 	void RobotInit() override ;
 
 	void DisabledInit() override ;
@@ -23,8 +33,6 @@ public:
 
 private:
 	frc::Command* m_autonomousCommand = nullptr;
-	ExampleCommand m_defaultAuto;
-	MyAutoCommand m_myAuto;
 	frc::SendableChooser<frc::Command*> m_chooser;
 };
 

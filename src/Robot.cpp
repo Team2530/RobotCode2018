@@ -13,22 +13,10 @@
 #include <TimedRobot.h>
 #include <Robot.h>
 
-#include "Commands/ExampleCommand.h"
-#include "Commands/MyAutoCommand.h"
 
-	//void Robot::RobotInit() override {
-		//m_chooser.AddDefault("Default Auto", &m_defaultAuto);
-		//m_chooser.AddObject("My Auto", &m_myAuto);
-		//frc::SmartDashboard::PutData("Auto Modes", &m_chooser);
-	//}
 
-	/**
-	 * This function is called once each time the robot enters Disabled
-	 * mode.
-	 * You can use it to reset any subsystem information you want to clear
-	 * when
-	 * the robot is disabled.
-	 */
+
+
 	void Robot::DisabledInit() {
 	}
 
@@ -54,9 +42,9 @@
 		std::string autoSelected = frc::SmartDashboard::GetString(
 				"Auto Selector", "Default");
 		if (autoSelected == "My Auto") {
-			m_autonomousCommand = &m_myAuto;
+			//m_autonomousCommand = &m_myAuto;
 		} else {
-			m_autonomousCommand = &m_defaultAuto;
+			//m_autonomousCommand = &m_defaultAuto;
 		}
 
 		m_autonomousCommand = m_chooser.GetSelected();

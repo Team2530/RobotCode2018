@@ -2,16 +2,17 @@
 #define SOL_H
 
 #include <Commands/Subsystem.h>
+#include <WPILib.h>
 #include <Solenoid.h>
 
-class SOL : public Subsystem {
+class Sol : public Subsystem {
 private:
 //	static constexpr int SMOL=0;//this is a placeholder port
 
 	frc::Solenoid *SMOL = new Solenoid(0);
 
 public:
-	SOL();
+	Sol();
 	void InitDefaultCommand();
 };
 

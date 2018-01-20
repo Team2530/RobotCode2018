@@ -1,12 +1,12 @@
-#include <Subsystems/sol.h>
 #include "../RobotMap.h"
 #include <Solenoid.h>
+#include <Subsystems/Sol.h>
 
-SOL::SOL() : Subsystem("ExampleSubsystem") {
+Sol::Sol() : Subsystem("Sol") {
 
 }
 
-void SOL::InitDefaultCommand() {
+void Sol::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
 
