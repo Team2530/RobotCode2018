@@ -14,23 +14,25 @@
 class Robot : public frc::TimedRobot {
 public:
 
+	//Stuffffff
+	static std::shared_ptr<DriveTrain> drivetrain;
+	static std::shared_ptr<Sol> sol;
 
+	virtual void RobotInit() override ;
 
-	void RobotInit() override ;
+	virtual void DisabledInit() override ;
 
-	void DisabledInit() override ;
+	virtual void DisabledPeriodic() override ;
 
-	void DisabledPeriodic() override ;
+	virtual void AutonomousInit() override ;
 
-	void AutonomousInit() override ;
+	virtual void AutonomousPeriodic() override ;
 
-	void AutonomousPeriodic() override ;
+	virtual void TeleopInit() override ;
 
-	void TeleopInit() override ;
+	virtual void TeleopPeriodic() override ;
 
-	void TeleopPeriodic() override ;
-
-	void TestPeriodic() override ;
+	virtual void TestPeriodic() override ;
 
 private:
 	frc::Command* m_autonomousCommand = nullptr;

@@ -1,7 +1,7 @@
 #include "GoStraight.h"
 
 GoStraight::GoStraight() {
-	Requires(Subsystems::DriveTrain.get());
+	Requires(Robot::drivetrain.get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
@@ -13,7 +13,7 @@ void GoStraight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void GoStraight::Execute() {
-	Robot::DriveTrain->DriveStraight();
+	Robot::drivetrain->DriveStraight();
 }
 
 // Make this return true when this Command no longer needs to run execute()
@@ -23,11 +23,11 @@ bool GoStraight::IsFinished() {
 
 // Called once after isFinished returns true
 void GoStraight::End() {
-
+	Robot::drivetrain->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void GoStraight::Interrupted() {
-
+	Robot::drivetrain->Stop();
 }
