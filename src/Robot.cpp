@@ -12,17 +12,16 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <TimedRobot.h>
 #include <Robot.h>
+#include <Commands/DoNothing.h>
 
 
 
-std::shared_ptr<DriveTrain> Robot::drivetrain;
-std::shared_ptr<Sol> Robot::sol;
+	void Robot::RobotInit() {
+		AutoChooser.AddObject("Do Nothing", new DoNothing());
+	}
 
-void Robot::RobotInit(){
-
-}
-void Robot::DisabledInit() {
-}
+	void Robot::DisabledInit() {
+	}
 
 void Robot::DisabledPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
