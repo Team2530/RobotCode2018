@@ -16,23 +16,35 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
 	robotDrive = new DifferentialDrive(*leftSide, *rightSide); //pointer to reference again :)
 
 }
+
 void DriveTrain::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new SkidStearWithJoystick());
 
 }
-void DriveTrain::Drive(Joystick* stick){
+
+void DriveTrain::Drive(Joystick* stick) {
 	double stickY = stick->GetY();
 	double stickZ = stick->GetZ();
+	double stickY2 = DriveFunction(stickY);
+	double stickZ2 = DriveFunction(stickZ);
 	robotDrive->ArcadeDrive(stickY, stickZ);
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::DriveStraight() {
-	double speedY = 0.5;
-	robotDrive->ArcadeDrive(speedY, 0);
+	double stickY = stick->GetY();
+
+	robotDrive->ArcadeDrive(stickY, 0);
 }
+
 void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }
+
+double DriveFunction(double inSpeed) {
+	double outSpeed = inSpeed^3;
+	return outspeed;
+}
+
