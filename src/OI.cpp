@@ -33,6 +33,6 @@ OI::OI() {
 	B3 = new frc::JoystickButton(stick,3);
 
 
-	B3->WhileHeld(new GoStraight);
+	B3->WhileHeld(new GoStraight());
 }
 

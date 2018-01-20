@@ -5,6 +5,7 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <Drive/DifferentialDrive.h>
 #include <Spark.h>
+#include <math.h>
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
@@ -28,12 +29,12 @@ void DriveTrain::Drive(Joystick* stick) {
 	double stickZ = stick->GetZ();
 	double stickY2 = DriveFunction(stickY);
 	double stickZ2 = DriveFunction(stickZ);
-	robotDrive->ArcadeDrive(stickY, stickZ);
+	robotDrive->ArcadeDrive(stickY2, stickZ2);
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void DriveTrain::DriveStraight() {
+void DriveTrain::DriveStraight(Joystick* stick) {
 	double stickY = stick->GetY();
 
 	robotDrive->ArcadeDrive(stickY, 0);
@@ -44,7 +45,7 @@ void DriveTrain::Stop(){
 }
 
 double DriveFunction(double inSpeed) {
-	double outSpeed = inSpeed^3 + .1*inSpeed;
-	return outspeed;
+	double outSpeed = pow(inSpeed, 3) + .1*inSpeed;
+	return outSpeed;
 }
 
