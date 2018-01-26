@@ -16,6 +16,11 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
 	rightSide = new SpeedControllerGroup(*frontRightController, *backRightController);
 	robotDrive = new DifferentialDrive(*leftSide, *rightSide); //pointer to reference again :)
 
+	leftEncoder = new frc::Encoder(0,1, false,Encoder::CounterBase::k2X);//what k2X mean? also, 0,1 gonna change: encoder channel
+	rightEncoder = new frc::Encoder(2,3, false, Encoder::CounterBase::k2X);//^^
+	//converting to inches: (ticks/revolution)*diameter*pi. diameter is 6. pi = math.PI or 3.1415. ticks/revolution: 1/1000
+	leftEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
+	rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 }
 
 void DriveTrain::InitDefaultCommand() {
