@@ -6,6 +6,7 @@
 #include <Joystick.h>
 #include <ctre/Phoenix.h>
 #include "HAL/HAL.h"
+#include <Encoder.h>
 
 
 class DriveTrain : public Subsystem {
@@ -14,6 +15,9 @@ private:
 	static constexpr int kBackLeftChannel = 2;
 	static constexpr int kFrontRightChannel = 0;
 	static constexpr int kBackRightChannel = 3;
+	static constexpr double ticksPerRevolution = 1/1000;
+	static constexpr double diameter = 6; //inches
+	static constexpr double pi = 2*acos(0.0);
 
 	WPI_TalonSRX* frontLeftController;
 	WPI_VictorSPX* backLeftController;
@@ -22,6 +26,9 @@ private:
 	SpeedControllerGroup* leftSide;
 	SpeedControllerGroup* rightSide;
 	DifferentialDrive* robotDrive;
+
+	frc::Encoder* leftEncoder;
+	frc::Encoder* rightEncoder;
 
 public:
 	DriveTrain();
