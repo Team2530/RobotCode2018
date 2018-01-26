@@ -5,6 +5,8 @@
 #include <Subsystems/DriveTrain.h>
 #include <Robot.h>
 #include <RobotMap.h>
+#include <Joystick.h>
+#include <OI.cpp>
 
 class GoStraight : public Command {
 public:

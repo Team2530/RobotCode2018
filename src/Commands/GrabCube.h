@@ -9,7 +9,7 @@
 #define SRC_COMMANDS_GRABCUBE_H_
 
 #include <OI.h>
-#include <robot.h>
+#include <Robot.h>
 
 #include "Commands/Command.h"
 
