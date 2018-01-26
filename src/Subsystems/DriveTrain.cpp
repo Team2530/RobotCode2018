@@ -44,7 +44,7 @@ void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }
 
-double DriveFunction(double inSpeed) {
+double DriveTrain::DriveFunction(double inSpeed) {
 	double outSpeed = pow(inSpeed, 3) + .1*inSpeed;
 	return outSpeed;
 }
