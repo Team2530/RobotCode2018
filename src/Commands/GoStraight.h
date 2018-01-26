@@ -6,9 +6,10 @@
 #include <Robot.h>
 #include <RobotMap.h>
 #include <Joystick.h>
-#include <OI.cpp>
 
 class GoStraight : public Command {
+private:
+	Joystick* stick;
 public:
 	GoStraight();
 	void Initialize();

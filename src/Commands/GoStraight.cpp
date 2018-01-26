@@ -4,6 +4,7 @@ GoStraight::GoStraight() {
 	Requires(Robot::drivetrain.get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
+	stick = new frc::Joystick(0);
 }
 
 // Called just before this Command runs the first time
@@ -13,7 +14,7 @@ void GoStraight::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void GoStraight::Execute() {
-	Robot::drivetrain->DriveStraight();
+	Robot::drivetrain->DriveStraight(stick);
 }
 
 // Make this return true when this Command no longer needs to run execute()
