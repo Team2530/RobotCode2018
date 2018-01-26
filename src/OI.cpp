@@ -20,10 +20,13 @@ OI::OI() {
 	//XBOX Controller Stuff Here PLEEEEAAASE
 	xbox = new frc::XboxController(1);//is this zero? is this zero?
 
-	R2 = new frc::JoystickButton(xbox, 12);
-	L2 = new frc::JoystickButton(xbox, 6);
+	RB = new frc::JoystickButton(xbox, 6);//grab cube
+	LB = new frc::JoystickButton(xbox, 5);//release cube
+	A = new frc::JoystickButton(xbox, 1);
 
-	R2->WhenPressed(new GrabCube());
+	RB->WhenPressed(new GrabCube());
+	LB->WhenPressed(new ReleaseCube());
+	A->WhenPressed(new RaiseArm());
 
 	//OK, JOYSTICK Stuff Here Please
 

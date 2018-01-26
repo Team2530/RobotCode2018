@@ -20,7 +20,11 @@ public:
 	Joystick* stick;
 	XboxController* xbox;
 
+	//joystick
 	JoystickButton* B3;
-	JoystickButton* R2;
-	JoystickButton* L2;
+
+	//xbox
+	JoystickButton* RB;//grab
+	JoystickButton* LB;//release
+	JoystickButton* A;//lift arm
 };

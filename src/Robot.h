@@ -6,10 +6,8 @@
 #include "Commands/GoStraight.h"
 #include "Commands/SkidStearWithJoystick.h"
 #include <SmartDashboard/SendableChooser.h>
-
-//Subsystems
+#include <Subsystems/Sol.h>
 #include "Subsystems/DriveTrain.h"
-#include "Subsystems/Sol.h"
 
 class Robot : public frc::TimedRobot {
 public:

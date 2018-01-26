@@ -17,7 +17,7 @@ void GrabCube::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void GrabCube::Execute() {
-	//Robot::GrabCube->GrabCube();
+	Robot::sol->Grab();
 }
 
 // Make this return true when this Command no longer needs to run execute()
