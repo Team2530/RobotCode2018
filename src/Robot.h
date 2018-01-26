@@ -9,6 +9,7 @@
 #include <Subsystems/Sol.h>
 #include "Subsystems/DriveTrain.h"
 #include <Subsystems/Elevator.h>
+#include <Subsystems/Ramp.h>
 
 class Robot : public frc::TimedRobot {
 public:
@@ -17,6 +18,7 @@ public:
 	static std::shared_ptr<DriveTrain> drivetrain;
 	static std::shared_ptr<Sol> sol;
 	static std::shared_ptr<Elevator> elevator;
+	static std::shared_ptr<Ramp> ramp;
 
 	virtual void RobotInit() override ;
 

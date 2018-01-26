@@ -17,6 +17,7 @@
 std::shared_ptr<DriveTrain> Robot::drivetrain;
 std::shared_ptr<Sol> Robot::sol;
 std::shared_ptr<Elevator> Robot::elevator;
+std::shared_ptr<Ramp> Robot::ramp;
 
 void Robot::RobotInit() {
 	AutoChooser.AddObject("Do Nothing", new DoNothing());
