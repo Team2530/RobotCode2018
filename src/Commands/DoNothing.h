@@ -2,6 +2,7 @@
 #define DoNothing_H
 
 #include "Commands/Command.h"
+#include "Robot.h"
 
 class DoNothing : public Command {
 public:

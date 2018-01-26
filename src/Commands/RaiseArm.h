@@ -2,6 +2,7 @@
 #define RaiseArm_H
 
 #include "Commands/Command.h"
+#include "Robot.h"
 
 class RaiseArm : public Command {
 public:

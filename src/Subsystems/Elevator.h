@@ -1,16 +1,17 @@
-#ifndef levator_H
-#define levator_H
+#ifndef Elevator_H
+#define Elevator_H
 
 #include <Commands/Subsystem.h>
 
-class levator : public Subsystem {
+class Elevator : public Subsystem {
 private:
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 
 public:
-	levator();
+	Elevator();
 	void InitDefaultCommand();
+	void Raise();
 };
 
-#endif  // levator_H
+#endif  // Elevator_H

@@ -12,6 +12,7 @@
 #include <Commands/GoStraight.h>
 #include <Commands/GrabCube.h>
 #include <Commands/ReleaseCube.h>
+#include <Commands/RaiseArm.h>
 
 OI::OI() {
 

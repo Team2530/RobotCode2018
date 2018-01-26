@@ -2,7 +2,7 @@
 
 RaiseArm::RaiseArm() {
 	// Use Requires() here to declare subsystem dependencies
-	Requires(Robot::chassis.get());
+	Requires(Robot::elevator.get());
 }
 
 // Called just before this Command runs the first time
@@ -12,7 +12,7 @@ void RaiseArm::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void RaiseArm::Execute() {
-
+	Robot::elevator->Raise();
 }
 
 // Make this return true when this Command no longer needs to run execute()

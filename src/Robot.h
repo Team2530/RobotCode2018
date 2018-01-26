@@ -8,6 +8,7 @@
 #include <SmartDashboard/SendableChooser.h>
 #include <Subsystems/Sol.h>
 #include "Subsystems/DriveTrain.h"
+#include <Subsystems/Elevator.h>
 
 class Robot : public frc::TimedRobot {
 public:
@@ -15,6 +16,7 @@ public:
 	//Stuffffff
 	static std::shared_ptr<DriveTrain> drivetrain;
 	static std::shared_ptr<Sol> sol;
+	static std::shared_ptr<Elevator> elevator;
 
 	virtual void RobotInit() override ;
 

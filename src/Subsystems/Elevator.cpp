@@ -1,13 +1,16 @@
-#include "levator.h"
+#include "Elevator.h"
 #include "../RobotMap.h"
 
-levator::levator() : Subsystem("ExampleSubsystem") {
+Elevator::Elevator() : Subsystem("Elevator") {
 
 }
 
-void levator::InitDefaultCommand() {
+void Elevator::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new MySpecialCommand());
+}
+void Elevator::Raise(){
+
 }
 
 // Put methods for controlling this subsystem
