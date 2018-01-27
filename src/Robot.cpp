@@ -18,10 +18,17 @@ std::shared_ptr<Sol> Robot::sol;
 std::shared_ptr<Elevator> Robot::elevator;
 std::shared_ptr<Ramp> Robot::ramp;
 
+StartPosition left = START_LEFT;
+StartPosition right = START_RIGHT;
+StartPosition middle = START_MIDDLE;
 void Robot::RobotInit() {
 	AutoChooser.AddObject("Do Nothing", new DoNothing());
 	AutoChooser.AddObject("Deliver Low", new DeliverLow());
 	AutoChooser.AddObject("Cross Auto Line", new CrossAutoLine());
+	ChooserPos.AddObject("Left", &left);
+	ChooserPos.AddObject("Right", &right);
+	ChooserPos.AddObject("Middle", &middle);
+	SmartDashboard::PutData("Start Position", &chooserPos);
 }
 
 void Robot::DisabledInit() {
@@ -61,6 +68,7 @@ void Robot::AutonomousInit()  {
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();
 	}
+	StartPosition* autonomusPos = chooserPos.GetSelected();
 }
 
 void Robot::AutonomousPeriodic()  {

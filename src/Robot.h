@@ -13,6 +13,7 @@
 #include "Subsystems/DriveTrain.h"
 #include <Subsystems/Elevator.h>
 #include <Subsystems/Ramp.h>
+#include <StartPositions.h>
 
 class Robot : public frc::TimedRobot {
 public:
@@ -43,6 +44,7 @@ private:
 	frc::Command* m_autonomousCommand = nullptr;
 	//frc::SendableChooser<frc::Command*> m_chooser;
 	frc::SendableChooser<frc::Command*> AutoChooser;
+	frc::SendableChooser<StartPosition*> chooserPos;
 };
 
 
