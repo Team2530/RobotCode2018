@@ -4,6 +4,7 @@
 Ramp::Ramp() : Subsystem("Ramp") {
 	RampMotorLeft = new VictorSP(ChannelLeft);
 	RampMotorRight = new VictorSP(ChannelRight);
+	released=false;
 }
 
 void Ramp::InitDefaultCommand() {
@@ -12,8 +13,14 @@ void Ramp::InitDefaultCommand() {
 }
 
 void Ramp::Raise() {
-	RampMotorLeft->Set(0.4);
-	RampMotorRight->Set(0.4);
+	if(released){
+		RampMotorLeft->Set(0.4);
+		RampMotorRight->Set(0.4);
+	}
+}
+void Ramp::Release(){
+	released = true;
+	//dunno how this gonna happppen
 }
 
 void Ramp::Stop() {

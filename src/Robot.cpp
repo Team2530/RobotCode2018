@@ -12,7 +12,6 @@
 #include <SmartDashboard/SmartDashboard.h>
 #include <TimedRobot.h>
 #include <Robot.h>
-#include <Commands/DoNothing.h>
 
 std::shared_ptr<DriveTrain> Robot::drivetrain;
 std::shared_ptr<Sol> Robot::sol;
@@ -21,6 +20,8 @@ std::shared_ptr<Ramp> Robot::ramp;
 
 void Robot::RobotInit() {
 	AutoChooser.AddObject("Do Nothing", new DoNothing());
+	AutoChooser.AddObject("Deliver Low", new DeliverLow());
+	AutoChooser.AddObject("Cross Auto Line", new CrossAutoLine());
 }
 
 void Robot::DisabledInit() {
@@ -47,13 +48,15 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit()  {
 	std::string autoSelected = frc::SmartDashboard::GetString(
 			"Auto Selector", "Default");
-	if (autoSelected == "My Auto") {
-		//m_autonomousCommand = &m_myAuto;
-	} else {
-		//m_autonomousCommand = &m_defaultAuto;
-	}
+	/*if (autoSelected == "Deliver Low") {
+		m_autonomousCommand = DeliverLow();
+	} else if(autoSelected == "Cross Auto Line") {
+		m_autonomousCommand = CrossAutoLine();
+	} else{
+		m_autonomousCommand = DoNothing();
+	}*/
 
-	m_autonomousCommand = m_chooser.GetSelected();
+	m_autonomousCommand = AutoChooser.GetSelected();
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();

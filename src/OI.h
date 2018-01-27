@@ -27,4 +27,6 @@ public:
 	JoystickButton* RB;//grab
 	JoystickButton* LB;//release
 	JoystickButton* A;//lift arm
+	JoystickButton* Y;//who knows yet
+	JoystickButton* LS;
 };

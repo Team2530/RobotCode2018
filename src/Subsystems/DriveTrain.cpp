@@ -21,6 +21,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
 	//converting to inches: (ticks/revolution)*diameter*pi. diameter is 6. pi = math.PI or 3.1415. ticks/revolution: 1/1000
 	leftEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
+	//ROBOT 27.5inch by 32.5inch, drives long end front
 }
 
 void DriveTrain::InitDefaultCommand() {
