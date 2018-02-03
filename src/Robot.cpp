@@ -28,7 +28,7 @@ void Robot::RobotInit() {
 	ChooserPos.AddObject("Left", &left);
 	ChooserPos.AddObject("Right", &right);
 	ChooserPos.AddObject("Middle", &middle);
-	SmartDashboard::PutData("Start Position", &chooserPos);
+	SmartDashboard::PutData("Start Position", &ChooserPos);
 }
 
 void Robot::DisabledInit() {
@@ -68,7 +68,7 @@ void Robot::AutonomousInit()  {
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();
 	}
-	StartPosition* autonomusPos = chooserPos.GetSelected();
+	StartPosition* autonomusPos = ChooserPos.GetSelected();
 }
 
 void Robot::AutonomousPeriodic()  {
