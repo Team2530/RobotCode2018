@@ -6,17 +6,19 @@
 #include <Drive/DifferentialDrive.h>
 #include <Spark.h>
 #include <math.h>
+#include <networktables/NetworkTableInstance.h>
 
-DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
+DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	ahrs(nullptr), // obtained from OI later
 	leftLastMeasurement(0),
 	rightLastMeasurement(0),
 	currentPositionX(0),
 	currentPositionY(0),
-	angleAdjustment(0),
 	previousPositionX(0),
 	previousPositionY(0),
-	previousAngle(0)
+	previousAngle(0),
+	angleAdjustment(0) {
+
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
@@ -32,7 +34,8 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem") {
 	rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	//ROBOT 27.5inch by 32.5inch, drives long end front
 
-	table = NetworkTable::GetTable("robotPosition");
+	nt::NetworkTableInstance nti;
+	table = nti.GetTable("robotPosition");
 	ahrs = new AHRS(SPI::Port::kMXP);
 	ahrs->Reset();
 }

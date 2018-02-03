@@ -50,10 +50,10 @@ public:
 	void TeleopPeriodic();
 	void DriveStraight(Joystick* stick);
 	void Stop();
-	void StartTracking();
+	void StartTracking(double initialX, double initialY, double initialAngle);
 	double DriveFunction(double inSpeed);
 	void UpdatePosition();
-	void GetCurrentAngle();
+	double GetCurrentAngle();
 };
 
 #endif  // DriveTrain_H
