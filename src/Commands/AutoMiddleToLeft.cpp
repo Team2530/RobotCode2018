@@ -1,4 +1,4 @@
-#include "CrossAutoMiddle.h"
+#include <Commands/AutoMiddleToLeft.h>
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
