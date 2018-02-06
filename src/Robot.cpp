@@ -68,7 +68,7 @@ void Robot::AutonomousInit()  {
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();
 	}
-	StartPosition* autonomusPos = ChooserPos.GetSelected(); //Commented out.Created errors because unused variables
+	StartPosition* autonomusPos = ChooserPos.GetSelected();
 }
 
 void Robot::AutonomousPeriodic()  {
