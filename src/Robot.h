@@ -23,6 +23,7 @@ public:
 	static std::shared_ptr<Sol> sol;
 	static std::shared_ptr<Elevator> elevator;
 	static std::shared_ptr<Ramp> ramp;
+	static std::string gameData;
 
 	virtual void RobotInit() override ;
 
