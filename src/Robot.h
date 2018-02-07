@@ -42,11 +42,20 @@ public:
 	virtual void TestPeriodic() override ;
 
 private:
+	enum AutoCommand{
+		DO_NOTHING,
+		CROSS_LINE_LEFT,
+		CROSS_LINE_RIGHT,
+		DELIVER_FRONT,
+		DELIVER_SIDE_CROSS_FRONT,
+		DELIVER_SIDE_CROSS_BACK
+	};
+
 	frc::Command* m_autonomousCommand = nullptr;
 	//frc::SendableChooser<frc::Command*> m_chooser;
-	frc::SendableChooser<frc::Command*> AutoChooser;
+	frc::SendableChooser<AutoCommand> AutoChooserLeft;
+	frc::SendableChooser<AutoCommand> AutoChooserRight;
 	frc::SendableChooser<StartPosition*> ChooserPos;
 };
-
 
 #endif /* SRC_ROBOT_H_ */

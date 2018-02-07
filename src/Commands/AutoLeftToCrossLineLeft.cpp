@@ -1,10 +1,10 @@
-#include "AutoRightToRight.h"
+#include <Commands/AutoLeftToCrossLineLeft.h>
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
-AutoRightToRight::AutoRightToRight() {
-	AddSequential(new DriveInches(294));
-	AddSequential(new TurnDegrees(-90));
+AutoLeftToCrossLineLeft::AutoLeftToCrossLineLeft() {
+	AddSequential(new DriveInches(295));
+	AddSequential(new TurnDegrees(90));
 	AddSequential(new DriveInches(33));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
