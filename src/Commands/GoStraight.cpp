@@ -6,6 +6,14 @@ GoStraight::GoStraight() {
 	// eg. Requires(Robot::chassis.get());
 	stick = new frc::Joystick(0);
 }
+GoStraight::GoStraight(double distance){
+	double minPower = 0.1;
+	double startingDistance = Robot::drivetrain->GetEncoderDistance();
+	while((Robot::drivetrain->GetEncoderDistance()-startingDistance)<distance){
+		double power = (((Robot::drivetrain->GetEncoderDistance()-startingDistance)-distance)/10)*minPower;
+		Robot::drivetrain->DriveStraight(power);
+	}
+}
 
 // Called just before this Command runs the first time
 void GoStraight::Initialize() {

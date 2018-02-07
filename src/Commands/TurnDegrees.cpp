@@ -2,6 +2,7 @@
 
 TurnDegrees::TurnDegrees(int degrees) {
 	TurnDeg = degrees;
+	Requires(Robot::drivetrain.get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
@@ -13,7 +14,7 @@ void TurnDegrees::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void TurnDegrees::Execute() {
-
+	Robot::drivetrain->Turn(TurnDeg);
 }
 
 // Make this return true when this Command no longer needs to run execute()

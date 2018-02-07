@@ -49,9 +49,12 @@ public:
 	void Drive(Joystick* stick);
 	void TeleopPeriodic();
 	void DriveStraight(Joystick* stick);
+	void DriveStraight(double speed);
 	void Stop();
+	void Turn(double degree);
 	void StartTracking(double initialX, double initialY, double initialAngle);
 	double DriveFunction(double inSpeed);
+	double GetEncoderDistance();
 	void UpdatePosition();
 	double GetCurrentAngle();
 };
