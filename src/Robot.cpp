@@ -17,11 +17,13 @@ std::shared_ptr<DriveTrain> Robot::drivetrain;
 std::shared_ptr<Sol> Robot::sol;
 std::shared_ptr<Elevator> Robot::elevator;
 std::shared_ptr<Ramp> Robot::ramp;
+std::string Robot::gameData;
 
 StartPosition left = START_LEFT;
 StartPosition right = START_RIGHT;
 StartPosition middle = START_MIDDLE;
 void Robot::RobotInit() {
+	gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 	AutoChooser.AddObject("Do Nothing", new DoNothing());
 	AutoChooser.AddObject("Deliver Low", new DeliverLow());
 	AutoChooser.AddObject("Cross Auto Line", new CrossAutoLine());
