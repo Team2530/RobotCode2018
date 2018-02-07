@@ -1,11 +1,11 @@
-#ifndef AutoMiddleToRight_H
-#define AutoMiddleToRight_H
+#ifndef AutoMiddleToCrossLineRight_H
+#define AutoMiddleToCrossLineRight_H
 
 #include <Commands/CommandGroup.h>
 
-class AutoMiddleToRight : public CommandGroup {
+class AutoMiddleToCrossLineRight : public CommandGroup {
 public:
-	AutoMiddleToRight();
+	AutoMiddleToCrossLineRight();
 };
 
-#endif  // AutoMiddleToRight_H
+#endif  // AutoMiddleToCrossLineRight_H

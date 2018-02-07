@@ -2,7 +2,7 @@
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
-AutoMiddleToRight::AutoMiddleToRight() {
+AutoMiddleToCrossLineRight::AutoMiddleToCrossLineRight() {
 	AddSequential(new DriveInches(33));
 	AddSequential(new TurnDegrees(-90));
 	AddSequential(new DriveInches(146));

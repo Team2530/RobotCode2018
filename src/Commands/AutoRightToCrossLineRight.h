@@ -1,11 +1,11 @@
-#ifndef AutoRightToRight_H
-#define AutoRightToRight_H
+#ifndef AutoRightToCrossLineRight_H
+#define AutoRightToCrossLineRight_H
 
 #include <Commands/CommandGroup.h>
 
-class AutoRightToRight : public CommandGroup {
+class AutoRightToCrossLineRight : public CommandGroup {
 public:
-	AutoRightToRight();
+	AutoRightToCrossLineRight();
 };
 
-#endif  // AutoRightToRight_H
+#endif  // AutoRightToCrossLineRight_H
