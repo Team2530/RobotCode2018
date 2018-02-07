@@ -5,7 +5,12 @@
 
 AutoLeftToDeliverSideCrossInBackRight::AutoLeftToDeliverSideCrossInBackRight() {
 	AddSequential(new GoStraight(distanceBaseLinePastSwitch));
-	AddSequential(new TurnDegrees(-90));//DONT KNOW WHICH WAY POSITIVE
+	AddSequential(new TurnDegrees(-90));//DONT KNOW WHICH WAY POSITIVE: LEFT POS
+	AddSequential(new GoStraight(distancePassSwitchLongWay));
+	AddSequential(new TurnDegrees(-90));
+	AddSequential(new GoStraight(distanceLineUpSwitch));
+	AddSequential(new TurnDegrees(-90));
+	AddSequential(new GoStraight(distanceFinalToSwitch));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
