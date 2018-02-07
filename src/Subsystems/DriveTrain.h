@@ -19,6 +19,7 @@ private:
 	static constexpr double ticksPerRevolution = 1/1000;
 	static constexpr double diameter = 6; //inches
 	static constexpr double pi = 2*acos(0.0);
+	static constexpr double minPower = 0.1;
 	AHRS* ahrs;
 
 	WPI_TalonSRX* frontLeftController;
@@ -50,6 +51,7 @@ public:
 	void TeleopPeriodic();
 	void DriveStraight(Joystick* stick);
 	void DriveStraight(double speed);
+	void DriveStraightAuto(double distance);
 	void Stop();
 	void Turn(double degree);
 	void StartTracking(double initialX, double initialY, double initialAngle);
