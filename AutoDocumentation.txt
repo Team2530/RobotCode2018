@@ -1,0 +1,29 @@
+
+These are the choices for auto
+
+
+
+One chooser is for Position: Left, Middle, Right
+
+
+
+We own left (Chooser):
+
+-DoNothing: self explainatory
+-CrossLineLeft: Robot crosses the autoline on the left (Overrided to CrossLineRight if the robot position is Right)
+-CrossLineRight: Robot crosses the autoline on the right (Overrided to CrossLineLeft if the robot position is Left)
+-DeliverFront: Robot delivers a cube to the front of our switch (3 code options depending on position)
+-DeliverSideCrossFront: Robot delivers to the left side of our switch from the front(3 code options)
+-DeliverSideCrossBack: Robot delivers to the left side of our switch from crossing the back(1 code options)
+
+
+
+
+We own right (Chooser):
+
+-DoNothing: self explainatory
+-CrossLineLeft: Robot crosses the autoline on the left (Overrided to CrossLineRight if the robot position is Right)
+-CrossLineRight: Robot crosses the autoline on the right (Overrided to CrossLineLeft if the robot position is Left)
+-DeliverFront: Robot delivers a cube to the front of our switch (3 code options depending on position)
+-DeliverSideCrossFront: Robot delivers to the right side of our switch from the front(3 code options)
+-DeliverSideCrossBack: Robot delivers to the right side of our switch from crossing the back(1 code option and overrides to DeliverSideCrossFront if position is Right or Middle) 

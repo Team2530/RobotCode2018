@@ -23,10 +23,21 @@ StartPosition left = START_LEFT;
 StartPosition right = START_RIGHT;
 StartPosition middle = START_MIDDLE;
 void Robot::RobotInit() {
-	gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-	AutoChooser.AddObject("Do Nothing", new DoNothing());
-	AutoChooser.AddObject("Deliver Low", new DeliverLow());
-	AutoChooser.AddObject("Cross Auto Line", new CrossAutoLine());
+	//Left Chooser
+	AutoChooserLeft.AddDefault("Do Nothing", DO_NOTHING);
+	AutoChooserLeft.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
+	AutoChooserLeft.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
+	AutoChooserLeft.AddObject("Deliver Front", DELIVER_FRONT);
+	AutoChooserLeft.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
+	AutoChooserLeft.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
+	//Right Chooser
+	AutoChooserRight.AddDefault("Do Nothing", DO_NOTHING);
+	AutoChooserRight.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
+	AutoChooserRight.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
+	AutoChooserRight.AddObject("Deliver Front", DELIVER_FRONT);
+	AutoChooserRight.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
+	AutoChooserRight.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
+	//Position Chooser
 	ChooserPos.AddObject("Left", &left);
 	ChooserPos.AddObject("Right", &right);
 	ChooserPos.AddObject("Middle", &middle);
@@ -57,6 +68,16 @@ void Robot::DisabledPeriodic() {
 void Robot::AutonomousInit()  {
 	std::string autoSelected = frc::SmartDashboard::GetString(
 			"Auto Selector", "Default");
+
+//	std::string gameData;
+//			gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+//			if(gameData[0] == 'L')
+//			{
+//				m_autonomousCommand = AutoChooserLeft.GetSelected();
+//			} else {
+//				m_autonomousCommand = AutoChooserRight.GetSelected();
+//			}
+
 	/*if (autoSelected == "Deliver Low") {
 		m_autonomousCommand = DeliverLow();
 	} else if(autoSelected == "Cross Auto Line") {
@@ -65,7 +86,6 @@ void Robot::AutonomousInit()  {
 		m_autonomousCommand = DoNothing();
 	}*/
 
-	m_autonomousCommand = AutoChooser.GetSelected();
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand->Start();
