@@ -1,14 +1,14 @@
-#include "StartCenterDeliverLeft.h"
+#include <Commands/AutoMiddleToDeliverFrontRight.h>
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
-StartCenterDeliverLeft::StartCenterDeliverLeft() {
-	AddSequential(new DriveInches(107));
+AutoMiddleToDeliverFrontRight::AutoMiddleToDeliverFrontRight() {
+	AddSequential(new DriveInches(65));
+	AddSequential(new TurnDegrees(-90));
+	AddSequential(new DriveInches(126));
 	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(103));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(-90));
+	AddSequential(new DriveInches(75));
+	AddSequential(new TurnDegrees(90));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

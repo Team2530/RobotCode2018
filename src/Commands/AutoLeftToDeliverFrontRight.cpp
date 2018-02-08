@@ -4,9 +4,9 @@
 
 AutoLeftToDeliverFrontRight::AutoLeftToDeliverFrontRight() {
 	AddSequential(new DriveInches(40));
-	AddSequential(new TurnDegrees(90)); //right
+	AddSequential(new TurnDegrees(-90)); //right
 	AddSequential(new DriveInches(160));
-	AddSequential(new TurnDegrees(-90)); //left
+	AddSequential(new TurnDegrees(90)); //left
 	AddSequential(new DriveInches(100));
 	//AddSequential(new deliver box);//WIP
 
