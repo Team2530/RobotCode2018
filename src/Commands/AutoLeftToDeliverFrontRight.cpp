@@ -1,5 +1,5 @@
 #include "AutoLeftToDeliverFrontRight.h"
-#include <Commands/DriveInches.h>
+#include <Commands/GoStraight.h>
 #include <Commands/TurnDegrees.h>
 
 AutoLeftToDeliverFrontRight::AutoLeftToDeliverFrontRight() {
