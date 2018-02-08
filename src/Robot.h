@@ -5,7 +5,6 @@
 //Commands
 #include "Commands/GoStraight.h"
 #include "Commands/SkidStearWithJoystick.h"
-#include "Commands/CrossAutoLine.h"
 #include "Commands/DeliverLow.h"
 #include "Commands/DoNothing.h"
 #include <SmartDashboard/SendableChooser.h>
