@@ -1,13 +1,13 @@
 #include "StartCenterDeliverRight.h"
-#include <Commands/DriveInches.h>
+#include <Commands/GoStraight.h>
 #include <Commands/TurnDegrees.h>
 
 StartCenterDeliverRight::StartCenterDeliverRight() {
-	AddSequential(new DriveInches(65));
+	AddSequential(new GoStraight(65));
 	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(126));
+	AddSequential(new GoStraight(126));
 	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(75));
+	AddSequential(new GoStraight(75));
 	AddSequential(new TurnDegrees(90));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
