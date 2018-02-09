@@ -1,4 +1,7 @@
 #include "AutoMiddleToDeliverSideCrossInFrontLeft.h"
+#include <Commands/GoStraight.h>
+#include <Commands/TurnDegrees.h>
+#include <Robot.h>
 
 AutoMiddleToDeliverSideCrossInFrontLeft::AutoMiddleToDeliverSideCrossInFrontLeft() {
 	// Add Commands here:
