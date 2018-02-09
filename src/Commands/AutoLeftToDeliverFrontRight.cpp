@@ -8,7 +8,17 @@ AutoLeftToDeliverFrontRight::AutoLeftToDeliverFrontRight() {
 	AddSequential(new GoStraight(160));
 	AddSequential(new TurnDegrees(90)); //left
 	AddSequential(new GoStraight(100));
-	//AddSequential(new deliver box);//WIP
+	//Drop Arm
+	//raise arm if it isn't already
+	//maybe move forward
+	//drop box
+	//maybe retract arm
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new GoStraight(36));
+	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new GoStraight(60));
+	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new GoStraight(36));
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
