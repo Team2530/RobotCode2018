@@ -4,6 +4,20 @@
 #include <Robot.h>
 
 AutoMiddleToDeliverSideCrossInFrontLeft::AutoMiddleToDeliverSideCrossInFrontLeft() {
+	AddSequential(new GoStraight(40));
+	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new GoStraight(80));
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new GoStraight(128));
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new GoStraight(10)); //??????????????????
+	//deliver box stuff
+	AddSequential(new GoStraight(-10)); //??????????????????
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new GoStraight(30));
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new GoStraight(36));
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
