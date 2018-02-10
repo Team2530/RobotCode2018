@@ -12,6 +12,9 @@ void Elevator::InitDefaultCommand() {
 void Elevator::Raise(){
 	ElevatorMotor->Set(maxPow);
 }
+void Elevator::Lower(){
+	ElevatorMotor->Set(-1*maxPow);
+}
 void Elevator::RaiseAuto(){
 	ElevatorMotor->Set(minPow);
 }

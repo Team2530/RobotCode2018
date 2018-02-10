@@ -16,6 +16,7 @@ public:
 	Elevator();
 	void InitDefaultCommand();
 	void Raise();
+	void Lower();
 	void RaiseAuto();
 };
 
