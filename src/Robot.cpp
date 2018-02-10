@@ -84,9 +84,9 @@ void Robot::AutonomousInit()  {
 							else if (AutoChooserLeft.GetSelected() == DELIVER_FRONT)
 								m_autonomousCommand = new AutoLeftToDeliverFrontLeft();
 
-//							else if (AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_BACK
-//									||AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_FRONT)
-//								m_autonomousCommand = new AutoLeftToDeliverSideCrossInFrontLeft();
+							else if (AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_BACK
+									||AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_FRONT)
+								m_autonomousCommand = new AutoLeftDeliverToSideLeft();
 
 							else
 								m_autonomousCommand = new DoNothing();
@@ -140,9 +140,9 @@ void Robot::AutonomousInit()  {
 							if (AutoChooserLeft.GetSelected() == DO_NOTHING)
 								m_autonomousCommand = new DoNothing();
 
-//							else if (AutoChooserLeft.GetSelected() == CROSS_LINE_LEFT
-//									||AutoChooserLeft.GetSelected() == CROSS_LINE_RIGHT)
-//								m_autonomousCommand = new AutoLeftToCrossLineRight();
+							else if (AutoChooserLeft.GetSelected() == CROSS_LINE_LEFT
+									||AutoChooserLeft.GetSelected() == CROSS_LINE_RIGHT)
+								m_autonomousCommand = new AutoLeftToCrossLineLeft();
 
 							else if (AutoChooserLeft.GetSelected() == DELIVER_FRONT)
 								m_autonomousCommand = new AutoLeftToDeliverFrontRight();
@@ -150,8 +150,8 @@ void Robot::AutonomousInit()  {
 							else if (AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_BACK)
 								m_autonomousCommand = new AutoLeftToDeliverSideCrossInBackRight();
 
-//							else if	(AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_FRONT)
-//								m_autonomousCommand = new AutoLeftToDeliverSideCrossInFrontRight();
+							else if	(AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_FRONT)
+								m_autonomousCommand = new AutoLeftToDeliverSideCrossInFrontRight();
 
 							else
 								m_autonomousCommand = new DoNothing();
@@ -166,11 +166,11 @@ void Robot::AutonomousInit()  {
 								m_autonomousCommand = new AutoRightToCrossLineRight();
 
 							else if (AutoChooserLeft.GetSelected() == DELIVER_FRONT)
-								m_autonomousCommand = new AutoRightToDeliverFrontLeft();
+								m_autonomousCommand = new AutoRightToDeliverFrontRight();
 
 							else if (AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_BACK
 									||AutoChooserLeft.GetSelected() == DELIVER_SIDE_CROSS_FRONT)
-								m_autonomousCommand = new AutoRightToDeliverSideCrossInFrontLeft();
+								m_autonomousCommand = new AutoRightToDeliverSideRight();
 
 							else
 								m_autonomousCommand = new DoNothing();
@@ -196,7 +196,7 @@ void Robot::AutonomousInit()  {
 								m_autonomousCommand = new DoNothing();
 							break;
 				}
-			//	m_autonomousCommand = AutoChooserRight.GetSelected();
+
 			}
 
 	/*if (autoSelected == "Deliver Low") {

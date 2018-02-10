@@ -19,8 +19,8 @@
 #include "Commands/AutoLeftToCrossLineLeft.h"
 #include "Commands/AutoLeftToDeliverFrontRight.h"
 #include "Commands/AutoLeftToDeliverFrontLeft.h"
-//#include "Commands/AutoLeftToDeliverSideCrossInFrontLeft.h"
-//#include "Commands/AutoLeftToDeliverSideCrossInFrontRight.h"
+#include "Commands/AutoLeftDeliverToSideLeft.h"
+#include "Commands/AutoLeftToDeliverSideCrossInFrontRight.h"
 #include "Commands/AutoLeftToDeliverSideCrossInBackRight.h"
 
 #include "Commands/AutoMiddleToCrossLineLeft.h"
@@ -33,7 +33,7 @@
 #include "Commands/AutoRightToCrossLineRight.h"
 #include "Commands/AutoRightToDeliverFrontRight.h"
 #include "Commands/AutoRightToDeliverFrontLeft.h"
-//#include "Commands/AutoRightToDeliverSideCrossInFrontRight.h"
+#include "Commands/AutoRightToDeliverSideRight.h"
 #include "Commands/AutoRightToDeliverSideCrossInFrontLeft.h"
 #include "Commands/AutoRightToDeliverSideCrossInBackLeft.h"
 
