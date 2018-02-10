@@ -12,7 +12,6 @@ private:
 	Joystick* stick;
 public:
 	GoStraight();
-	GoStraight(double distance);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

@@ -4,7 +4,7 @@
 #include <Commands/CommandGroup.h>
 #include <Robot.h>
 #include <Commands/TurnDegrees.h>
-#include <Commands/GoStraight.h>
+#include <Commands/DriveInches.h>
 
 class AutoRightToDeliverSideCrossInBackLeft : public CommandGroup {
 private:

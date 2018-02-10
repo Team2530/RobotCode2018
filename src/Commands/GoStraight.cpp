@@ -6,9 +6,7 @@ GoStraight::GoStraight() {
 	// eg. Requires(Robot::chassis.get());
 	stick = new frc::Joystick(0);
 }
-GoStraight::GoStraight(double distance){
-	Robot::drivetrain->DriveStraightAuto(distance);
-}
+
 
 // Called just before this Command runs the first time
 void GoStraight::Initialize() {

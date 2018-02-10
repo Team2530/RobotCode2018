@@ -1,13 +1,13 @@
 #include "AutoMiddleToDeliverCrossInFrontRight.h"
-#include <Commands/GoStraight.h>
+#include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
 AutoMiddleToDeliverCrossInFrontRight::AutoMiddleToDeliverCrossInFrontRight() {
-	AddSequential(new GoStraight(33));
+	AddSequential(new DriveInches(33));
 	AddSequential(new TurnDegrees(-90));
-	AddSequential(new GoStraight(177));
+	AddSequential(new DriveInches(177));
 	AddSequential(new TurnDegrees(90));
-	AddSequential(new GoStraight(87));
+	AddSequential(new DriveInches(87));
 	AddSequential(new TurnDegrees(90));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

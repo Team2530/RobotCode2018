@@ -1,11 +1,11 @@
 #include "AutoLeftDeliverToSideLeft.h"
-#include <Commands/GoStraight.h>
+#include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
 AutoLeftDeliverToSideLeft::AutoLeftDeliverToSideLeft() {
-	AddSequential(new GoStraight(212));
+	AddSequential(new DriveInches(212));
 	AddSequential(new TurnDegrees(-90));
-	AddSequential(new GoStraight(56));
+	AddSequential(new DriveInches(56));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
