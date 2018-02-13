@@ -13,7 +13,7 @@
 
 #include "Commands/Command.h"
 
-class GrabCube : public Command {
+class GrabCube : public frc::Command {
 public:
 	GrabCube();
 	void Initialize();

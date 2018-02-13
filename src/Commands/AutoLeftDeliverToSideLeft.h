@@ -3,7 +3,7 @@
 
 #include <Commands/CommandGroup.h>
 
-class AutoLeftDeliverToSideLeft : public CommandGroup {
+class AutoLeftDeliverToSideLeft : public frc::CommandGroup {
 public:
 	AutoLeftDeliverToSideLeft();
 };

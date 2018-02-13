@@ -32,3 +32,11 @@ void TurnDegrees::End() {
 void TurnDegrees::Interrupted() {
 
 }
+
+int Left (int TurnDegrees){
+	return TurnDegrees ;
+}
+
+int Right (int TurnDegrees){
+	return -TurnDegrees ;
+	}

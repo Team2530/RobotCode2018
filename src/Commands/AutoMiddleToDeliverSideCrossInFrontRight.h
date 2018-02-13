@@ -3,7 +3,7 @@
 
 #include <Commands/CommandGroup.h>
 
-class AutoMiddleToDeliverSideCrossInFrontRight : public CommandGroup {
+class AutoMiddleToDeliverSideCrossInFrontRight : public frc::CommandGroup {
 public:
 	AutoMiddleToDeliverSideCrossInFrontRight();
 };

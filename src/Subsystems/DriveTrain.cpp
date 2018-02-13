@@ -27,11 +27,10 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	rightSide = new SpeedControllerGroup(*frontRightController, *backRightController);
 	robotDrive = new DifferentialDrive(*leftSide, *rightSide); //pointer to reference again :)
 
-	leftEncoder = new frc::Encoder(0,1, false,Encoder::CounterBase::k2X);//what k2X mean? also, 0,1 gonna change: encoder channel
-	rightEncoder = new frc::Encoder(2,3, false, Encoder::CounterBase::k2X);//^^
-	//converting to inches: (ticks/revolution)*diameter*pi. diameter is 6. pi = math.PI or 3.1415. ticks/revolution: 1/1000
-	leftEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
-	rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
+	frontLeftController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 0);
+	frontRightController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,0);
+	//leftEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
+	//rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	//ROBOT 27.5inch by 32.5inch, drives long end front
 
 	nt::NetworkTableInstance nti;
@@ -43,8 +42,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 void DriveTrain::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
 	// SetDefaultCommand(new SkidStearWithJoystick());
-	leftEncoder->Reset();
-	rightEncoder->Reset();
+
 	leftLastMeasurement = 0;
 	rightLastMeasurement = 0;
 }
@@ -102,11 +100,11 @@ void DriveTrain::StartTracking(double initialX, double initialY, double initialA
 	}
 }
 double DriveTrain::GetEncoderDistance(){
-	return (leftEncoder->GetDistance() + rightEncoder->GetDistance())/2;
+	return (frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
 }
 void DriveTrain::UpdatePosition(){
-	double left = leftEncoder->GetDistance();
-	double right = rightEncoder->GetDistance();
+	double left = frontLeftController->GetSelectedSensorPosition(0);
+	double right = frontRightController->GetSelectedSensorPosition(0);
 	double distanceLeft = left - leftLastMeasurement;
 	double distanceRight = right - rightLastMeasurement;
 	currentAngle=GetCurrentAngle();

@@ -6,7 +6,7 @@
 #include <Joystick.h>
 #include <ctre/Phoenix.h>
 #include "HAL/HAL.h"
-#include <Encoder.h>
+//#include <Encoder.h>
 #include <AHRS.h>
 
 

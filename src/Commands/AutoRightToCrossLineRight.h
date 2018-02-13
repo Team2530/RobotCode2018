@@ -3,7 +3,7 @@
 
 #include <Commands/CommandGroup.h>
 
-class AutoRightToCrossLineRight : public CommandGroup {
+class AutoRightToCrossLineRight : public frc::CommandGroup {
 public:
 	AutoRightToCrossLineRight();
 };

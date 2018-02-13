@@ -4,7 +4,7 @@
 #include "Commands/Command.h"
 #include "Robot.h"
 
-class DoNothing : public Command {
+class DoNothing : public frc::Command {
 public:
 	DoNothing();
 	void Initialize();

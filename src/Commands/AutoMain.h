@@ -4,7 +4,7 @@
 #include <Commands/CommandGroup.h>
 #include <Robot.h>
 
-class AutoMain : public CommandGroup {
+class AutoMain : public frc::CommandGroup {
 public:
 	AutoMain(double t,
 			char switchSide,
