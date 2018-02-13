@@ -6,7 +6,7 @@
 #include <Subsystems/Sol.h>
 #include <Subsystems/Elevator.h>
 
-class AutoDeliverCube : public CommandGroup {
+class AutoDeliverCube : public frc::CommandGroup {
 public:
 	AutoDeliverCube();
 };

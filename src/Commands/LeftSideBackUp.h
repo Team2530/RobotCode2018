@@ -3,7 +3,7 @@
 
 #include <Commands/CommandGroup.h>
 
-class LeftSideBackUp : public CommandGroup {
+class LeftSideBackUp : public frc::CommandGroup {
 public:
 	LeftSideBackUp();
 };
