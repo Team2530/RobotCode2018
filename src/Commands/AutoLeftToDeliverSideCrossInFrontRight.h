@@ -3,7 +3,7 @@
 
 #include <Commands/CommandGroup.h>
 
-class AutoLeftToDeliverSideCrossInFrontRight : public CommandGroup {
+class AutoLeftToDeliverSideCrossInFrontRight : public frc::CommandGroup {
 private:
 	double buffer = 10;
 	double distanceCrossSwitch = 238.75 + buffer;

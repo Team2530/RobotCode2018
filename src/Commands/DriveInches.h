@@ -5,7 +5,7 @@
 #include <Robot.h>
 #include <Subsystems/DriveTrain.h>
 
-class DriveInches : public Command {
+class DriveInches : public frc::Command {
 public:
 	DriveInches(double distance);
 	void Initialize();

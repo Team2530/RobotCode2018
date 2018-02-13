@@ -6,7 +6,7 @@
 #include <Commands/TurnDegrees.h>
 #include <Commands/DriveInches.h>
 
-class AutoRightToDeliverSideCrossInBackLeft : public CommandGroup {
+class AutoRightToDeliverSideCrossInBackLeft : public frc::CommandGroup {
 private:
 	double distancePastSwitch = 196; //14ft to center, 2ft,4in past rail
 	double distancePastCube = 13;//1ft 1 in

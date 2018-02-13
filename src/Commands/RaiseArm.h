@@ -4,7 +4,7 @@
 #include "Commands/Command.h"
 #include "Robot.h"
 
-class RaiseArm : public Command {
+class RaiseArm : public frc::Command {
 public:
 	RaiseArm();
 	void Initialize();
