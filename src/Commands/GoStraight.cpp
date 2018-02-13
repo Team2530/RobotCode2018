@@ -7,6 +7,7 @@ GoStraight::GoStraight() {
 	stick = new frc::Joystick(0);
 }
 
+
 // Called just before this Command runs the first time
 void GoStraight::Initialize() {
 

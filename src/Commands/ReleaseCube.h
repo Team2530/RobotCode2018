@@ -4,7 +4,7 @@
 #include "Commands/Command.h"
 #include "../Robot.h"
 
-class ReleaseCube : public Command {
+class ReleaseCube : public frc::Command {
 public:
 	ReleaseCube();
 	void Initialize();

@@ -5,7 +5,7 @@
 #include "Subsystems/Ramp.h"
 #include "Robot.h"
 
-class RaiseRamp : public Command {
+class RaiseRamp : public frc::Command {
 public:
 	RaiseRamp();
 	void Initialize();

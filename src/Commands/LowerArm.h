@@ -1,11 +1,12 @@
-#ifndef CrossAutoLine_H
-#define CrossAutoLine_H
+#ifndef LowerArm_H
+#define LowerArm_H
 
 #include "Commands/Command.h"
+#include "Robot.h"
 
-class CrossAutoLine : public Command {
+class LowerArm : public frc::Command {
 public:
-	CrossAutoLine();
+	LowerArm();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -13,4 +14,4 @@ public:
 	void Interrupted();
 };
 
-#endif  // CrossAutoLine_H
+#endif  // LowerArm_H
