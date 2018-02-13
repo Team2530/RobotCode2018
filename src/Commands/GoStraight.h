@@ -7,7 +7,7 @@
 #include <RobotMap.h>
 #include <Joystick.h>
 
-class GoStraight : public Command {
+class GoStraight : public frc::Command {
 private:
 	Joystick* stick;
 public:

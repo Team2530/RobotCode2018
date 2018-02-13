@@ -3,7 +3,7 @@
 
 #include "Commands/Command.h"
 
-class SkidStearWithJoystick : public Command {
+class SkidStearWithJoystick : public frc::Command {
 public:
 	SkidStearWithJoystick();
 	void Initialize();

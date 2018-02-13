@@ -4,7 +4,7 @@
 #include "Commands/Command.h"
 #include <Robot.h>
 
-class TurnDegrees : public Command {
+class TurnDegrees : public frc::Command {
 public:
 	TurnDegrees(int degrees);
 	void Initialize();
