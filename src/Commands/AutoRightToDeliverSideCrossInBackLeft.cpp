@@ -1,13 +1,13 @@
-#include <Commands/AutoLeftToCrossLineLeft.h>
-#include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include "AutoRightToDeliverSideCrossInBackLeft.h"
 
-AutoLeftToCrossLineLeft::AutoLeftToCrossLineLeft() {
-	AddSequential(new DriveInches(40));
+AutoRightToDeliverSideCrossInBackLeft::AutoRightToDeliverSideCrossInBackLeft() {
+	AddSequential(new DriveInches(distanceBaseLinePastSwitch));
+	AddSequential(new TurnDegrees(90));//DONT KNOW WHICH WAY POSITIVE: LEFT POS
+	AddSequential(new DriveInches(distancePassSwitchLongWay));
 	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(153));
+	AddSequential(new DriveInches(distanceLineUpSwitch));
+	AddSequential(new TurnDegrees(90));
+	AddSequential(new DriveInches(distanceFinalToSwitch));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

@@ -1,32 +1,32 @@
-#include "DeliverHigh.h"
+#include "LowerArm.h"
 
-DeliverHigh::DeliverHigh() {
+LowerArm::LowerArm() {
 	// Use Requires() here to declare subsystem dependencies
-	// eg. Requires(Robot::chassis.get());
+	Requires(Robot::elevator.get());
 }
 
 // Called just before this Command runs the first time
-void DeliverHigh::Initialize() {
+void LowerArm::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void DeliverHigh::Execute() {
-
+void LowerArm::Execute() {
+	Robot::elevator->Lower();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool DeliverHigh::IsFinished() {
+bool LowerArm::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void DeliverHigh::End() {
+void LowerArm::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void DeliverHigh::Interrupted() {
+void LowerArm::Interrupted() {
 
 }

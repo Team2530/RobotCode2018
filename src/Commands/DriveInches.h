@@ -2,16 +2,17 @@
 #define DriveInches_H
 
 #include "Commands/Command.h"
+#include <Robot.h>
+#include <Subsystems/DriveTrain.h>
 
 class DriveInches : public Command {
 public:
-	DriveInches(int inches);
+	DriveInches(double distance);
 	void Initialize();
 	void Execute();
 	bool IsFinished();
 	void End();
 	void Interrupted();
-	int DriveInch;
 };
 
 #endif  // DriveInches_H

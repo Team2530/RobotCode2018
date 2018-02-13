@@ -1,8 +1,8 @@
 #include "DriveInches.h"
 
-DriveInches::DriveInches(int inches) {
-	DriveInch = inches;
-	// Use Requires() here to declare subsystem dependencies
+DriveInches::DriveInches(double distance) {
+		Robot::drivetrain->DriveStraightAuto(distance);
+		// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
 

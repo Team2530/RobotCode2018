@@ -1,9 +1,12 @@
-#ifndef AutoLeftToDeliverSideCrossInBackRight_H
-#define AutoLeftToDeliverSideCrossInBackRight_H
+#ifndef AutoRightToDeliverSideCrossInBackLeft_H
+#define AutoRightToDeliverSideCrossInBackLeft_H
 
 #include <Commands/CommandGroup.h>
+#include <Robot.h>
+#include <Commands/TurnDegrees.h>
+#include <Commands/DriveInches.h>
 
-class AutoLeftToDeliverSideCrossInBackRight : public frc::CommandGroup {
+class AutoRightToDeliverSideCrossInBackLeft : public CommandGroup {
 private:
 	double distancePastSwitch = 196; //14ft to center, 2ft,4in past rail
 	double distancePastCube = 13;//1ft 1 in
@@ -15,8 +18,7 @@ private:
 	double distanceLineUpSwitch = distancePastCube+distanceToCenterSwitchFromCube + bufferY;
 	double distanceFinalToSwitch = bufferX;
 public:
-	AutoLeftToDeliverSideCrossInBackRight();
-
+	AutoRightToDeliverSideCrossInBackLeft();
 };
 
-#endif  // AutoLeftToDeliverSideCrossInBackRight_H
+#endif  // AutoRightToDeliverSideCrossInBackLeft_H

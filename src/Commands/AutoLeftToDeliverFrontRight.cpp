@@ -1,13 +1,25 @@
-#include <Commands/AutoLeftToCrossLineLeft.h>
+#include "AutoLeftToDeliverFrontRight.h"
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
-AutoLeftToCrossLineLeft::AutoLeftToCrossLineLeft() {
+AutoLeftToDeliverFrontRight::AutoLeftToDeliverFrontRight() {
 	AddSequential(new DriveInches(40));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(153));
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new DriveInches(160));
+	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new DriveInches(100));
+	//Drop Arm
+	//raise arm if it isn't already
+	//maybe move forward
+	//drop box
+	//maybe retract arm
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new DriveInches(36));
+	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new DriveInches(60));
+	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new DriveInches(36));
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

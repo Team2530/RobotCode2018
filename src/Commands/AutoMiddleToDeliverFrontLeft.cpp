@@ -1,13 +1,16 @@
-#include <Commands/AutoLeftToCrossLineLeft.h>
+
+#include <Commands/AutoMiddleToDeliverFrontLeft.h>
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
-AutoLeftToCrossLineLeft::AutoLeftToCrossLineLeft() {
-	AddSequential(new DriveInches(40));
+
+AutoMiddleToDeliverFrontLeft::AutoMiddleToDeliverFrontLeft() {
+	AddSequential(new DriveInches(107));
 	AddSequential(new TurnDegrees(90));
+	AddSequential(new DriveInches(103));
+	AddSequential(new TurnDegrees(-90));
 	AddSequential(new DriveInches(33));
 	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(153));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

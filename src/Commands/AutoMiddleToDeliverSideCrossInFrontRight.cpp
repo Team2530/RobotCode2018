@@ -1,11 +1,13 @@
-#include "StartLeftDeliverLeft.h"
+#include "AutoMiddleToDeliverSideCrossInFrontRight.h"
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
-
-StartLeftDeliverLeft::StartLeftDeliverLeft() {
-	AddSequential(new DriveInches(135));
+AutoMiddleToDeliverSideCrossInFrontRight::AutoMiddleToDeliverSideCrossInFrontRight() {
+	AddSequential(new DriveInches(33));
 	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(23));
+	AddSequential(new DriveInches(144));
+	AddSequential(new TurnDegrees(90));
+	AddSequential(new DriveInches(102));
+	AddSequential(new TurnDegrees(90));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

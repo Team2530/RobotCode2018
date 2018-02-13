@@ -14,7 +14,7 @@ void TurnDegrees::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void TurnDegrees::Execute() {
-	Robot::drivetrain->Turn(TurnDeg);
+	Robot::drivetrain->Turn(TurnDeg);//left is positive
 }
 
 // Make this return true when this Command no longer needs to run execute()

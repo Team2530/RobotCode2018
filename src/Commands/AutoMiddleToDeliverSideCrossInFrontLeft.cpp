@@ -1,13 +1,23 @@
-#include <Commands/AutoLeftToCrossLineLeft.h>
+#include "AutoMiddleToDeliverSideCrossInFrontLeft.h"
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
+#include <Robot.h>
 
-AutoLeftToCrossLineLeft::AutoLeftToCrossLineLeft() {
+AutoMiddleToDeliverSideCrossInFrontLeft::AutoMiddleToDeliverSideCrossInFrontLeft() {
 	AddSequential(new DriveInches(40));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(153));
+	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new DriveInches(80));
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new DriveInches(128));
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new DriveInches(10)); //??????????????????
+	//deliver box stuff
+	AddSequential(new DriveInches(-10)); //??????????????????
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new DriveInches(30));
+	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new DriveInches(36));
+
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

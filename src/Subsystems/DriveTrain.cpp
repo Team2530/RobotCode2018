@@ -67,14 +67,25 @@ void DriveTrain::DriveStraight(Joystick* stick) {
 void DriveTrain::DriveStraight(double speed){
 	robotDrive->ArcadeDrive(speed, 0);
 }
-
+void DriveTrain::DriveStraightAuto(double distance){
+	double startingDistance = GetEncoderDistance();
+	while((GetEncoderDistance()-startingDistance)<distance){
+		double power = (((GetEncoderDistance()-startingDistance)-distance)/10)*minPower;
+		DriveStraight(power);
+	}
+}
 void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }
 void DriveTrain::Turn(double degrees){
 	double startAngle = GetCurrentAngle();
-	while((GetCurrentAngle()-startAngle)<degrees){
-		robotDrive->ArcadeDrive(0, .1);//.1 is a guess of how much power wanted for turn. Can change
+	while((GetCurrentAngle()-startAngle)!=degrees){
+		if(degrees>0){
+			robotDrive->ArcadeDrive(0, .1);//.1 is a guess of how much power wanted for turn. Can change
+		}
+		else{
+			robotDrive->ArcadeDrive(0,-.1);//see above
+		}
 	}
 }
 

@@ -1,14 +1,12 @@
-#include "StartCenterDeliverLeft.h"
-#include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include "AutoDeliverCube.h"
+#include <Commands/RaiseArm.h>
+#include <Commands/ReleaseCube.h>
 
-StartCenterDeliverLeft::StartCenterDeliverLeft() {
-	AddSequential(new DriveInches(107));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(103));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(-90));
+AutoDeliverCube::AutoDeliverCube() {
+	for(int i=0; i<50; i++){
+		AddSequential(new RaiseArm());
+	}
+	AddSequential(new ReleaseCube());
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
