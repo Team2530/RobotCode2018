@@ -29,4 +29,7 @@ public:
 	JoystickButton* A;//lift arm
 	JoystickButton* Y;//who knows yet
 	JoystickButton* LS;
+	JoystickButton* B;
+	JoystickButton* X;
+
 };

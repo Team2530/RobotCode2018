@@ -14,6 +14,8 @@
 #include <Commands/ReleaseCube.h>
 #include <Commands/RaiseArm.h>
 #include <Commands/RaiseRamp.h>
+#include <Commands/LowerArm.h>
+//#include <Commands/ReleaseRamp.h>
 
 OI::OI() {
 
@@ -27,12 +29,16 @@ OI::OI() {
 	A = new frc::JoystickButton(xbox, 1);//raises the arm
 	Y = new frc::JoystickButton(xbox, 4);//release ramp?
 	LS = new frc::JoystickButton(xbox, 9);//raise ramp
+	B = new frc::JoystickButton(xbox, 18);
+	X = new frc::JoystickButton(xbox, 19);
 
 	RB->WhenPressed(new GrabCube());
 	LB->WhenPressed(new ReleaseCube());
 	A->WhenPressed(new RaiseArm());
 
 	LS->WhenPressed(new RaiseRamp());
+	B->WhenPressed(new LowerArm());
+	//X->WhenPressed(new ReleaseRamp());
 
 	//OK, JOYSTICK Stuff Here Please
 
