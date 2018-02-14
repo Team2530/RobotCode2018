@@ -10,7 +10,8 @@ public:
 			char switchSide,
 			StartPosition startPos,
 			Robot::AutoCommand commandLeft,
-			Robot::AutoCommand commandRight);
+			Robot::AutoCommand commandRight,
+			bool Evade);
 };
 
 #endif  // AutoMain_H
