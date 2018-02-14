@@ -3,7 +3,7 @@
 
 #include <Commands/CommandGroup.h>
 
-class AutoEvadeFrontRight : public CommandGroup {
+class AutoEvadeFrontRight : public frc::CommandGroup {
 public:
 	AutoEvadeFrontRight();
 };

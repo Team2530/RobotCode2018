@@ -7,12 +7,7 @@ class AutoEvadeSideBack : public frc::CommandGroup {
 public:
 	AutoEvadeSideBack();
 
-	  void Initialize();
-	  void Execute();
-	  bool IsFinished();
-	  void End();
-	  void Interrupted();
-	};
+};
 
 
 #endif  //AutoEvadeSideBack_H
