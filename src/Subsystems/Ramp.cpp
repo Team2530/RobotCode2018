@@ -4,6 +4,8 @@
 Ramp::Ramp() : Subsystem("Ramp") {
 	RampMotorLeft = new VictorSP(ChannelLeft);
 	RampMotorRight = new VictorSP(ChannelRight);
+	RampLeft = new frc::Encoder(8,9,false, Encoder::CounterBase::k2X );//8,9 fillers
+	RampRight = new frc::Encoder(0,1,false, Encoder::CounterBase::k2X );
 	released=false;
 }
 
@@ -14,6 +16,10 @@ void Ramp::InitDefaultCommand() {
 
 void Ramp::Raise() {
 	if(released){
+		if(RampLeft->GetDistance() < RampRight->GetDistance()){
+			LeftPow+=.3;
+		}
+		else if(RampRight->GetDistance() < RampLeft->GetDistance())
 		RampMotorLeft->Set(0.4);
 		RampMotorRight->Set(0.4);
 	}
