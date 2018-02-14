@@ -3,8 +3,8 @@
 #include <Commands/TurnDegrees.h>
 
 AutoEvadeSide::AutoEvadeSide() {
-	  AddSequential(new DriveDegrees(90));
-	  AddSequential(new TurnInches(25));
+	  AddSequential(new TurnDegrees(90));
+	  AddSequential(new DriveInches(25));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
