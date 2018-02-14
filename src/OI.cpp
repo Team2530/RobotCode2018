@@ -15,7 +15,7 @@
 #include <Commands/RaiseArm.h>
 #include <Commands/RaiseRamp.h>
 #include <Commands/LowerArm.h>
-//#include <Commands/ReleaseRamp.h>
+#include <Commands/DropRamps.h>
 
 OI::OI() {
 
@@ -37,6 +37,7 @@ OI::OI() {
 	A->WhenPressed(new RaiseArm());
 
 	LS->WhenPressed(new RaiseRamp());
+	Y->WhenPressed(new DropRamps());
 	B->WhenPressed(new LowerArm());
 	//X->WhenPressed(new ReleaseRamp());
 
