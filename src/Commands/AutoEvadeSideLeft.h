@@ -3,16 +3,9 @@
 
 #include <Commands/CommandGroup.h>
 
-class AutoEvadeSideLeft : public frc::CommandGroup {
+class AutoEvadeSideLeft : public CommandGroup {
 public:
 	AutoEvadeSideLeft();
-
-	  void Initialize();
-	  void Execute();
-	  bool IsFinished();
-	  void End();
-	  void Interrupted();
-	};
 };
 
-#endif  //AutoEvadeSideLeft_H
+#endif  // AutoEvadeSideLeft_H
