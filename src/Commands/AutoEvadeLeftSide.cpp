@@ -1,6 +1,10 @@
-#include "LeftSideBackUp.h"
+#include "AutoEvadeLeftSide.h"
+#include <Commands/DriveInches.h>
+#include <Commands/TurnDegrees.h>
 
-LeftSideBackUp::LeftSideBackUp() {
+AutoEvadeLeftSide::AutoEvadeLeftSide() {
+	  AddSequential(new DriveDegrees(90));
+	  AddSequential(new TurnInches(25));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
