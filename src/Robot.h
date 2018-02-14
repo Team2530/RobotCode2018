@@ -13,6 +13,7 @@
 #include <Subsystems/Ramp.h>
 #include <StartPositions.h>
 
+
 //Auto Commands
 #include "Commands/DoNothing.h"
 
@@ -36,6 +37,11 @@
 #include "Commands/AutoRightToDeliverSideRight.h"
 #include "Commands/AutoRightToDeliverSideCrossInFrontLeft.h"
 #include "Commands/AutoRightToDeliverSideCrossInBackLeft.h"
+
+#include "Commands/AutoEvadeSideLeft.h"
+//#include "Commands/AutoEvadeSideRight.h"
+#include "Commands/AutoEvadeFrontLeft.h"
+#include "Commands/AutoEvadeFrontRight.h"
 
 
 #include <SmartDashboard/SendableChooser.h>
@@ -83,6 +89,7 @@ private:
 	frc::SendableChooser<AutoCommand> AutoChooserLeft;
 	frc::SendableChooser<AutoCommand> AutoChooserRight;
 	frc::SendableChooser<StartPosition> ChooserPos;
+	frc::SendableChooser<int> WaitTime;
 };
 
 #endif /* SRC_ROBOT_H_ */
