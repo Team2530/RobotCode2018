@@ -1,8 +1,8 @@
-#include "AutoEvadeSideLeft.h"
+#include "AutoEvadeSide.h"
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 
-AutoEvadeSideLeft::AutoEvadeSideLeft() {
+AutoEvadeSide::AutoEvadeSide() {
 	  AddSequential(new DriveDegrees(90));
 	  AddSequential(new TurnInches(25));
 	// Add Commands here:
