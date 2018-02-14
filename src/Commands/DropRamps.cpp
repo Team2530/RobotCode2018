@@ -1,32 +1,33 @@
-#include "RaiseArm.h"
+#include "DropRamps.h"
 
-RaiseArm::RaiseArm() {
-	// Use Requires() here to declare subsystem dependencies
+DropRamps::DropRamps() {
 	Requires(Robot::elevator.get());
+	// Use Requires() here to declare subsystem dependencies
+	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void RaiseArm::Initialize() {
+void DropRamps::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void RaiseArm::Execute() {
-		Robot::elevator->Raise();
-	}
+void DropRamps::Execute() {
+	Robot::elevator->DropRamps();
+}
 
 // Make this return true when this Command no longer needs to run execute()
-bool RaiseArm::IsFinished() {
+bool DropRamps::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void RaiseArm::End() {
+void DropRamps::End() {
 
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void RaiseArm::Interrupted() {
+void DropRamps::Interrupted() {
 
 }
