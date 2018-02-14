@@ -1,145 +1,181 @@
 #include "AutoMain.h"
+#include <Commands/WaitCommand.h>
 
 AutoMain::AutoMain(double t, char switchSide, StartPosition startPos,
-		Robot::AutoCommand commandLeft, Robot::AutoCommand commandRight) {
+		Robot::AutoCommand commandLeft, Robot::AutoCommand commandRight, bool Evade) {
 
-	frc::Command* m_autonomousCommand = nullptr;
+	frc::Command* Autocommand = nullptr;
+	frc::Command* EvadeCommand = nullptr
 
 	if (switchSide == 'L') {
 		switch (startPos) {
 		case START_LEFT:
-			if (commandLeft == Robot::DO_NOTHING)
-				m_autonomousCommand = new DoNothing();
+			if (commandLeft == Robot::DO_NOTHING) {
+				Autocommand = new DoNothing();
 
-			else if (commandLeft == Robot::CROSS_LINE_LEFT
-					|| commandLeft == Robot::CROSS_LINE_RIGHT)
-				m_autonomousCommand = new AutoLeftToCrossLineLeft();
+			} else if (commandLeft == Robot::CROSS_LINE_LEFT
+					|| commandLeft == Robot::CROSS_LINE_RIGHT) {
+				Autocommand = new AutoLeftToCrossLineLeft();
 
-			else if (commandLeft == Robot::DELIVER_FRONT)
-				m_autonomousCommand = new AutoLeftToDeliverFrontLeft();
+			} else if (commandLeft == Robot::DELIVER_FRONT) {
+				Autocommand = new AutoLeftToDeliverFrontLeft();
+				EvadeCommand = new AutoEvadeFrontLeft;
 
-			else if (commandLeft == Robot::DELIVER_SIDE_CROSS_BACK
+			} else if (commandLeft == Robot::DELIVER_SIDE_CROSS_BACK
 					|| commandLeft
-							== Robot::DELIVER_SIDE_CROSS_FRONT)
-				m_autonomousCommand = new AutoLeftDeliverToSideLeft();
+							== Robot::DELIVER_SIDE_CROSS_FRONT) {
+				Autocommand = new AutoLeftDeliverToSideLeft();
+				EvadeCommand = new AutoEvadeSideLeft;
 
-			else
-				m_autonomousCommand = new DoNothing();
+			} else {
+				Autocommand = new DoNothing();
+			}
 			break;
+
 
 		case START_RIGHT:
-			if (commandLeft == Robot::DO_NOTHING)
-				m_autonomousCommand = new DoNothing();
+			if (commandLeft == Robot::DO_NOTHING) {
+				Autocommand = new DoNothing();
 
-			else if (commandLeft == Robot::CROSS_LINE_LEFT
-					|| commandLeft == Robot::CROSS_LINE_RIGHT)
-				m_autonomousCommand = new AutoRightToCrossLineRight();
+			} else if (commandLeft == Robot::CROSS_LINE_LEFT
+					|| commandLeft == Robot::CROSS_LINE_RIGHT) {
+				Autocommand = new AutoRightToCrossLineRight();
 
-			else if (commandLeft == Robot::DELIVER_FRONT)
-				m_autonomousCommand = new AutoRightToDeliverFrontLeft();
+			} else if (commandLeft == Robot::DELIVER_FRONT) {
+				Autocommand = new AutoRightToDeliverFrontLeft();
+				EvadeCommand = new AutoEvadeFrontLeft;
 
-			else if (commandLeft == Robot::DELIVER_SIDE_CROSS_BACK)
-				m_autonomousCommand =
+			} else if (commandLeft == Robot::DELIVER_SIDE_CROSS_BACK) {
+				Autocommand =
 						new AutoRightToDeliverSideCrossInBackLeft();
+				EvadeCommand = new AutoEvadeSideLeft;
 
-			else if (commandLeft == Robot::DELIVER_SIDE_CROSS_FRONT)
-				m_autonomousCommand =
+			} else if (commandLeft == Robot::DELIVER_SIDE_CROSS_FRONT) {
+				Autocommand =
 						new AutoRightToDeliverSideCrossInFrontLeft();
+				EvadeCommand = new AutoEvadeFrontLeft;
 
-			else
-				m_autonomousCommand = new DoNothing();
+			} else {
+				Autocommand = new DoNothing();
+			}
 			break;
 		case START_MIDDLE:
-			if (commandLeft == Robot::DO_NOTHING)
-				m_autonomousCommand = new DoNothing();
+			if (commandLeft == Robot::DO_NOTHING) {
+				Autocommand = new DoNothing();
 
-			else if (commandLeft == Robot::CROSS_LINE_LEFT)
-				m_autonomousCommand = new AutoMiddleToCrossLineLeft();
+			} else if (commandLeft == Robot::CROSS_LINE_LEFT) {
+				Autocommand = new AutoMiddleToCrossLineLeft();
 
-			else if (commandLeft == Robot::CROSS_LINE_RIGHT)
-				m_autonomousCommand = new AutoMiddleToCrossLineLeft();
+			} else if (commandLeft == Robot::CROSS_LINE_RIGHT) {
+				Autocommand = new AutoMiddleToCrossLineLeft();
 
-			else if (commandLeft == Robot::DELIVER_FRONT)
-				m_autonomousCommand = new AutoMiddleToDeliverFrontLeft();
+			} else if (commandLeft == Robot::DELIVER_FRONT) {
+				Autocommand = new AutoMiddleToDeliverFrontLeft();
+				EvadeCommand = new AutoEvadeFrontLeft;
 
-			else if (commandLeft == Robot::DELIVER_SIDE_CROSS_BACK
+			} else if (commandLeft == Robot::DELIVER_SIDE_CROSS_BACK
 					|| commandLeft
-							== Robot::DELIVER_SIDE_CROSS_FRONT)
-				m_autonomousCommand =
+							== Robot::DELIVER_SIDE_CROSS_FRONT) {
+				Autocommand =
 						new AutoMiddleToDeliverSideCrossInFrontLeft();
+				EvadeCommand = new AutoEvadeFrontLeft;
 
-			else
-				m_autonomousCommand = new DoNothing();
+			} else {
+				Autocommand = new DoNothing();
+			}
 			break;
 		}
 	} else {
 		switch (startPos) {
 		case START_LEFT:
-			if (commandRight == Robot::DO_NOTHING)
-				m_autonomousCommand = new DoNothing();
+			if (commandRight == Robot::DO_NOTHING) {
+				Autocommand = new DoNothing();
 
-			else if (commandRight == Robot::CROSS_LINE_LEFT
-					|| commandRight == Robot::CROSS_LINE_RIGHT)
-				m_autonomousCommand = new AutoLeftToCrossLineLeft();
+			} else if (commandRight == Robot::CROSS_LINE_LEFT
+					|| commandRight == Robot::CROSS_LINE_RIGHT) {
+				Autocommand = new AutoLeftToCrossLineLeft();
 
-			else if (commandRight == Robot::DELIVER_FRONT)
-				m_autonomousCommand = new AutoLeftToDeliverFrontRight();
+			} else if (commandRight == Robot::DELIVER_FRONT) {
+				Autocommand = new AutoLeftToDeliverFrontRight();
+				EvadeCommand = new AutoEvadeFrontRight;
 
-			else if (commandRight == Robot::DELIVER_SIDE_CROSS_BACK)
-				m_autonomousCommand =
+			} else if (commandRight == Robot::DELIVER_SIDE_CROSS_BACK) {
+				Autocommand =
 						new AutoLeftToDeliverSideCrossInBackRight();
+				EvadeCommand = new AutoEvadeSideRight;
 
-			else if (commandRight == Robot::DELIVER_SIDE_CROSS_FRONT)
-				m_autonomousCommand =
+			} else if (commandRight == Robot::DELIVER_SIDE_CROSS_FRONT) {
+				Autocommand =
 						new AutoLeftToDeliverSideCrossInFrontRight();
+				EvadeCommand = new AutoEvadeFrontRight;
 
-			else
-				m_autonomousCommand = new DoNothing();
+			} else {
+				Autocommand = new DoNothing();
+			}
 			break;
 
 		case START_RIGHT:
-			if (commandRight == Robot::DO_NOTHING)
-				m_autonomousCommand = new DoNothing();
+			if (commandRight == Robot::DO_NOTHING) {
+				Autocommand = new DoNothing();
 
-			else if (commandRight == Robot::CROSS_LINE_LEFT
-					|| commandRight == Robot::CROSS_LINE_RIGHT)
-				m_autonomousCommand = new AutoRightToCrossLineRight();
+			} else if (commandRight == Robot::CROSS_LINE_LEFT
+					|| commandRight == Robot::CROSS_LINE_RIGHT) {
+				Autocommand = new AutoRightToCrossLineRight();
 
-			else if (commandRight == Robot::DELIVER_FRONT)
-				m_autonomousCommand = new AutoRightToDeliverFrontRight();
+			} else if (commandRight == Robot::DELIVER_FRONT) {
+				Autocommand = new AutoRightToDeliverFrontRight();
+				EvadeCommand = new AutoEvadeFrontRight;
 
-			else if (commandRight == Robot::DELIVER_SIDE_CROSS_BACK
+			} else if (commandRight == Robot::DELIVER_SIDE_CROSS_BACK
 					|| commandRight
-							== Robot::DELIVER_SIDE_CROSS_FRONT)
-				m_autonomousCommand = new AutoRightToDeliverSideRight();
+							== Robot::DELIVER_SIDE_CROSS_FRONT) {
+				Autocommand = new AutoRightToDeliverSideRight();
+				EvadeCommand = new AutoEvadeSideRight;
 
-			else
-				m_autonomousCommand = new DoNothing();
+			} else {
+				Autocommand = new DoNothing();
+			}
 			break;
 		case START_MIDDLE:
-			if (commandRight == Robot::DO_NOTHING)
-				m_autonomousCommand = new DoNothing();
+			if (commandRight == Robot::DO_NOTHING) {
+				Autocommand = new DoNothing();
 
-			else if (commandRight == Robot::CROSS_LINE_LEFT)
-				m_autonomousCommand = new AutoMiddleToCrossLineLeft();
+			} else if (commandRight == Robot::CROSS_LINE_LEFT) {
+				Autocommand = new AutoMiddleToCrossLineLeft();
 
-			else if (commandRight == Robot::CROSS_LINE_RIGHT)
-				m_autonomousCommand = new AutoMiddleToCrossLineRight();
+			} else if (commandRight == Robot::CROSS_LINE_RIGHT) {
+				Autocommand = new AutoMiddleToCrossLineRight();
 
-			else if (commandRight == Robot::DELIVER_FRONT)
-				m_autonomousCommand = new AutoMiddleToDeliverFrontLeft();
+			} else if (commandRight == Robot::DELIVER_FRONT) {
+				Autocommand = new AutoMiddleToDeliverFrontLeft();
+				EvadeCommand = new AutoEvadeFrontLeft;
 
-			else if (commandRight == Robot::DELIVER_SIDE_CROSS_BACK
+			} else if (commandRight == Robot::DELIVER_SIDE_CROSS_BACK
 					|| commandRight
-							== Robot::DELIVER_SIDE_CROSS_FRONT)
-				m_autonomousCommand =
+							== Robot::DELIVER_SIDE_CROSS_FRONT) {
+				Autocommand =
 						new AutoMiddleToDeliverSideCrossInFrontLeft();
+				EvadeCommand = new AutoEvadeFrontLeft;
 
-			else
-				m_autonomousCommand = new DoNothing();
+			} else
+				Autocommand = new DoNothing();
 			break;
 		}
 
+	}
+
+	if(AutoCommand == nullptr) {
+		AutoCommand = new DoNothing();
+	}
+
+	if(EvadeCommand == nullptr) {
+		Evade = False;
+	}
+
+	AddSequential(new WaitCommand(t));
+	AddSequential(AutoCommand);
+	if (Evade) {
+		AddSequetial(EvadeCommand);
 	}
 
 	// Add Commands here:
