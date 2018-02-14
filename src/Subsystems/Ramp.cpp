@@ -17,10 +17,22 @@ void Ramp::InitDefaultCommand() {
 void Ramp::Raise() {
 	if(released){
 		if(RampLeft->GetDistance() < RampRight->GetDistance()){
-			LeftPow+=.3;
+			LeftPow=1;
+			if(RightPow!=.4){
+				RightPow=.4;
+			}
+			else{
+				RightPow-=.1;
+			}
 		}
 		else if(RampRight->GetDistance() < RampLeft->GetDistance()){
-			RightPow+=.3;
+			RightPow=1;
+			if(LeftPow!=.4){
+							LeftPow=.4;
+						}
+						else{
+							LeftPow-=.1;
+						}
 		}
 		RampMotorLeft->Set(LeftPow);
 		RampMotorRight->Set(RightPow);
