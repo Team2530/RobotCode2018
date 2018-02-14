@@ -39,7 +39,7 @@
 #include "Commands/AutoRightToDeliverSideCrossInBackLeft.h"
 
 #include "Commands/AutoEvadeSideLeft.h"
-//#include "Commands/AutoEvadeSideRight.h"
+#include "Commands/AutoEvadeSideRight.h"
 #include "Commands/AutoEvadeFrontLeft.h"
 #include "Commands/AutoEvadeFrontRight.h"
 
