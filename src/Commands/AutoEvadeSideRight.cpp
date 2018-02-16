@@ -4,6 +4,7 @@
 
 
 AutoEvadeSideRight::AutoEvadeSideRight() {
+	AddSequential(new DriveInches(-12));
 	AddSequential(new TurnDegrees(-90));
 	AddSequential(new DriveInches(25));
 	// Add Commands here:

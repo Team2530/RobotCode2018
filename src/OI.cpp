@@ -16,7 +16,7 @@
 #include <Commands/RaiseRamp.h>
 #include <Commands/LowerArm.h>
 #include <Commands/DropRamps.h>
-
+#include <Commands/LowerRamp.h>
 OI::OI() {
 
 	// Process operator interface input here.
@@ -31,6 +31,7 @@ OI::OI() {
 	LS = new frc::JoystickButton(xbox, 9);//raise ramp
 	B = new frc::JoystickButton(xbox, 18);
 	X = new frc::JoystickButton(xbox, 19);
+	LT = new frc::JoystickButton(xbox, 3);
 
 	RB->WhenPressed(new GrabCube());
 	LB->WhenPressed(new ReleaseCube());
@@ -39,6 +40,8 @@ OI::OI() {
 	LS->WhenPressed(new RaiseRamp());
 	Y->WhenPressed(new DropRamps());
 	B->WhenPressed(new LowerArm());
+	LT->WhenPressed(new LowerRamp());
+
 	//X->WhenPressed(new ReleaseRamp());
 
 	//OK, JOYSTICK Stuff Here Please

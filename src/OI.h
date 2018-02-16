@@ -31,5 +31,5 @@ public:
 	JoystickButton* LS;
 	JoystickButton* B;
 	JoystickButton* X;
-
+	JoystickButton* LT;
 };

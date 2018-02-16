@@ -1,6 +1,35 @@
 #include "AutoMain.h"
 #include <Commands/WaitCommand.h>
 #include <Commands/AutoDeliverCube.h>
+#include "Commands/GoStraight.h"
+#include "Commands/SkidStearWithJoystick.h"
+#include "Commands/DoNothing.h"
+
+#include "Commands/AutoLeftToCrossLineLeft.h"
+#include "Commands/AutoLeftToDeliverFrontRight.h"
+#include "Commands/AutoLeftToDeliverFrontLeft.h"
+#include "Commands/AutoLeftDeliverToSideLeft.h"
+#include "Commands/AutoLeftToDeliverSideCrossInFrontRight.h"
+#include "Commands/AutoLeftToDeliverSideCrossInBackRight.h"
+
+#include "Commands/AutoMiddleToCrossLineLeft.h"
+#include "Commands/AutoMiddleToCrossLineRight.h"
+#include "Commands/AutoMiddleToDeliverFrontRight.h"
+#include "Commands/AutoMiddleToDeliverFrontLeft.h"
+#include "Commands/AutoMiddleToDeliverSideCrossInFrontLeft.h"
+#include "Commands/AutoMiddleToDeliverSideCrossInFrontRight.h"
+
+#include "Commands/AutoRightToCrossLineRight.h"
+#include "Commands/AutoRightToDeliverFrontRight.h"
+#include "Commands/AutoRightToDeliverFrontLeft.h"
+#include "Commands/AutoRightToDeliverSideRight.h"
+#include "Commands/AutoRightToDeliverSideCrossInFrontLeft.h"
+#include "Commands/AutoRightToDeliverSideCrossInBackLeft.h"
+
+#include "Commands/AutoEvadeSideLeft.h"
+#include "Commands/AutoEvadeSideRight.h"
+#include "Commands/AutoEvadeFrontLeft.h"
+#include "Commands/AutoEvadeFrontRight.h"
 
 AutoMain::AutoMain(double t, char switchSide, StartPosition startPos,
 		Robot::AutoCommand commandLeft, Robot::AutoCommand commandRight, bool Evade) {

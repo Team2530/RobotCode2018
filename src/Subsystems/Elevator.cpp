@@ -3,8 +3,9 @@
 
 Elevator::Elevator() : Subsystem("Elevator") {
 	ElevatorMotor = new VictorSP(ChannelElevator);
-
+	TopLimitSwitch = new frc::DigitalInput(0); //placeholder channel
 	MiddleLimitSwitch = new frc::DigitalInput(1); //placeholder channel
+	BottomLimitSwitch = new frc::DigitalInput(2); //placeholder channel
 }
 
 void Elevator::InitDefaultCommand() {
@@ -18,13 +19,22 @@ void Elevator::Raise(){
 		ElevatorMotor->Set(maxPow);
 }
 void Elevator::Lower(){
-	ElevatorMotor->Set(-1*maxPow);
+	if (BottomLimitSwitch->Get())
+		ElevatorMotor->Set(0);
+	else
+		ElevatorMotor->Set(-maxPow);
 }
 void Elevator::RaiseAuto(){
-	ElevatorMotor->Set(minPow);
+	if (MiddleLimitSwitch->Get())
+		ElevatorMotor->Set(0);
+	else
+		ElevatorMotor->Set(maxPow);
 }
 void Elevator::DropRamps(){
-	ElevatorMotor->Set(maxPow);
+	if (TopLimitSwitch->Get())
+		ElevatorMotor->Set(0);
+	else
+		ElevatorMotor->Set(maxPow);
 }
 
 // Put methods for controlling this subsystem

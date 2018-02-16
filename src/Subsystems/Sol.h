@@ -5,7 +5,7 @@
 #include <WPILib.h>
 #include <Solenoid.h>
 
-class Sol : public Subsystem {
+class Sol : public frc::Subsystem {
 private:
 	static constexpr int solenoidChannel=0;//this is a placeholder port
 
