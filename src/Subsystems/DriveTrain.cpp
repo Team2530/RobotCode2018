@@ -76,15 +76,12 @@ void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }
 void DriveTrain::Turn(double degrees){
-	double startAngle = GetCurrentAngle();
-	while((GetCurrentAngle()-startAngle)!=degrees){
 		if(degrees>0){
 			robotDrive->ArcadeDrive(0, .1);//.1 is a guess of how much power wanted for turn. Can change
 		}
 		else{
 			robotDrive->ArcadeDrive(0,-.1);//see above
 		}
-	}
 }
 
 double DriveTrain::DriveFunction(double inSpeed) {
