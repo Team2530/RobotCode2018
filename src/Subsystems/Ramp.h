@@ -20,11 +20,16 @@ private:
 public:
 	double LeftPow=0.4;
 	double RightPow =0.4;
+	double LowerLeftPow =-0.4;
+	double LowerRightPow =-0.4;
 	Ramp();
 	void InitDefaultCommand();
 	void Raise();
 	void RaiseLeft();
 	void RaiseRight();
+	void Lower();
+	void LowerRight();
+	void LowerLeft();
 	void Release();
 	void Stop();
 };
