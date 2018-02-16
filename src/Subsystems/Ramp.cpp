@@ -38,6 +38,12 @@ void Ramp::Raise() {
 		RampMotorRight->Set(RightPow);
 	}
 }
+void Ramp::RaiseLeft() {
+	RampMotorLeft->Set(LeftPow);
+}
+void Ramp::RaiseRight() {
+	RampMotorRight->Set(RightPow);
+}
 void Ramp::Release(){
 	released = true;
 	//dunno how this gonna happppen

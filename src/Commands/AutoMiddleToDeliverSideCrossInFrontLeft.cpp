@@ -10,13 +10,13 @@ AutoMiddleToDeliverSideCrossInFrontLeft::AutoMiddleToDeliverSideCrossInFrontLeft
 	AddSequential(new TurnDegrees(-90)); //right
 	AddSequential(new DriveInches(128));
 	AddSequential(new TurnDegrees(-90)); //right
-	AddSequential(new DriveInches(10)); //??????????????????
 	//deliver box stuff
+	/*Again i put evade in here lel
 	AddSequential(new DriveInches(-10)); //??????????????????
 	AddSequential(new TurnDegrees(-90)); //right
 	AddSequential(new DriveInches(30));
 	AddSequential(new TurnDegrees(-90)); //right
-	AddSequential(new DriveInches(36));
+	AddSequential(new DriveInches(36));*/
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
