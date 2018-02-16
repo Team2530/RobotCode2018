@@ -13,12 +13,13 @@ AutoLeftToDeliverFrontRight::AutoLeftToDeliverFrontRight() {
 	//maybe move forward
 	//drop box
 	//maybe retract arm
+	/* i did evade inside this
 	AddSequential(new TurnDegrees(-90)); //right
 	AddSequential(new DriveInches(36));
 	AddSequential(new TurnDegrees(90)); //left
 	AddSequential(new DriveInches(60));
 	AddSequential(new TurnDegrees(90)); //left
-	AddSequential(new DriveInches(36));
+	AddSequential(new DriveInches(36));*/
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

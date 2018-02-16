@@ -6,6 +6,7 @@ AutoLeftToDeliverFrontLeft::AutoLeftToDeliverFrontLeft() {
 	AddSequential(new DriveInches(135));
 	AddSequential(new TurnDegrees(-90));
 	AddSequential(new DriveInches(23));
+	AddSequential(new TurnDegrees(90));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
