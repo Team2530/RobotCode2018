@@ -3,12 +3,11 @@
 #include <Commands/TurnDegrees.h>
 
 AutoRightToDeliverFrontLeft::AutoRightToDeliverFrontLeft() {
-	AddSequential(new DriveInches(295));
+	AddSequential(new DriveInches(40));
+	AddSequential(new TurnDegrees(-90));
+	AddSequential(new DriveInches(160));
 	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(186));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(90));
+	AddSequential(new DriveInches(100));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
