@@ -23,6 +23,8 @@ public:
 	Ramp();
 	void InitDefaultCommand();
 	void Raise();
+	void RaiseLeft();
+	void RaiseRight();
 	void Release();
 	void Stop();
 };
