@@ -3,10 +3,9 @@
 #include <Commands/ReleaseCube.h>
 
 AutoDeliverCube::AutoDeliverCube() {
-	for(int i=0; i<50; i++){
-		AddSequential(new RaiseArm());
-	}
+	AddSequential(new RaiseArm(), 0.5); //Lift for 0.5 seconds
 	AddSequential(new ReleaseCube());
+}
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
@@ -23,4 +22,3 @@ AutoDeliverCube::AutoDeliverCube() {
 	// e.g. if Command1 requires chassis, and Command2 requires arm,
 	// a CommandGroup containing them would require both the chassis and the
 	// arm.
-}
