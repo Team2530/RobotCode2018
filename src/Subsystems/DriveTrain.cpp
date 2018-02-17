@@ -22,10 +22,10 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
+	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
-	leftSide = new SpeedControllerGroup(*frontLeftController, *backLeftController);//CHANGE POINTER TO REFERENCE = *
-	rightSide = new SpeedControllerGroup(*frontRightController, *backRightController);
-	robotDrive = new DifferentialDrive(*leftSide, *rightSide); //pointer to reference again :)
+	backRightController->Follow(*frontRightController);
+	robotDrive = new DifferentialDrive(*frontLeftController, *frontRightController); //pointer to reference again :)
 
 	frontLeftController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 0);
 	frontRightController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,0);
