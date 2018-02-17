@@ -18,12 +18,20 @@ std::shared_ptr<DriveTrain> Robot::drivetrain;
 std::shared_ptr<Sol> Robot::sol;
 std::shared_ptr<Elevator> Robot::elevator;
 std::shared_ptr<Ramp> Robot::ramp;
+std::shared_ptr<OI> Robot::oi;
 std::string Robot::gameData;
 
 StartPosition left = START_LEFT;
 StartPosition right = START_RIGHT;
 StartPosition middle = START_MIDDLE;
 void Robot::RobotInit() {
+
+	drivetrain = std::make_shared<DriveTrain>();
+	sol = std::make_shared<Sol>();
+	elevator = std::make_shared<Elevator>();
+	ramp = std::make_shared<Ramp>();
+	oi = std::make_shared<OI>();
+
 	//Left Chooser
 	AutoChooserLeft.AddDefault("Do Nothing Left", DO_NOTHING);
 	AutoChooserLeft.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);

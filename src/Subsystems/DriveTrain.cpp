@@ -7,6 +7,7 @@
 #include <Spark.h>
 #include <math.h>
 #include <networktables/NetworkTableInstance.h>
+#include <Commands/SkidStearWithJoystick.h>
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	ahrs(nullptr), // obtained from OI later
@@ -41,7 +42,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 
 void DriveTrain::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new SkidStearWithJoystick());
+	SetDefaultCommand(new SkidStearWithJoystick());
 
 	leftLastMeasurement = 0;
 	rightLastMeasurement = 0;

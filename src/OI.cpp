@@ -55,3 +55,8 @@ OI::OI() {
 	B3->WhileHeld(new GoStraight());
 }
 
+Joystick* OI::GetJoystick() {
+
+	return stick;
+
+}

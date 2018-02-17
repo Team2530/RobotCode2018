@@ -11,6 +11,7 @@
 #include <Subsystems/Ramp.h>
 #include <StartPositions.h>
 #include <networktables/NetworkTableInstance.h>
+#include <OI.h>
 
 //Auto Commands
 
@@ -27,7 +28,9 @@ public:
 	static std::shared_ptr<Sol> sol;
 	static std::shared_ptr<Elevator> elevator;
 	static std::shared_ptr<Ramp> ramp;
+	static std::shared_ptr<OI> oi;
 	static std::string gameData;
+
 	std::string getGameSpecificMessage();
 
 	virtual void RobotInit() override ;
