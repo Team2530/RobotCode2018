@@ -22,6 +22,7 @@ public:
 
 	//joystick
 	JoystickButton* B3;
+	JoystickButton* B7;
 
 	//xbox
 	JoystickButton* RB;//grab

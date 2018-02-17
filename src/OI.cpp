@@ -17,10 +17,11 @@
 #include <Commands/LowerArm.h>
 #include <Commands/DropRamps.h>
 #include <Commands/LowerRamp.h>
+#include <Commands/SetPushed.h>
 OI::OI() {
 
 	// Process operator interface input here.
-
+	bool pulse=false;
 	//XBOX Controller Stuff Here PLEEEEAAASE
 	xbox = new frc::XboxController(1);//is this zero? is this zero?
 
@@ -50,8 +51,11 @@ OI::OI() {
 	stick = new frc::Joystick(0);
 	//Need grabber sometime soon :)
 	B3 = new frc::JoystickButton(stick,3);
+	B7 = new frc::JoystickButton(stick, 7);
 
 
 	B3->WhileHeld(new GoStraight());
+	B7->WhileHeld(new SetPushed(true));
+	B7->WhenReleased(new SetPushed(false));
 }
 

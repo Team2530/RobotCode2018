@@ -10,9 +10,11 @@ private:
 	VictorSP* ElevatorMotor;
 	static constexpr double minPow = 0.1;
 	static constexpr double maxPow = 0.7;
+	bool pushed;
 	frc::DigitalInput* TopLimitSwitch;
 	frc::DigitalInput* MiddleLimitSwitch;
 	frc::DigitalInput* BottomLimitSwitch;
+
 
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -24,6 +26,7 @@ public:
 	void Lower();
 	void RaiseAuto();
 	void DropRamps();
+	void SetPushed(bool flag);
 };
 
 #endif  // Elevator_H
