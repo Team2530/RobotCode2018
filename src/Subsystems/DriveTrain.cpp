@@ -85,7 +85,8 @@ void DriveTrain::Turn(double degrees){
 }
 
 double DriveTrain::DriveFunction(double inSpeed) {
-	double outSpeed = pow(inSpeed, 3) + .1*inSpeed;
+	double outSpeed = .25*pow(inSpeed, 3) + .75*inSpeed;
+	SmartDashboard::PutNumber("FY", outSpeed);
 	return outSpeed;
 }
 void DriveTrain::StartTracking(double initialX, double initialY, double initialAngle){
