@@ -49,6 +49,13 @@ void Robot::RobotInit() {
 	//Wait Chooser
 	SmartDashboard::SetDefaultNumber("WaitTime", 0);
 	SmartDashboard::PutData("Start Position", &ChooserPos);
+	// Open up a NetworkTables connection to the powerup-gss server. This will reconnect on it's own if
+		// the powerup-gss server is not available. The AddLogger will remove all error messages for this NT instance,
+		// so if you are experiencing difficulties making this work, comment that line out.
+		// Note: This should probably be split into it's own subsystem so the code layout and function is cleaner.
+		GSSinst = nt::NetworkTableInstance::Create();
+		GSSinst.StartClient("10.0.100.5",1735);
+		GSSinst.AddLogger({}, 0, 99);
 }
 
 void Robot::DisabledInit() {
@@ -73,8 +80,9 @@ void Robot::DisabledPeriodic() {
  * to the if-else structure below with additional strings & commands.
  */
 void Robot::AutonomousInit()  {
-		std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-
+		//std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+		// Return the switch & scale data pulled from the NetworkTable entry.
+		std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
 		double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
 
 		StartPosition startPos = ChooserPos.GetSelected();
@@ -90,6 +98,7 @@ void Robot::AutonomousInit()  {
 		if (m_autonomousCommand != nullptr) {
 			m_autonomousCommand -> Start();
 		}
+
 }
 
 void Robot::AutonomousPeriodic()  {
