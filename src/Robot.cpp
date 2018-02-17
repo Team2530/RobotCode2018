@@ -25,21 +25,25 @@ StartPosition right = START_RIGHT;
 StartPosition middle = START_MIDDLE;
 void Robot::RobotInit() {
 	//Left Chooser
-	AutoChooserLeft.AddDefault("Do Nothing", DO_NOTHING);
+	AutoChooserLeft.AddDefault("Do Nothing Left", DO_NOTHING);
 	AutoChooserLeft.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
 	AutoChooserLeft.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
 	AutoChooserLeft.AddObject("Deliver Front", DELIVER_FRONT);
 	AutoChooserLeft.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
 	AutoChooserLeft.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
+	SmartDashboard::PutData("Auto Left", &AutoChooserLeft);
+
 	//Right Chooser
-	AutoChooserRight.AddDefault("Do Nothing", DO_NOTHING);
+	AutoChooserRight.AddDefault("Do Nothing Right", DO_NOTHING);
 	AutoChooserRight.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
 	AutoChooserRight.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
 	AutoChooserRight.AddObject("Deliver Front", DELIVER_FRONT);
 	AutoChooserRight.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
 	AutoChooserRight.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
+	SmartDashboard::PutData("Auto Right", &AutoChooserRight);
+
 	//Position Chooser
-	ChooserPos.AddObject("Left", left);
+	ChooserPos.AddDefault("Left", left);
 	ChooserPos.AddObject("Right", right);
 	ChooserPos.AddObject("Middle", middle);
 	//Wait Chooser
