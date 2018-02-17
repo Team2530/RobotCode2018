@@ -10,7 +10,7 @@
 #include <Subsystems/Elevator.h>
 #include <Subsystems/Ramp.h>
 #include <StartPositions.h>
-
+#include <networktables/NetworkTableInstance.h>
 
 //Auto Commands
 
@@ -28,6 +28,7 @@ public:
 	static std::shared_ptr<Elevator> elevator;
 	static std::shared_ptr<Ramp> ramp;
 	static std::string gameData;
+	std::string getGameSpecificMessage();
 
 	virtual void RobotInit() override ;
 
@@ -62,6 +63,7 @@ private:
 	frc::SendableChooser<AutoCommand> AutoChooserRight;
 	frc::SendableChooser<StartPosition> ChooserPos;
 	frc::SendableChooser<int> WaitTime;
+	nt::NetworkTableInstance GSSinst;
 };
 
 #endif /* SRC_ROBOT_H_ */

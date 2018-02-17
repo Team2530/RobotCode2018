@@ -25,26 +25,37 @@ StartPosition right = START_RIGHT;
 StartPosition middle = START_MIDDLE;
 void Robot::RobotInit() {
 	//Left Chooser
-	AutoChooserLeft.AddDefault("Do Nothing", DO_NOTHING);
+	AutoChooserLeft.AddDefault("Do Nothing Left", DO_NOTHING);
 	AutoChooserLeft.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
 	AutoChooserLeft.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
 	AutoChooserLeft.AddObject("Deliver Front", DELIVER_FRONT);
 	AutoChooserLeft.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
 	AutoChooserLeft.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
+	SmartDashboard::PutData("Auto Left", &AutoChooserLeft);
+
 	//Right Chooser
-	AutoChooserRight.AddDefault("Do Nothing", DO_NOTHING);
+	AutoChooserRight.AddDefault("Do Nothing Right", DO_NOTHING);
 	AutoChooserRight.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
 	AutoChooserRight.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
 	AutoChooserRight.AddObject("Deliver Front", DELIVER_FRONT);
 	AutoChooserRight.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
 	AutoChooserRight.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
+	SmartDashboard::PutData("Auto Right", &AutoChooserRight);
+
 	//Position Chooser
-	ChooserPos.AddObject("Left", left);
+	ChooserPos.AddDefault("Left", left);
 	ChooserPos.AddObject("Right", right);
 	ChooserPos.AddObject("Middle", middle);
 	//Wait Chooser
 	SmartDashboard::SetDefaultNumber("WaitTime", 0);
 	SmartDashboard::PutData("Start Position", &ChooserPos);
+	// Open up a NetworkTables connection to the powerup-gss server. This will reconnect on it's own if
+		// the powerup-gss server is not available. The AddLogger will remove all error messages for this NT instance,
+		// so if you are experiencing difficulties making this work, comment that line out.
+		// Note: This should probably be split into it's own subsystem so the code layout and function is cleaner.
+		GSSinst = nt::NetworkTableInstance::Create();
+		GSSinst.StartClient("10.0.100.5",1735);
+		GSSinst.AddLogger({}, 0, 99);
 }
 
 void Robot::DisabledInit() {
@@ -69,8 +80,9 @@ void Robot::DisabledPeriodic() {
  * to the if-else structure below with additional strings & commands.
  */
 void Robot::AutonomousInit()  {
-		std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-
+		//std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+		// Return the switch & scale data pulled from the NetworkTable entry.
+		std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
 		double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
 
 		StartPosition startPos = ChooserPos.GetSelected();
@@ -86,6 +98,7 @@ void Robot::AutonomousInit()  {
 		if (m_autonomousCommand != nullptr) {
 			m_autonomousCommand -> Start();
 		}
+
 }
 
 void Robot::AutonomousPeriodic()  {
