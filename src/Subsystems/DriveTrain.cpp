@@ -21,12 +21,14 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	angleAdjustment(0) {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
+	frontLeftController -> SetInverted(true);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
+	frontRightController -> SetInverted(true);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
-	//backLeftController -> SetInverted(true);
+	backLeftController -> SetInverted(true);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
-	//backRightController -> SetInverted(true);
+	backRightController -> SetInverted(true);
 	backRightController->Follow(*frontRightController);
 	robotDrive = new DifferentialDrive(*frontLeftController, *frontRightController); //pointer to reference again :)
 
