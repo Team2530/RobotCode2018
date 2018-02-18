@@ -13,6 +13,7 @@
 #include <TimedRobot.h>
 #include <Robot.h>
 #include <Commands/AutoMain.h>
+#include <Commands/SkidStearWithJoystick.h>
 
 std::shared_ptr<DriveTrain> Robot::drivetrain;
 std::shared_ptr<Sol> Robot::sol;
@@ -122,6 +123,8 @@ void Robot::TeleopInit()  {
 		m_autonomousCommand->Cancel();
 		m_autonomousCommand = nullptr;
 	}
+	Command* dfault = new SkidStearWithJoystick();
+			dfault->Start();
 }
 
 void Robot::TeleopPeriodic() {
