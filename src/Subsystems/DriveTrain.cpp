@@ -53,7 +53,7 @@ void DriveTrain::Drive(Joystick* stick) {
 	double stickZ = stick->GetZ();
 	double stickY2 = DriveFunction(stickY);
 	double stickZ2 = DriveFunction(stickZ);
-	robotDrive->ArcadeDrive(stickY2, stickZ2);
+	robotDrive->ArcadeDrive(stickY, stickZ);
 }
 
 // Put methods for controlling this subsystem
