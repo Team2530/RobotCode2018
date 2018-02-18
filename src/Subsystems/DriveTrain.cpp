@@ -23,8 +23,10 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
+	//backLeftController -> SetInverted(true);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
+	//backRightController -> SetInverted(true);
 	backRightController->Follow(*frontRightController);
 	robotDrive = new DifferentialDrive(*frontLeftController, *frontRightController); //pointer to reference again :)
 
@@ -53,7 +55,7 @@ void DriveTrain::Drive(Joystick* stick) {
 	double stickZ = stick->GetZ();
 	double stickY2 = DriveFunction(stickY);
 	double stickZ2 = DriveFunction(stickZ);
-	robotDrive->ArcadeDrive(stickY, stickZ);
+	robotDrive->ArcadeDrive(stickY2, stickZ2);
 }
 
 // Put methods for controlling this subsystem
