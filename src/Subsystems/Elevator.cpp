@@ -4,8 +4,8 @@
 Elevator::Elevator() : Subsystem("Elevator") {
 	ElevatorMotor = new VictorSP(ChannelElevator);
 	TopLimitSwitch = new frc::DigitalInput(0); //placeholder channel
-	MiddleLimitSwitch = new frc::DigitalInput(1); //placeholder channel
-	BottomLimitSwitch = new frc::DigitalInput(2); //placeholder channel
+	//MiddleLimitSwitch = new frc::DigitalInput(1); //placeholder channel
+	//BottomLimitSwitch = new frc::DigitalInput(2); //placeholder channel
 }
 
 void Elevator::InitDefaultCommand() {
@@ -13,29 +13,21 @@ void Elevator::InitDefaultCommand() {
 	// SetDefaultCommand(new MySpecialCommand());
 }
 void Elevator::Raise(){
-	if (MiddleLimitSwitch->Get())
-		ElevatorMotor->Set(0);
-	else
-		ElevatorMotor->Set(maxPow);
-}
-void Elevator::Lower(){
-	if (BottomLimitSwitch->Get())
-		ElevatorMotor->Set(0);
-	else
+//	if (TopLimitSwitch->Get())
+		//ElevatorMotor->Set(0);
+	//else
 		ElevatorMotor->Set(-maxPow);
 }
-void Elevator::RaiseAuto(){
-	if (MiddleLimitSwitch->Get())
+void Elevator::Lower(){
+	/*if (BottomLimitSwitch->Get())
 		ElevatorMotor->Set(0);
-	else
+	else*/
 		ElevatorMotor->Set(maxPow);
 }
-void Elevator::DropRamps(){
-	if (TopLimitSwitch->Get())
-		ElevatorMotor->Set(0);
-	else
-		ElevatorMotor->Set(maxPow);
+void Elevator::Stop(){
+	ElevatorMotor->Set(0);
 }
+
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

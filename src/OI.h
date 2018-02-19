@@ -24,13 +24,16 @@ public:
 	JoystickButton* B3;
 	JoystickButton* B7;//temp
 	JoystickButton* B8;//temp
+	JoystickButton* B9;
+	JoystickButton* B10;
+	JoystickButton* B12;
 
 	//xbox
 	JoystickButton* RB;//grab
 	JoystickButton* LB;//release
 	JoystickButton* A;//lift arm
 	JoystickButton* Y;//who knows yet
-	JoystickButton* LS;
+	JoystickButton* RT;
 	JoystickButton* B;
 	JoystickButton* X;
 	JoystickButton* LT;

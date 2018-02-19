@@ -14,6 +14,8 @@
 #include <Commands/ReleaseCube.h>
 #include <Commands/RaiseArm.h>
 #include <Commands/RaiseRamp.h>
+#include <Commands/RaiseRight.h>
+#include <Commands/RaiseLeft.h>
 #include <Commands/LowerArm.h>
 #include <Commands/DropRamps.h>
 #include <Commands/LowerRamp.h>
@@ -24,23 +26,26 @@ OI::OI() {
 	//XBOX Controller Stuff Here PLEEEEAAASE
 	xbox = new frc::XboxController(1);//is this zero? is this zero?
 
-	RB = new frc::JoystickButton(xbox, 6);//grab cube
-	LB = new frc::JoystickButton(xbox, 5);//release cube
 	A = new frc::JoystickButton(xbox, 1);//raises the arm
+	B = new frc::JoystickButton(xbox, 2);
+	X = new frc::JoystickButton(xbox, 3);
 	Y = new frc::JoystickButton(xbox, 4);//release ramp?
-	LS = new frc::JoystickButton(xbox, 9);//raise ramp
-	B = new frc::JoystickButton(xbox, 18);
-	X = new frc::JoystickButton(xbox, 19);
-	LT = new frc::JoystickButton(xbox, 3);
+	LB = new frc::JoystickButton(xbox, 5);//release cube
+	RB = new frc::JoystickButton(xbox, 6);//grab cube
+
+	LT = new frc::JoystickButton(xbox, 11);
+	RT = new frc::JoystickButton(xbox, 12);//raise ramp
 
 	RB->WhenPressed(new GrabCube());
 	LB->WhenPressed(new ReleaseCube());
-	A->WhenPressed(new RaiseArm());
 
-	LS->WhenPressed(new RaiseRamp());
-	Y->WhenPressed(new DropRamps());
-	B->WhenPressed(new LowerArm());
-	LT->WhenPressed(new LowerRamp());
+	A->WhileHeld(new RaiseArm());
+	B->WhileHeld(new LowerArm());
+
+
+
+	X->WhileHeld(new RaiseRamp());
+	Y->WhileHeld(new LowerRamp());
 
 	//X->WhenPressed(new ReleaseRamp());
 
@@ -52,9 +57,17 @@ OI::OI() {
 	B3 = new frc::JoystickButton(stick, 3);
 	B7 = new frc::JoystickButton(stick, 7);
 	B8 = new frc::JoystickButton(stick, 8);
+	B9 = new frc::JoystickButton(stick, 9);
+	B10 = new frc::JoystickButton(stick, 10);
+	B12 = new frc::JoystickButton(stick, 12);
 
 
 	B3->WhileHeld(new GoStraight());
+
+	B9->WhileHeld(new RaiseRight());
+	B10->WhileHeld(new RaiseLeft());
+
+	B12->WhileHeld(new DropRamps());
 
 	B7->WhenPressed(new GrabCube());//temp
 	B8->WhenPressed(new ReleaseCube());//temp
