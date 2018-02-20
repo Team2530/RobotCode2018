@@ -1,13 +1,13 @@
-#ifndef LowerArm_H
-#define LowerArm_H
+#ifndef RaiseRight_H
+#define RaiseRight_H
 
 #include "Commands/Command.h"
-#include "Subsystems/Elevator.h"
+#include "Subsystems/Ramp.h"
 #include "Robot.h"
 
-class LowerArm : public frc::Command {
+class RaiseRight : public frc::Command {
 public:
-	LowerArm();
+	RaiseRight();
 	void Initialize();
 	void Execute();
 	bool IsFinished();
@@ -15,4 +15,4 @@ public:
 	void Interrupted();
 };
 
-#endif  // LowerArm_H
+#endif  // RaiseRight_H

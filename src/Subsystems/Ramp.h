@@ -11,8 +11,11 @@ private:
 
 	static constexpr int ChannelRight = 1; //also placeholder number
 	VictorSP* RampMotorRight;
-	Encoder* RampLeft;
-	Encoder* RampRight;
+
+	static constexpr int ChannelMid = 2;
+	VictorSP* RampMotorMid;
+	//Encoder* RampLeft;
+	//Encoder* RampRight;
 	bool released;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
@@ -22,6 +25,7 @@ public:
 	double RightPow =0.4;
 	double LowerLeftPow =-0.4;
 	double LowerRightPow =-0.4;
+	double MidReleasePow = 1;
 	Ramp();
 	void InitDefaultCommand();
 	void Raise();
@@ -32,6 +36,7 @@ public:
 	void LowerLeft();
 	void Release();
 	void Stop();
+	void ReleaseStop();
 };
 
 #endif  // Ramp_H

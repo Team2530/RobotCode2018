@@ -7,6 +7,7 @@
 #include <Spark.h>
 #include <math.h>
 #include <networktables/NetworkTableInstance.h>
+#include <Commands/SkidStearWithJoystick.h>
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	ahrs(nullptr), // obtained from OI later
@@ -20,10 +21,14 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	angleAdjustment(0) {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
+	frontLeftController -> SetInverted(true);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
+	frontRightController -> SetInverted(true);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
+	backLeftController -> SetInverted(true);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
+	backRightController -> SetInverted(true);
 	backRightController->Follow(*frontRightController);
 	robotDrive = new DifferentialDrive(*frontLeftController, *frontRightController); //pointer to reference again :)
 
@@ -41,7 +46,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 
 void DriveTrain::InitDefaultCommand() {
 	// Set the default command for a subsystem here.
-	// SetDefaultCommand(new SkidStearWithJoystick());
+	SetDefaultCommand(new SkidStearWithJoystick());
 
 	leftLastMeasurement = 0;
 	rightLastMeasurement = 0;

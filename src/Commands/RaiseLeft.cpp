@@ -1,33 +1,33 @@
-#include "LowerArm.h"
+#include "RaiseLeft.h"
 
-LowerArm::LowerArm() {
+RaiseLeft::RaiseLeft() {
+	Requires(Robot::ramp.get());
 	// Use Requires() here to declare subsystem dependencies
-	Requires(Robot::elevator.get());
+	// eg. Requires(Robot::chassis.get());
 }
 
 // Called just before this Command runs the first time
-void LowerArm::Initialize() {
+void RaiseLeft::Initialize() {
 
 }
 
 // Called repeatedly when this Command is scheduled to run
-void LowerArm::Execute() {
-	Robot::elevator->Lower();
+void RaiseLeft::Execute() {
+	Robot::ramp->RaiseLeft();
 }
 
 // Make this return true when this Command no longer needs to run execute()
-bool LowerArm::IsFinished() {
+bool RaiseLeft::IsFinished() {
 	return false;
 }
 
 // Called once after isFinished returns true
-void LowerArm::End() {
-    Robot::elevator->Stop();
+void RaiseLeft::End() {
+	Robot::ramp->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
-void LowerArm::Interrupted() {
-	Robot::elevator->Stop();
-
+void RaiseLeft::Interrupted() {
+	Robot::ramp->Stop();
 }

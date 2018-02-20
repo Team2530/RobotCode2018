@@ -2,6 +2,8 @@
 #define SkidStearWithJoystick_H
 
 #include "Commands/Command.h"
+#include <Subsystems/DriveTrain.h>
+#include <Robot.h>
 
 class SkidStearWithJoystick : public frc::Command {
 public:

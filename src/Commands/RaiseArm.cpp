@@ -22,11 +22,12 @@ bool RaiseArm::IsFinished() {
 
 // Called once after isFinished returns true
 void RaiseArm::End() {
-
+	Robot::elevator->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void RaiseArm::Interrupted() {
+	Robot::elevator->Stop();
 
 }

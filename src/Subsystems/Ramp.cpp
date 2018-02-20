@@ -4,8 +4,9 @@
 Ramp::Ramp() : Subsystem("Ramp") {
 	RampMotorLeft = new VictorSP(ChannelLeft);
 	RampMotorRight = new VictorSP(ChannelRight);
-	RampLeft = new frc::Encoder(8,9,false, Encoder::CounterBase::k2X );//8,9 fillers
-	RampRight = new frc::Encoder(0,1,false, Encoder::CounterBase::k2X );
+	RampMotorMid = new VictorSP(ChannelMid);
+	//RampLeft = new frc::Encoder(8,9,false, Encoder::CounterBase::k2X );//8,9 fillers
+	//RampRight = new frc::Encoder(0,1,false, Encoder::CounterBase::k2X );
 	released=false;
 }
 
@@ -15,7 +16,7 @@ void Ramp::InitDefaultCommand() {
 }
 
 void Ramp::Raise() {
-	if(released){
+	//if(released){
 		/*if(RampLeft->GetDistance() < RampRight->GetDistance()){
 			LeftPow=1;
 			if(RightPow!=.4){
@@ -36,7 +37,7 @@ void Ramp::Raise() {
 		}*/
 		RampMotorLeft->Set(LeftPow);
 		RampMotorRight->Set(RightPow);
-	}
+	//}
 }
 void Ramp::RaiseLeft() {
 	RampMotorLeft->Set(LeftPow);
@@ -56,6 +57,7 @@ void Ramp::LowerRight() {
 	RampMotorRight->Set(LowerRightPow);
 }
 void Ramp::Release(){
+	RampMotorMid->Set(MidReleasePow);
 	released = true;
 	//dunno how this gonna happppen
 }
@@ -63,6 +65,10 @@ void Ramp::Release(){
 void Ramp::Stop() {
 	RampMotorLeft->Set(0);
 	RampMotorRight->Set(0);
+}
+
+void Ramp::ReleaseStop() {
+	RampMotorMid->Set(0);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

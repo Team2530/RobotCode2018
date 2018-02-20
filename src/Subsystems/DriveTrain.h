@@ -6,15 +6,15 @@
 #include <Joystick.h>
 #include <ctre/Phoenix.h>
 #include "HAL/HAL.h"
-//#include <Encoder.h>
+#include <Encoder.h>
 #include <AHRS.h>
 
 
 class DriveTrain : public Subsystem {
 private:
-	static constexpr int kFrontLeftChannel = 1;
+	static constexpr int kFrontLeftChannel = 4;
 	static constexpr int kBackLeftChannel = 2;
-	static constexpr int kFrontRightChannel = 0;
+	static constexpr int kFrontRightChannel = 1;
 	static constexpr int kBackRightChannel = 3;
 	static constexpr double ticksPerRevolution = 1/1000;
 	static constexpr double diameter = 6; //inches

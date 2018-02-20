@@ -3,7 +3,7 @@
 #include <Subsystems/Sol.h>
 
 Sol::Sol() : Subsystem("Sol") {
-	frc::Solenoid *SMOL = new frc::Solenoid(solenoidChannel);
+	SMOL = new frc::Solenoid(solenoidChannel);
 }
 
 void Sol::InitDefaultCommand() {
