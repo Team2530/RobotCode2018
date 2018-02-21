@@ -21,11 +21,13 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	angleAdjustment(0) {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
-	frontLeftController -> SetInverted(true);
+	//frontLeftController -> SetInverted(true);
+	frontLeftController -> SetInverted(false);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
 	frontRightController -> SetInverted(true);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
-	backLeftController -> SetInverted(true);
+	//backLeftController -> SetInverted(true);
+	backLeftController -> SetInverted(false);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
 	backRightController -> SetInverted(true);
@@ -71,6 +73,7 @@ void DriveTrain::DriveStraight(double speed){
 	robotDrive->ArcadeDrive(speed, 0);
 }
 void DriveTrain::DriveStraightAuto(double distance){
+	distance = distance*360/pi/diameter;//WE MUST CHECK THIS GWUYS
 	double startingDistance = GetEncoderDistance();
 	while((GetEncoderDistance()-startingDistance)<distance){
 		double power = (((GetEncoderDistance()-startingDistance)-distance)/10)*minPower;
