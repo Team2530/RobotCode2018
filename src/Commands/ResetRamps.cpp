@@ -22,7 +22,7 @@ bool ResetRamps::IsFinished() {
 
 // Called once after isFinished returns true
 void ResetRamps::End() {
-	Robot::ramp->Stop();
+	Robot::ramp->ReleaseStop();
 }
 
 // Called when another command which requires one or more of the same
