@@ -2,7 +2,7 @@
 #include "../RobotMap.h"
 
 Elevator::Elevator() : Subsystem("Elevator") {
-	pushed=false;
+
 	ElevatorMotor = new VictorSP(ChannelElevator);
 	TopLimitSwitch = new frc::DigitalInput(0); //placeholder channel
 	//MiddleLimitSwitch = new frc::DigitalInput(1); //placeholder channel
@@ -14,9 +14,9 @@ void Elevator::InitDefaultCommand() {
 	// SetDefaultCommand(new MySpecialCommand());
 }
 void Elevator::Raise(){
-//	if (TopLimitSwitch->Get())
-		//ElevatorMotor->Set(0);
-	//else
+	if (TopLimitSwitch->Get())
+		ElevatorMotor->Set(0);
+	else
 		ElevatorMotor->Set(-maxPow);
 }
 void Elevator::Lower(){

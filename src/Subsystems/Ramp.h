@@ -19,6 +19,8 @@ private:
 	bool released;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
+	frc::DigitalInput* TopLimitSwitchLeft;
+	frc::DigitalInput* TopLimitSwitchRight;
 
 public:
 	double LeftPow=0.4;
