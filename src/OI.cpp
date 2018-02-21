@@ -19,10 +19,13 @@
 #include <Commands/LowerArm.h>
 #include <Commands/DropRamps.h>
 #include <Commands/LowerRamp.h>
+#include <Commands/LowerLeft.h>
+#include <Commands/LowerRight.h>
+
 OI::OI() {
 
 	// Process operator interface input here.
-
+	bool pulse=false;
 	//XBOX Controller Stuff Here PLEEEEAAASE
 	xbox = new frc::XboxController(1);//is this zero? is this zero?
 
@@ -69,8 +72,8 @@ OI::OI() {
 
 	B12->WhileHeld(new DropRamps());
 
-	B7->WhenPressed(new GrabCube());//temp
-	B8->WhenPressed(new ReleaseCube());//temp
+	B7->WhenPressed(new LowerLeft());//temp
+	B8->WhenPressed(new LowerRight());//temp
 }
 
 Joystick* OI::GetJoystick() {

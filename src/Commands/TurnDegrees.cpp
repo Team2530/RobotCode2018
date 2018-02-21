@@ -27,13 +27,13 @@ bool TurnDegrees::IsFinished() {
 
 // Called once after isFinished returns true
 void TurnDegrees::End() {
-
+	Robot::drivetrain->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void TurnDegrees::Interrupted() {
-
+	Robot::drivetrain->Stop();
 }
 
 int Left (int TurnDegrees){

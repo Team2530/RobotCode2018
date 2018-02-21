@@ -14,6 +14,7 @@ private:
 	frc::DigitalInput* MiddleLimitSwitch;
 	frc::DigitalInput* BottomLimitSwitch;
 
+
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 
@@ -22,6 +23,7 @@ public:
 	void InitDefaultCommand();
 	void Raise();
 	void Lower();
+	void RaiseAuto();
 	void Stop();
 };
 

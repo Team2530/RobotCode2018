@@ -7,6 +7,8 @@ Ramp::Ramp() : Subsystem("Ramp") {
 	RampMotorMid = new VictorSP(ChannelMid);
 	//RampLeft = new frc::Encoder(8,9,false, Encoder::CounterBase::k2X );//8,9 fillers
 	//RampRight = new frc::Encoder(0,1,false, Encoder::CounterBase::k2X );
+	TopLimitSwitchLeft = new frc::DigitalInput(0);
+	TopLimitSwitchRight = new frc::DigitalInput(0);
 	released=false;
 }
 
@@ -16,7 +18,7 @@ void Ramp::InitDefaultCommand() {
 }
 
 void Ramp::Raise() {
-	//if(released){
+	if(released){
 		/*if(RampLeft->GetDistance() < RampRight->GetDistance()){
 			LeftPow=1;
 			if(RightPow!=.4){
@@ -35,9 +37,11 @@ void Ramp::Raise() {
 							LeftPow-=.1;
 						}
 		}*/
+	if(!TopLimitSwitchLeft->Get())
 		RampMotorLeft->Set(LeftPow);
+	if(!TopLimitSwitchRight->Get())
 		RampMotorRight->Set(RightPow);
-	//}
+	}
 }
 void Ramp::RaiseLeft() {
 	RampMotorLeft->Set(LeftPow);
