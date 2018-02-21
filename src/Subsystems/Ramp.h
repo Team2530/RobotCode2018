@@ -43,6 +43,7 @@ public:
 	void Release();
 	void Stop();
 	void ReleaseStop();
+	void Reset();
 };
 
 #endif  // Ramp_H

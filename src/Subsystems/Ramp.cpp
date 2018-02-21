@@ -63,17 +63,19 @@ void Ramp::Raise() {
 }
 void Ramp::RaiseLeft() {
 	if(released){
-		if(TopLimitSwitchLeft->Get())
+		LeftPow=0.4;
+		//if(TopLimitSwitchLeft->Get())
 			RampMotorLeft->Set(LeftPow);
-		else
+		//else
 			Stop();
 	}
 }
 void Ramp::RaiseRight() {
 	if(released){
-		if(TopLimitSwitchRight->Get())
-			RampMotorRight->Set(LeftPow);
-		else
+		RightPow=0.4;
+		//if(TopLimitSwitchRight->Get())
+			RampMotorRight->Set(RightPow);
+		//else
 			Stop();
 	}
 }
@@ -89,22 +91,26 @@ void Ramp::Lower() {
 	}
 }
 void Ramp::LowerLeft() {
-	if(BottomLimitSwitchLeft->Get())
-		RampMotorLeft->Set(LowerLeftPow);
-	else
+	//if(BottomLimitSwitchLeft->Get())
+		RampMotorLeft->Set(-.4);
+	//else
 		Stop();
 
 }
 void Ramp::LowerRight() {
-	if(BottomLimitSwitchRight->Get())
-		RampMotorRight->Set(LowerRightPow);
-	else
+	//if(BottomLimitSwitchRight->Get())
+		RampMotorRight->Set(-.4);
+	//else
 		Stop();
 }
 void Ramp::Release(){
 	RampMotorMid->Set(MidReleasePow);
 	released = true;
 	//dunno how this gonna happppen
+}
+void Ramp::Reset(){
+	RampMotorMid->Set(-MidReleasePow);
+	released=false;
 }
 
 void Ramp::Stop() {

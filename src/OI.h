@@ -26,6 +26,7 @@ public:
 	JoystickButton* B8;//temp
 	JoystickButton* B9;
 	JoystickButton* B10;
+	JoystickButton* B11;
 	JoystickButton* B12;
 
 	//xbox

@@ -21,6 +21,7 @@
 #include <Commands/LowerRamp.h>
 #include <Commands/LowerLeft.h>
 #include <Commands/LowerRight.h>
+#include <Commands/ResetRamps.h>
 
 OI::OI() {
 
@@ -62,6 +63,7 @@ OI::OI() {
 	B8 = new frc::JoystickButton(stick, 8);
 	B9 = new frc::JoystickButton(stick, 9);
 	B10 = new frc::JoystickButton(stick, 10);
+	B11 = new frc::JoystickButton(stick, 11);
 	B12 = new frc::JoystickButton(stick, 12);
 
 
@@ -71,6 +73,7 @@ OI::OI() {
 	B10->WhileHeld(new RaiseLeft());
 
 	B12->WhileHeld(new DropRamps());
+	B11->WhileHeld(new ResetRamps());
 
 	B7->WhenPressed(new LowerLeft());//temp
 	B8->WhenPressed(new LowerRight());//temp
