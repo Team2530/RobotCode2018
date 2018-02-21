@@ -11,8 +11,8 @@ private:
 	static constexpr double minPow = 0.1;
 	static constexpr double maxPow = 0.3;
 	frc::DigitalInput* TopLimitSwitch;
-	frc::DigitalInput* MiddleLimitSwitch;
-	frc::DigitalInput* BottomLimitSwitch;
+	//frc::DigitalInput* MiddleLimitSwitch;
+	//frc::DigitalInput* BottomLimitSwitch;
 
 
 	// It's desirable that everything possible under private except
