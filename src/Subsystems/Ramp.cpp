@@ -10,6 +10,7 @@ Ramp::Ramp() : Subsystem("Ramp") {
 	TopLimitSwitchLeft = new frc::DigitalInput(0);
 	TopLimitSwitchRight = new frc::DigitalInput(0);
 	released=false;
+	timeInSec = 0;
 }
 
 void Ramp::InitDefaultCommand() {
@@ -37,10 +38,21 @@ void Ramp::Raise() {
 							LeftPow-=.1;
 						}
 		}*/
-	if(!TopLimitSwitchLeft->Get())
-		RampMotorLeft->Set(LeftPow);
-	if(!TopLimitSwitchRight->Get())
-		RampMotorRight->Set(RightPow);
+		if(!TopLimitSwitchLeft->Get())
+			RampMotorLeft->Set(LeftPow);
+		if(!TopLimitSwitchRight->Get())
+			RampMotorRight->Set(RightPow);
+
+		timeInSec = timeInSec + 0.005;
+
+		if(timeInSec == 3) {
+			LeftPow = 0.7;
+			RightPow = 0.7;
+		} else if(timeInSec == 7) {
+			LeftPow = 1;
+			RightPow = 1;
+		}
+
 	}
 }
 void Ramp::RaiseLeft() {

@@ -17,6 +17,7 @@ private:
 	//Encoder* RampLeft;
 	//Encoder* RampRight;
 	bool released;
+	int timeInSec;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
 	frc::DigitalInput* TopLimitSwitchLeft;
