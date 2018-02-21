@@ -33,6 +33,13 @@ void Robot::RobotInit() {
 	ramp = std::make_shared<Ramp>();
 	oi = std::make_shared<OI>();
 
+	// Gets USB camera from CameraServer
+		cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture("USB Camera 0", 0);
+		// Sets resolution
+		camera.SetResolution(320, 240);
+		camera.SetExposureManual(20);
+		camera.SetBrightness(100);
+
 	//Left Chooser
 	AutoChooserLeft.AddDefault("Do Nothing Left", DO_NOTHING);
 	AutoChooserLeft.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
