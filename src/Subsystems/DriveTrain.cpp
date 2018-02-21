@@ -21,13 +21,13 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	angleAdjustment(0) {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
-	//frontLeftController -> SetInverted(true);
-	frontLeftController -> SetInverted(false);
+	frontLeftController -> SetInverted(true);
+	//frontLeftController -> SetInverted(false);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
 	frontRightController -> SetInverted(true);
-	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
-	//backLeftController -> SetInverted(true);
-	backLeftController -> SetInverted(false);
+    backLeftController = new WPI_VictorSPX(kBackLeftChannel);
+	backLeftController -> SetInverted(true);
+	//backLeftController -> SetInverted(false);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
 	backRightController -> SetInverted(true);
@@ -36,6 +36,10 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 
 	frontLeftController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 0);
 	frontRightController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,0);
+
+	//SmartDashboard::PutNumber("Left encoder start: ", frontLeftController->GetSelectedSensorPosition(0));
+	//SmartDashboard::PutNumber("Right Encoder start: ", frontRightController->GetSelectedSensorPosition(0));
+	update=0;
 	//leftEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	//rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	//ROBOT 27.5inch by 32.5inch, drives long end front
@@ -59,6 +63,11 @@ void DriveTrain::Drive(Joystick* stick) {
 	double stickZ = stick->GetZ();
 	double stickY2 = DriveFunction(stickY);
 	double stickZ2 = DriveFunction(stickZ);
+	SmartDashboard::PutNumber("y: ", stickY);
+	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
+	//SmartDashboard::PutNumber("Right Encoder2: ", frontRightController->GetSelectedSensorPosition(0));
+	update +=1;
+	SmartDashboard::PutNumber("update: ", update);
 	robotDrive->ArcadeDrive(stickY2, stickZ2);
 }
 
@@ -106,7 +115,11 @@ void DriveTrain::StartTracking(double initialX, double initialY, double initialA
 	}
 }
 double DriveTrain::GetEncoderDistance(){
-	return (frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
+	return (-frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
+}
+void DriveTrain::SetEncoderDistance(double value){
+	frontLeftController->SetSelectedSensorPosition(value, 0,0);
+	frontRightController->SetSelectedSensorPosition(value, 0,0);
 }
 void DriveTrain::UpdatePosition(){
 	double left = frontLeftController->GetSelectedSensorPosition(0);

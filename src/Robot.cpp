@@ -72,6 +72,7 @@ void Robot::RobotInit() {
 		GSSinst = nt::NetworkTableInstance::Create();
 		GSSinst.StartClient("10.0.100.5",1735);
 		GSSinst.AddLogger({}, 0, 99);
+	drivetrain->SetEncoderDistance(0.0);
 }
 
 void Robot::DisabledInit() {
@@ -137,10 +138,9 @@ void Robot::TeleopInit()  {
 void Robot::TeleopPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
 }
-
-void Robot::TestPeriodic()  {
-
+void Robot::TestPeriodic(){
 }
+
 
 
 START_ROBOT_CLASS(Robot)
