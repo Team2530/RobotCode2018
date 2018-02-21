@@ -81,14 +81,14 @@ void DriveTrain::DriveStraight(Joystick* stick) {
 void DriveTrain::DriveStraight(double speed){
 	robotDrive->ArcadeDrive(speed, 0);
 }
-void DriveTrain::DriveStraightAuto(double distance){
-	distance = distance*360/pi/diameter;//WE MUST CHECK THIS GWUYS
+/*void DriveTrain::DriveStraightAuto(double distance){
+	distance = distance*(360/(pi*diameter));//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
 	double startingDistance = GetEncoderDistance();
 	while((GetEncoderDistance()-startingDistance)<distance){
 		double power = (((GetEncoderDistance()-startingDistance)-distance)/10)*minPower;
 		DriveStraight(power);
 	}
-}
+}*/
 void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }

@@ -52,7 +52,7 @@ public:
 	void TeleopPeriodic();
 	void DriveStraight(Joystick* stick);
 	void DriveStraight(double speed);
-	void DriveStraightAuto(double distance);
+	//void DriveStraightAuto(double distance);
 	void Stop();
 	void Turn(double degree);
 	void StartTracking(double initialX, double initialY, double initialAngle);
