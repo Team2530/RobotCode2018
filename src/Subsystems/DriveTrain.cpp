@@ -71,6 +71,7 @@ void DriveTrain::DriveStraight(double speed){
 	robotDrive->ArcadeDrive(speed, 0);
 }
 void DriveTrain::DriveStraightAuto(double distance){
+	distance = distance*360/pi/diameter;//WE MUST CHECK THIS GWUYS
 	double startingDistance = GetEncoderDistance();
 	while((GetEncoderDistance()-startingDistance)<distance){
 		double power = (((GetEncoderDistance()-startingDistance)-distance)/10)*minPower;
