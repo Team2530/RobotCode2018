@@ -27,13 +27,13 @@ bool GrabCube::IsFinished() {
 
 // Called once after isFinished returns true
 void GrabCube::End() {
-
+	//Robot::sol->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void GrabCube::Interrupted() {
-
+	//Robot::sol->Stop();
 }
 
 
