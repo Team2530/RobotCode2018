@@ -22,11 +22,11 @@ bool ReleaseCube::IsFinished() {
 
 // Called once after isFinished returns true
 void ReleaseCube::End() {
-
+	//Robot::sol->Stop();
 }
 
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ReleaseCube::Interrupted() {
-
+	//Robot::sol->Stop;
 }
