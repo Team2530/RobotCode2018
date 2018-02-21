@@ -67,13 +67,13 @@ OI::OI() {
 
 	B3->WhileHeld(new GoStraight());
 
-//	B9->WhileHeld(new RaiseRight());
-//	B10->WhileHeld(new RaiseLeft());
+	B9->WhileHeld(new RaiseRight());
+	B10->WhileHeld(new RaiseLeft());
 
 	B12->WhileHeld(new DropRamps());
 
-//	B7->WhenPressed(new LowerLeft());//temp
-//	B8->WhenPressed(new LowerRight());//temp
+	B7->WhenPressed(new LowerLeft());//temp
+	B8->WhenPressed(new LowerRight());//temp
 }
 
 Joystick* OI::GetJoystick() {

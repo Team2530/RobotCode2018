@@ -21,7 +21,7 @@ void Ramp::InitDefaultCommand() {
 }
 
 void Ramp::Raise() {
-	//if(released){
+	if(released){
 		/*if(RampLeft->GetDistance() < RampRight->GetDistance()){
 			LeftPow=1;
 			if(RightPow!=.4){
@@ -59,13 +59,23 @@ void Ramp::Raise() {
 
 
 
-	//}
+	}
 }
 void Ramp::RaiseLeft() {
-	RampMotorLeft->Set(LeftPow);
+	if(released){
+		if(TopLimitSwitchLeft->Get())
+			RampMotorLeft->Set(LeftPow);
+		else
+			Stop();
+	}
 }
 void Ramp::RaiseRight() {
-	RampMotorRight->Set(RightPow);
+	if(released){
+		if(TopLimitSwitchRight->Get())
+			RampMotorRight->Set(LeftPow);
+		else
+			Stop();
+	}
 }
 void Ramp::Lower() {
 	LeftPow=.4;
@@ -79,11 +89,17 @@ void Ramp::Lower() {
 	}
 }
 void Ramp::LowerLeft() {
-	RampMotorLeft->Set(LowerLeftPow);
+	if(BottomLimitSwitchLeft->Get())
+		RampMotorLeft->Set(LowerLeftPow);
+	else
+		Stop();
 
 }
 void Ramp::LowerRight() {
-	RampMotorRight->Set(LowerRightPow);
+	if(BottomLimitSwitchRight->Get())
+		RampMotorRight->Set(LowerRightPow);
+	else
+		Stop();
 }
 void Ramp::Release(){
 	RampMotorMid->Set(MidReleasePow);
