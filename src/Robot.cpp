@@ -34,11 +34,11 @@ void Robot::RobotInit() {
 	oi = std::make_shared<OI>();
 
 	// Gets USB camera from CameraServer
-		cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture("USB Camera 0", 0);
-		// Sets resolution
-		camera.SetResolution(320, 240);
-		camera.SetExposureManual(20);
-		camera.SetBrightness(100);
+	cs::UsbCamera camera = CameraServer::GetInstance()->StartAutomaticCapture("USB Camera 0", 0);
+	// Sets resolution
+	camera.SetResolution(320, 240);
+	camera.SetExposureManual(20);
+	camera.SetBrightness(100);
 
 	//Left Chooser
 	AutoChooserLeft.AddDefault("Do Nothing Left", DO_NOTHING);
@@ -66,12 +66,12 @@ void Robot::RobotInit() {
 	SmartDashboard::SetDefaultNumber("WaitTime", 0);
 	SmartDashboard::PutData("Start Position", &ChooserPos);
 	// Open up a NetworkTables connection to the powerup-gss server. This will reconnect on it's own if
-		// the powerup-gss server is not available. The AddLogger will remove all error messages for this NT instance,
-		// so if you are experiencing difficulties making this work, comment that line out.
-		// Note: This should probably be split into it's own subsystem so the code layout and function is cleaner.
-		GSSinst = nt::NetworkTableInstance::Create();
-		GSSinst.StartClient("10.0.100.5",1735);
-		GSSinst.AddLogger({}, 0, 99);
+	// the powerup-gss server is not available. The AddLogger will remove all error messages for this NT instance,
+	// so if you are experiencing difficulties making this work, comment that line out.
+	// Note: This should probably be split into it's own subsystem so the code layout and function is cleaner.
+	GSSinst = nt::NetworkTableInstance::Create();
+	GSSinst.StartClient("10.0.100.5",1735);
+	GSSinst.AddLogger({}, 0, 99);
 	drivetrain->SetEncoderDistance(0.0);
 }
 
@@ -97,24 +97,24 @@ void Robot::DisabledPeriodic() {
  * to the if-else structure below with additional strings & commands.
  */
 void Robot::AutonomousInit()  {
-		//std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
-		// Return the switch & scale data pulled from the NetworkTable entry.
-		std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
-		double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
+	//std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+	// Return the switch & scale data pulled from the NetworkTable entry.
+	std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
+	double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
 
-		StartPosition startPos = ChooserPos.GetSelected();
+	StartPosition startPos = ChooserPos.GetSelected();
 
-		Robot::AutoCommand leftCommand = AutoChooserLeft.GetSelected();
+	Robot::AutoCommand leftCommand = AutoChooserLeft.GetSelected();
 
-		Robot::AutoCommand rightCommand = AutoChooserRight.GetSelected();
+	Robot::AutoCommand rightCommand = AutoChooserRight.GetSelected();
 
-		bool evade = true;
+	bool evade = true;
 
-		m_autonomousCommand = new AutoMain(waitTime, gameData[0], startPos, leftCommand, rightCommand, evade);
+	m_autonomousCommand = new AutoMain(waitTime, gameData[0], startPos, leftCommand, rightCommand, evade);
 
-		if (m_autonomousCommand != nullptr) {
-			m_autonomousCommand -> Start();
-		}
+	if (m_autonomousCommand != nullptr) {
+		m_autonomousCommand -> Start();
+	}
 
 }
 
@@ -132,7 +132,7 @@ void Robot::TeleopInit()  {
 		m_autonomousCommand = nullptr;
 	}
 	Command* dfault = new SkidStearWithJoystick();
-			dfault->Start();
+	dfault->Start();
 }
 
 void Robot::TeleopPeriodic() {
