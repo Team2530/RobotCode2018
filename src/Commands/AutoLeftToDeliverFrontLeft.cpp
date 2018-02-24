@@ -3,11 +3,11 @@
 #include <Commands/TurnDegrees.h>
 
 AutoLeftToDeliverFrontLeft::AutoLeftToDeliverFrontLeft() {
-	AddSequential(new DriveInches(135));
+	AddSequential(new DriveInches(135-buffer));//forward distance-turn radius
 	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(23));
-	AddSequential(new DriveInches(buffer));
+	AddSequential(new DriveInches(23));//drive over a lil bit so better lined up with switch
 	AddSequential(new TurnDegrees(90));
+	AddSequential(new DriveInches(buffer));//last distance
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
