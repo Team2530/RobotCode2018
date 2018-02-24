@@ -3,7 +3,7 @@
 #include <Commands/TurnDegrees.h>
 
 AutoEvadeSideBack::AutoEvadeSideBack() {
-	AddSequential(new DriveInches(75));
+	AddSequential(new DriveInches(GetOutOfTheWay));
 }
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

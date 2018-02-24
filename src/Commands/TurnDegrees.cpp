@@ -36,10 +36,10 @@ void TurnDegrees::Interrupted() {
 	Robot::drivetrain->Stop();
 }
 
-int Left (int TurnDegrees){
+int TurnDegrees::Left (int TurnDegrees){
 	return TurnDegrees ;
 }
 
-int Right (int TurnDegrees){
+int TurnDegrees::Right (int TurnDegrees){
 	return -TurnDegrees ;
 	}

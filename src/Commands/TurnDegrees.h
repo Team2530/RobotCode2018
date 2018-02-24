@@ -12,9 +12,9 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
+	int Left (int TurnDegrees);
+	int Right (int TurnDegrees);
 	int TurnDeg;
 
 };
-int Left (int TurnDegrees);
-int Right (int TurnDegrees);
 #endif  // TurnDegrees_H

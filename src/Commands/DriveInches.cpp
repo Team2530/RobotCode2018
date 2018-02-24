@@ -3,7 +3,7 @@
 DriveInches::DriveInches(double distance) {
 		// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-	d = distance*(ticksPerRevolution/(pi*diameter));//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
+	d = distance*ticksPerInch;//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
 	Requires(Robot::drivetrain.get());
 }
 
