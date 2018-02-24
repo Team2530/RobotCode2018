@@ -15,13 +15,13 @@ void DriveInches::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveInches::Execute() {
-		double power = maxPower*((target-Robot::drivetrain->GetEncoderDistance())/d);
+		double power = maxPower*((target-Robot::drivetrain->GetEncoderDistance())/abs(d));
 		Robot::drivetrain->DriveStraight(power); //MAY NEED TO GET RID OF POWER FUNCTION THING!!
 }
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveInches::IsFinished() {
-	if(target-Robot::drivetrain->GetEncoderDistance()<buffer){
+	if(abs(target-Robot::drivetrain->GetEncoderDistance())<buffer){
 		return true;
 	}
 	return false;
