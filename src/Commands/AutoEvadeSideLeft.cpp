@@ -3,9 +3,9 @@
 #include <Commands/TurnDegrees.h>
 
 AutoEvadeSideLeft::AutoEvadeSideLeft() {
-	AddSequential(new DriveInches(-12));
+	AddSequential(new DriveInches(BackAwayFromSwitch));
 	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(25));
+	AddSequential(new DriveInches(25));//drives forward random distance
 
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

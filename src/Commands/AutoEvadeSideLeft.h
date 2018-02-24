@@ -4,6 +4,8 @@
 #include <Commands/CommandGroup.h>
 
 class AutoEvadeSideLeft : public frc::CommandGroup {
+private:
+	double static constexpr BackAwayFromSwitch = -12;
 public:
 	AutoEvadeSideLeft();
 };

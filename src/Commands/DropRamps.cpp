@@ -2,6 +2,8 @@
 
 DropRamps::DropRamps() {
 	Requires(Robot::ramp.get());
+	Requires(Robot::drivetrain.get());
+	Requires(Robot::elevator.get());
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 }
@@ -24,6 +26,8 @@ bool DropRamps::IsFinished() {
 // Called once after isFinished returns true
 void DropRamps::End() {
 	Robot::ramp->ReleaseStop();
+	Robot::drivetrain->Stop();
+	Robot::elevator->Stop();
 }
 
 // Called when another command which requires one or more of the same

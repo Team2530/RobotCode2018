@@ -4,9 +4,9 @@
 
 
 AutoEvadeSideRight::AutoEvadeSideRight() {
-	AddSequential(new DriveInches(-12));
+	AddSequential(new DriveInches(BackAwayFromSwitch));
 	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(25));
+	AddSequential(new DriveInches(25));//drives random distance
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
