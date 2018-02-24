@@ -2,7 +2,7 @@
 #define Elevator_H
 #include <WPILib.h>
 #include <Commands/Subsystem.h>
-#include <DigitalInput.h>
+#include <LimitSwitch.h>
 
 class Elevator : public Subsystem {
 private:
@@ -10,7 +10,7 @@ private:
 	VictorSP* ElevatorMotor;
 	static constexpr double minPow = 0.1;
 	static constexpr double maxPow = 0.3;
-	frc::DigitalInput* TopLimitSwitch;
+	LimitSwitch* TopLimitSwitch;
 	//frc::DigitalInput* MiddleLimitSwitch;
 	//frc::DigitalInput* BottomLimitSwitch;
 

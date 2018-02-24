@@ -3,7 +3,7 @@
 #include <WPILib.h>
 #include <Encoder.h>
 #include <Commands/Subsystem.h>
-#include <DigitalInput.h>
+#include <LimitSwitch.h>
 
 class Ramp : public Subsystem {
 private:
@@ -21,10 +21,10 @@ private:
 	int timeInSec;
 	// It's desirable that everything possible under private except
 	// for methods that implement subsystem capabilities
-	frc::DigitalInput* TopLimitSwitchLeft;
-	frc::DigitalInput* TopLimitSwitchRight;
-	frc::DigitalInput* BottomLimitSwitchLeft;
-	frc::DigitalInput* BottomLimitSwitchRight;
+	LimitSwitch* TopLimitSwitchLeft;
+	LimitSwitch* TopLimitSwitchRight;
+	LimitSwitch* BottomLimitSwitchLeft;
+	LimitSwitch* BottomLimitSwitchRight;
 
 public:
 	double LeftPow=0.4;

@@ -7,10 +7,10 @@ Ramp::Ramp() : Subsystem("Ramp") {
 	RampMotorMid = new VictorSP(ChannelMid);
 	//RampLeft = new frc::Encoder(8,9,false, Encoder::CounterBase::k2X );//8,9 fillers
 	//RampRight = new frc::Encoder(0,1,false, Encoder::CounterBase::k2X );
-	TopLimitSwitchLeft = new frc::DigitalInput(6);
-	TopLimitSwitchRight = new frc::DigitalInput(8);
-	BottomLimitSwitchLeft = new frc::DigitalInput(7);
-	BottomLimitSwitchRight = new frc::DigitalInput(9);
+	TopLimitSwitchLeft = new LimitSwitch(6);
+	TopLimitSwitchRight = new LimitSwitch(8);
+	BottomLimitSwitchLeft = new LimitSwitch(7);
+	BottomLimitSwitchRight = new LimitSwitch(9);
 	released=false;
 	timeInSec = 0;
 }
@@ -49,7 +49,7 @@ void Ramp::Raise() {
 			LeftPow = 1;
 			RightPow = 1;
 			}
-		if(TopLimitSwitchLeft->Get() && TopLimitSwitchRight->Get()){
+		if(!TopLimitSwitchLeft->IsLimitReached() && !TopLimitSwitchRight->IsLimitReached()){
 			RampMotorLeft->Set(LeftPow);
 			RampMotorRight->Set(RightPow);
 		}
@@ -64,7 +64,7 @@ void Ramp::Raise() {
 void Ramp::RaiseLeft() {
 	if(released){
 		LeftPow=0.4;
-		if(TopLimitSwitchLeft->Get())
+		if(!TopLimitSwitchLeft->IsLimitReached())
 			RampMotorLeft->Set(LeftPow);
 		else
 			Stop();
@@ -73,7 +73,7 @@ void Ramp::RaiseLeft() {
 void Ramp::RaiseRight() {
 	if(released){
 		RightPow=0.4;
-		if(TopLimitSwitchRight->Get())
+		if(!TopLimitSwitchRight->IsLimitReached())
 			RampMotorRight->Set(RightPow);
 		else
 			Stop();
@@ -82,7 +82,7 @@ void Ramp::RaiseRight() {
 void Ramp::Lower() {
 	LeftPow=.4;
 	RightPow=.4;
-	if(BottomLimitSwitchLeft->Get() && BottomLimitSwitchRight->Get()){
+	if(!BottomLimitSwitchLeft->IsLimitReached() && !BottomLimitSwitchRight->IsLimitReached()){
 		RampMotorLeft->Set(-LeftPow);
 		RampMotorRight->Set(-RightPow);
 	}
@@ -91,14 +91,14 @@ void Ramp::Lower() {
 	}
 }
 void Ramp::LowerLeft() {
-	if(BottomLimitSwitchLeft->Get())
+	if(!BottomLimitSwitchLeft->IsLimitReached())
 		RampMotorLeft->Set(LowerLeftPow);
 	else
 		Stop();
 
 }
 void Ramp::LowerRight() {
-	if(BottomLimitSwitchRight->Get())
+	if(!BottomLimitSwitchRight->IsLimitReached())
 		RampMotorRight->Set(LowerRightPow);
 	else
 		Stop();
