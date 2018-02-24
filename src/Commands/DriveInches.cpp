@@ -1,11 +1,9 @@
 #include "DriveInches.h"
 
 DriveInches::DriveInches(double distance) {
-		//Robot::drivetrain->DriveStraightAuto(distance);
 		// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
-    d = distance;
-	d = d*(360/(pi*diameter));//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
+	d = distance*(ticksPerRevolution/(pi*diameter));//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
 	Requires(Robot::drivetrain.get());
 }
 
@@ -23,7 +21,7 @@ void DriveInches::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool DriveInches::IsFinished() {
-	if(target-Robot::drivetrain->GetEncoderDistance()<100){
+	if(target-Robot::drivetrain->GetEncoderDistance()<buffer){
 		return true;
 	}
 	return false;
