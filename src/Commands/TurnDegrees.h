@@ -15,6 +15,10 @@ public:
 	int Left (int TurnDegrees);
 	int Right (int TurnDegrees);
 	int TurnDeg;
+	int StartingAngle;
+	int Fix;
+	int TargetAngle;
+	int NewAngle;
 
 };
 #endif  // TurnDegrees_H
