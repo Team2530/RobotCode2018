@@ -5,6 +5,7 @@
 
 AutoLeftDeliverToSideLeft::AutoLeftDeliverToSideLeft() {
 	AddSequential(new DriveInches(212));
+	AddSequential(new DriveInches(buffer));
 	AddSequential(new TurnDegrees(-90));
 	AddSequential(new DriveInches(56));
 	// Add Commands here:

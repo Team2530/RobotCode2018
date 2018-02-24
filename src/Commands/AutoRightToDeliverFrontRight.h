@@ -4,6 +4,8 @@
 #include <Commands/CommandGroup.h>
 
 class AutoRightToDeliverFrontRight : public frc::CommandGroup {
+private:
+	double buffer = 22;
 public:
 	AutoRightToDeliverFrontRight();
 };

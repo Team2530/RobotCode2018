@@ -4,6 +4,8 @@
 #include <Commands/CommandGroup.h>
 
 class AutoMiddleToCrossLineLeft : public frc::CommandGroup {
+private:
+	double buffer = 22;
 public:
 	AutoMiddleToCrossLineLeft();
 };
