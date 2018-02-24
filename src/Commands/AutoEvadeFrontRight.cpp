@@ -1,10 +1,10 @@
 #include "AutoEvadeFrontRight.h"
 #include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include <Commands/Right.h>
 
 AutoEvadeFrontRight::AutoEvadeFrontRight() {
   AddSequential(new DriveInches(BackAwayFromSwitch));
-  AddSequential(new TurnDegrees(-90));
+  AddSequential(new Right(90));
   AddSequential(new DriveInches(GetOutOfTheWay));
   // Add Commands here:
   // e.g. AddSequential(new Command1());

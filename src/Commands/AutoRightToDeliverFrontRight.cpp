@@ -1,10 +1,11 @@
 #include <Commands/AutoRightToDeliverFrontRight.h>
 #include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include <Commands/Left.h>
+#include <Commands/Right.h>
 
 AutoRightToDeliverFrontRight::AutoRightToDeliverFrontRight() {
 	AddSequential(new DriveInches(135));
-	AddSequential(new DriveInches(90));
+	AddSequential(new Left(90));
 	AddSequential(new DriveInches(23));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

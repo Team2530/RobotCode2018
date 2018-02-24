@@ -1,12 +1,13 @@
 #include "AutoLeftToDeliverFrontRight.h"
 #include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include <Commands/Right.h>
+#include <Commands/Left.h>
 
 AutoLeftToDeliverFrontRight::AutoLeftToDeliverFrontRight() {
 	AddSequential(new DriveInches(40));
-	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new Right(90)); //right
 	AddSequential(new DriveInches(160));
-	AddSequential(new TurnDegrees(90)); //left
+	AddSequential(new Left(90)); //left
 	AddSequential(new DriveInches(100));
 	//Drop Arm
 	//raise arm if it isn't already

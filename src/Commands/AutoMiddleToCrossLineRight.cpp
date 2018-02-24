@@ -1,13 +1,14 @@
 #include <Commands/AutoMiddleToCrossLineRight.h>
 #include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include <Commands/Right.h>
+#include <Commands/Left.h>
 
 AutoMiddleToCrossLineRight::AutoMiddleToCrossLineRight() {
 	AddSequential(new DriveInches(33));//Drive to middle of field
-	AddSequential(new TurnDegrees(-90));//turn towards right switch
+	AddSequential(new Right(90));//turn towards right switch
 	AddSequential(new DriveInches(146));//drive towards right switch
 	AddSequential(new DriveInches(buffer));//buffer for turn radius
-	AddSequential(new TurnDegrees(90));//turn towards switch
+	AddSequential(new Left(90));//turn towards switch
 	AddSequential(new DriveInches(54));//drive to switch
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

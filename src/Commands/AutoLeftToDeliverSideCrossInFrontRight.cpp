@@ -1,15 +1,16 @@
 #include "AutoLeftToDeliverSideCrossInFrontRight.h"
 #include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include <Commands/Right.h>
+#include <Commands/Left.h>
 #include <Robot.h>
 
 AutoLeftToDeliverSideCrossInFrontRight::AutoLeftToDeliverSideCrossInFrontRight() {
 	AddSequential(new DriveInches(75));//distance up before turn
-	AddSequential(new TurnDegrees(-90));
+	AddSequential(new Right(90));
 	AddSequential(new DriveInches(distanceCrossSwitch));
-	AddSequential(new TurnDegrees(90));
+	AddSequential(new Left(90));
 	AddSequential(new DriveInches(finalYDistance));
-	AddSequential(new TurnDegrees(90));
+	AddSequential(new Left(90));
 	AddSequential(new DriveInches(buffer));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

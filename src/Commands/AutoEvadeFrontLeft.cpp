@@ -1,11 +1,11 @@
 #include "AutoEvadeFrontLeft.h"
 #include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
+#include <Commands/Left.h>
 
 AutoEvadeFrontLeft::AutoEvadeFrontLeft() {
 
 	AddSequential(new DriveInches(BackAwayFromSwitch));
-	AddSequential(new TurnDegrees(90));
+	AddSequential(new Left(90));
 	AddSequential(new DriveInches(DriveOutOfTheWay));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

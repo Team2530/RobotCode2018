@@ -1,14 +1,8 @@
-#include <Commands/AutoRightToDeliverFrontLeft.h>
-#include <Commands/DriveInches.h>
-#include <Commands/Right.h>
-#include <Commands/Left.h>
+#include "Right.h"
+#include "TurnDegrees.h"
 
-AutoRightToDeliverFrontLeft::AutoRightToDeliverFrontLeft() {
-	AddSequential(new DriveInches(40));
-	AddSequential(new Right(90));
-	AddSequential(new DriveInches(160));
-	AddSequential(new Left(90));
-	AddSequential(new DriveInches(100));
+Right::Right(double degrees) {
+	AddSequential(new TurnDegrees(-degrees));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
