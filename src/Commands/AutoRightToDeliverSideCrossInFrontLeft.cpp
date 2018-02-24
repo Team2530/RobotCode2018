@@ -5,11 +5,11 @@
 
 AutoRightToDeliverSideCrossInFrontLeft::AutoRightToDeliverSideCrossInFrontLeft() {
 	AddSequential(new DriveInches(75));//distance up before turn
-	AddSequential(new TurnDegrees(90));
+	AddSequential(new TurnDegrees(90)); //turn left
 	AddSequential(new DriveInches(distanceCrossSwitch));
-	AddSequential(new TurnDegrees(-90));
+	AddSequential(new TurnDegrees(-90)); //turn right
 	AddSequential(new DriveInches(finalYDistance));
-	AddSequential(new TurnDegrees(-90));
+	AddSequential(new TurnDegrees(-90)); //turn right
 	AddSequential(new DriveInches(buffer));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());

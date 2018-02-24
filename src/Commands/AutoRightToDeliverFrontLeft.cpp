@@ -3,11 +3,12 @@
 #include <Commands/TurnDegrees.h>
 
 AutoRightToDeliverFrontLeft::AutoRightToDeliverFrontLeft() {
-	AddSequential(new DriveInches(40));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(160));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(100));
+	AddSequential(new DriveInches(40)); //drive to center to avoid other robots
+	AddSequential(new TurnDegrees(90)); //turn left
+	AddSequential(new DriveInches(160)); //cross the arena
+	AddSequential(new DriveInches(buffer)); //buffer for turn radius
+	AddSequential(new TurnDegrees(-90)); //turn right
+	AddSequential(new DriveInches(100)); //get to the switch
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

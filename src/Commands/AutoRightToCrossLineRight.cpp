@@ -3,11 +3,11 @@
 #include <Commands/TurnDegrees.h>
 
 AutoRightToCrossLineRight::AutoRightToCrossLineRight() {
-	AddSequential(new DriveInches(40));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(153));
+	AddSequential(new DriveInches(40)); //drive forward
+	AddSequential(new TurnDegrees(-90)); //turn right
+	AddSequential(new DriveInches(33)); //go to the side
+	AddSequential(new TurnDegrees(90)); //turn left
+	AddSequential(new DriveInches(153)); //drive pass the auto line
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

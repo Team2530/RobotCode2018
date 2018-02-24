@@ -3,9 +3,9 @@
 #include <Commands/TurnDegrees.h>
 
 AutoRightToDeliverSideRight::AutoRightToDeliverSideRight() {
-	AddSequential(new DriveInches(212));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(56));
+	AddSequential(new DriveInches(212)); //drive to the side of the switch
+	AddSequential(new TurnDegrees(90)); //turn left
+	AddSequential(new DriveInches(56)); //drive the final distance to the switch
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
