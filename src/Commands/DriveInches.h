@@ -8,7 +8,9 @@
 class DriveInches : public frc::Command {
 private:
 	double d;
-	static constexpr double ticksPerRevolution = 1/1000;
+	double target;
+	double buffer=100;//need test!!!
+	static constexpr double ticksPerRevolution = 1000/1;
 	static constexpr double diameter = 6; //inches
 	static constexpr double pi = 2*acos(0.0);
 	static constexpr double maxPower = 0.6;
