@@ -3,11 +3,12 @@
 #include <Commands/TurnDegrees.h>
 
 AutoMiddleToCrossLineRight::AutoMiddleToCrossLineRight() {
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(146));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(54));
+	AddSequential(new DriveInches(33));//Drive to middle of field
+	AddSequential(new TurnDegrees(-90));//turn towards right switch
+	AddSequential(new DriveInches(146));//drive towards right switch
+	AddSequential(new DriveInches(buffer));//buffer for turn radius
+	AddSequential(new TurnDegrees(90));//turn towards switch
+	AddSequential(new DriveInches(54));//drive to switch
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

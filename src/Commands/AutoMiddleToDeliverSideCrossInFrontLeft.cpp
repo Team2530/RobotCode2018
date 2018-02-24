@@ -4,12 +4,12 @@
 #include <Robot.h>
 
 AutoMiddleToDeliverSideCrossInFrontLeft::AutoMiddleToDeliverSideCrossInFrontLeft() {
-	AddSequential(new DriveInches(40));
-	AddSequential(new TurnDegrees(90)); //left
-	AddSequential(new DriveInches(80));
-	AddSequential(new TurnDegrees(-90)); //right
-	AddSequential(new DriveInches(128));
-	AddSequential(new TurnDegrees(-90)); //right
+	AddSequential(new DriveInches(40)); //drive into area
+	AddSequential(new TurnDegrees(90)); //left towards deliver side
+	AddSequential(new DriveInches(80)); //drive towards front
+	AddSequential(new TurnDegrees(-90)); //right to deliver
+	AddSequential(new DriveInches(128)); //drive into switch
+	AddSequential(new TurnDegrees(-90)); //right to switch
 	//deliver box stuff
 	/*Again i put evade in here lel
 	AddSequential(new DriveInches(-10)); //??????????????????

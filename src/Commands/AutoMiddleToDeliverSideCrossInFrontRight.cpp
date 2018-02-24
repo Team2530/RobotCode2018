@@ -2,12 +2,13 @@
 #include <Commands/DriveInches.h>
 #include <Commands/TurnDegrees.h>
 AutoMiddleToDeliverSideCrossInFrontRight::AutoMiddleToDeliverSideCrossInFrontRight() {
-	AddSequential(new DriveInches(33));
-	AddSequential(new TurnDegrees(-90));
-	AddSequential(new DriveInches(144));
-	AddSequential(new TurnDegrees(90));
-	AddSequential(new DriveInches(102));
-	AddSequential(new TurnDegrees(90));
+	AddSequential(new DriveInches(33));//drive into mid field
+	AddSequential(new TurnDegrees(-90));//turn right towards side of switch
+	AddSequential(new DriveInches(144));//drive towards side of switch
+	AddSequential(new DriveInches(buffer));//buffer to account for turn radius
+	AddSequential(new TurnDegrees(90));//turn left to face side of switch
+	AddSequential(new DriveInches(102));//drive to side of switch
+	AddSequential(new TurnDegrees(90));//turn to face side of switch
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
