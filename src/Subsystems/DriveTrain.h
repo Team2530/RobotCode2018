@@ -16,7 +16,7 @@ private:
 	static constexpr int kBackLeftChannel = 2;
 	static constexpr int kFrontRightChannel = 1;
 	static constexpr int kBackRightChannel = 3;
-	static constexpr double ticksPerRevolution = 1/1000;
+	//static constexpr double ticksPerRevolution = 1/1000;
 	static constexpr double diameter = 6; //inches
 	static constexpr double pi = 2*acos(0.0);
 	static constexpr double minPower = 0.1;
