@@ -51,7 +51,7 @@ public:
 	void Drive(Joystick* stick);
 	void TeleopPeriodic();
 	void DriveStraight(Joystick* stick);
-	void DriveStraight(double speed);
+	void DriveStraight(double rotations);
 	//void DriveStraightAuto(double distance);
 	void Stop();
 	void Turn(double degree);

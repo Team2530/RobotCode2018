@@ -36,6 +36,8 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 
 	frontLeftController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 0);
 	frontRightController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,0);
+	frontLeftController->SetSelectedSensorPosition(frontLeftController->GetSelectedSensorPosition(0), 0,0);
+	frontRightController->SetSelectedSensorPosition(frontRightController->GetSelectedSensorPosition(0), 0,0);
 
 	//SmartDashboard::PutNumber("Left encoder start: ", frontLeftController->GetSelectedSensorPosition(0));
 	//SmartDashboard::PutNumber("Right Encoder start: ", frontRightController->GetSelectedSensorPosition(0));
@@ -78,8 +80,9 @@ void DriveTrain::DriveStraight(Joystick* stick) {
 	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
 	robotDrive->ArcadeDrive(stickY, 0);
 }
-void DriveTrain::DriveStraight(double speed){
-	robotDrive->ArcadeDrive(speed, 0);
+void DriveTrain::DriveStraight(double rotations){
+	frontLeftController->Set(ControlMode::Position, rotations);
+	//robotDrive->ArcadeDrive(speed, 0);
 	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
 }
 /*void DriveTrain::DriveStraightAuto(double distance){

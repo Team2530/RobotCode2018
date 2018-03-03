@@ -15,7 +15,7 @@ void DriveInches::Initialize() {
 
 // Called repeatedly when this Command is scheduled to run
 void DriveInches::Execute() {
-
+	double rotations = d/circumference;
 	double power;
 	if(d<0){
 
@@ -24,7 +24,7 @@ void DriveInches::Execute() {
 	if(d>0){
 		power = maxPower;
 	}
-		Robot::drivetrain->DriveStraight(-power); //MAY NEED TO GET RID OF POWER FUNCTION THING!!
+		Robot::drivetrain->DriveStraight(power*rotations); //?????????//MAY NEED TO GET RID OF POWER FUNCTION THING!!
 		SmartDashboard::PutNumber("d:  ", d);
 		SmartDashboard::PutNumber("target:  ", target);
 }

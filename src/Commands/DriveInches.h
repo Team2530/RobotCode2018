@@ -14,6 +14,7 @@ private:
 	static constexpr double diameter = 6; //inches
 	static constexpr double pi = 2*acos(0.0);
 	double ticksPerInch = ticksPerRevolution/(pi*diameter);
+	static constexpr double circumference = pi*diameter;
 	static constexpr double maxPower = 0.5;
 	static constexpr double minPower = 0.4;
 public:
