@@ -10,13 +10,23 @@ DriveInches::DriveInches(double distance) {
 // Called just before this Command runs the first time
 void DriveInches::Initialize() {
 	double startingDistance = Robot::drivetrain->GetEncoderDistance();
-	double target = startingDistance + d;
+	target = startingDistance + d;
 }
 
 // Called repeatedly when this Command is scheduled to run
 void DriveInches::Execute() {
-		double power = maxPower*((target-Robot::drivetrain->GetEncoderDistance())/abs(d));
-		Robot::drivetrain->DriveStraight(power); //MAY NEED TO GET RID OF POWER FUNCTION THING!!
+
+	double power;
+	if(d<0){
+
+		power=-maxPower;
+	}
+	if(d>0){
+		power = maxPower;
+	}
+		Robot::drivetrain->DriveStraight(-power); //MAY NEED TO GET RID OF POWER FUNCTION THING!!
+		SmartDashboard::PutNumber("d:  ", d);
+		SmartDashboard::PutNumber("target:  ", target);
 }
 
 // Make this return true when this Command no longer needs to run execute()

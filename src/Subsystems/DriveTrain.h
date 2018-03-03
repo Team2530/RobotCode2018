@@ -42,7 +42,7 @@ private:
 	double previousAngle;
 	double averageEncoder;
 	double angleAdjustment;
-	double update=0;
+	//double update=0;
 
 public:
 	std::shared_ptr<NetworkTable> table;

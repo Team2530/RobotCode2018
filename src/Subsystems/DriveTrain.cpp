@@ -21,16 +21,16 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	angleAdjustment(0) {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
-	frontLeftController -> SetInverted(true);
+	//frontLeftController -> SetInverted(true);
 	//frontLeftController -> SetInverted(false);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
-	frontRightController -> SetInverted(true);
+	//frontRightController -> SetInverted(true);
     backLeftController = new WPI_VictorSPX(kBackLeftChannel);
-	backLeftController -> SetInverted(true);
+	//backLeftController -> SetInverted(true);
 	//backLeftController -> SetInverted(false);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
-	backRightController -> SetInverted(true);
+	//backRightController -> SetInverted(true);
 	backRightController->Follow(*frontRightController);
 	robotDrive = new DifferentialDrive(*frontLeftController, *frontRightController); //pointer to reference again :)
 
@@ -39,7 +39,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 
 	//SmartDashboard::PutNumber("Left encoder start: ", frontLeftController->GetSelectedSensorPosition(0));
 	//SmartDashboard::PutNumber("Right Encoder start: ", frontRightController->GetSelectedSensorPosition(0));
-	update=0;
+	//update=0;
 	//leftEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	//rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	//ROBOT 27.5inch by 32.5inch, drives long end front
@@ -66,20 +66,21 @@ void DriveTrain::Drive(Joystick* stick) {
 	SmartDashboard::PutNumber("y: ", stickY);
 	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
 	//SmartDashboard::PutNumber("Right Encoder2: ", frontRightController->GetSelectedSensorPosition(0));
-	update +=1;
-	SmartDashboard::PutNumber("update: ", update);
-	robotDrive->ArcadeDrive(stickY2, stickZ2);
+	//update +=1;
+	//SmartDashboard::PutNumber("update: ", update);
+	robotDrive->ArcadeDrive(stickY2, -stickZ2);//inverted is quick fix
 }
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
 void DriveTrain::DriveStraight(Joystick* stick) {
 	double stickY = stick->GetY();
-
+	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
 	robotDrive->ArcadeDrive(stickY, 0);
 }
 void DriveTrain::DriveStraight(double speed){
 	robotDrive->ArcadeDrive(speed, 0);
+	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
 }
 /*void DriveTrain::DriveStraightAuto(double distance){
 	distance = distance*(360/(pi*diameter));//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
@@ -93,11 +94,11 @@ void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }
 void DriveTrain::Turn(double degrees){
-		if(degrees>0){
-			robotDrive->ArcadeDrive(0, .1);//.1 is a guess of how much power wanted for turn. Can change
+		if(degrees>0){//inverted is quick fix
+			robotDrive->ArcadeDrive(0, -.1);//.1 is a guess of how much power wanted for turn. Can change
 		}
 		else{
-			robotDrive->ArcadeDrive(0,-.1);//see above
+			robotDrive->ArcadeDrive(0,.1);//see above //inverted is quick fix
 		}
 }
 
