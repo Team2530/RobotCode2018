@@ -26,12 +26,8 @@ private:
 	WPI_VictorSPX* backLeftController;
 	WPI_TalonSRX* frontRightController;
 	WPI_VictorSPX* backRightController;
-	SpeedControllerGroup* leftSide;
-	SpeedControllerGroup* rightSide;
 	DifferentialDrive* robotDrive;
 
-	frc::Encoder* leftEncoder;
-	frc::Encoder* rightEncoder;
 	double leftLastMeasurement;
 	double rightLastMeasurement;
 	double currentPositionX; // Right
@@ -42,6 +38,10 @@ private:
 	double previousAngle;
 	double averageEncoder;
 	double angleAdjustment;
+
+	double kTimeoutMs = 10;
+	double kPIDLoopIdx=0;
+	double kSlotIdk;
 	//double update=0;
 
 public:

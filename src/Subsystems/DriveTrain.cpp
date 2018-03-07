@@ -18,7 +18,8 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	previousPositionX(0),
 	previousPositionY(0),
 	previousAngle(0),
-	angleAdjustment(0) {
+	angleAdjustment(0)
+{
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
 	//frontLeftController -> SetInverted(true);
@@ -36,8 +37,29 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 
 	frontLeftController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 0);
 	frontRightController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,0);
-	frontLeftController->SetSelectedSensorPosition(frontLeftController->GetSelectedSensorPosition(0), 0,0);
-	frontRightController->SetSelectedSensorPosition(frontRightController->GetSelectedSensorPosition(0), 0,0);
+
+	//frontLeftController->SetSelectedSensorPosition(frontLeftController->GetSelectedSensorPosition(0), 0,0);
+	frontLeftController->ConfigNominalOutputForward(0,kTimeoutMs);
+	frontLeftController->ConfigNominalOutputReverse(0, kTimeoutMs);
+	frontLeftController->ConfigPeakOutputForward(1, kTimeoutMs);
+	frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
+	//frontLeftController->SetSensorPhase(true);
+
+	//frontRightController->SetSelectedSensorPosition(frontRightController->GetSelectedSensorPosition(0), 0,0);
+	frontRightController->ConfigNominalOutputForward(0,kTimeoutMs);
+	frontRightController->ConfigNominalOutputReverse(0, kTimeoutMs);
+	frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
+	frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
+
+	frontLeftController->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontLeftController->Config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
+	frontLeftController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontLeftController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
+
+	frontRightController->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontRightController->Config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
+	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
 	//SmartDashboard::PutNumber("Left encoder start: ", frontLeftController->GetSelectedSensorPosition(0));
 	//SmartDashboard::PutNumber("Right Encoder start: ", frontRightController->GetSelectedSensorPosition(0));
@@ -50,6 +72,10 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	table = nti.GetTable("robotPosition");
 	ahrs = new AHRS(SPI::Port::kMXP);
 	ahrs->Reset();
+
+
+
+	robotDrive->SetSafetyEnabled(false);
 }
 
 void DriveTrain::InitDefaultCommand() {
@@ -82,8 +108,11 @@ void DriveTrain::DriveStraight(Joystick* stick) {
 }
 void DriveTrain::DriveStraight(double rotations){
 	frontLeftController->Set(ControlMode::Position, rotations);
+	frontRightController->Set(ControlMode::Position, rotations);
 	//robotDrive->ArcadeDrive(speed, 0);
 	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
+	SmartDashboard::PutNumber("encoder right: ", frontRightController->GetSelectedSensorPosition(0));
+	SmartDashboard::PutNumber("encoder left: ", frontLeftController->GetSelectedSensorPosition(0));
 }
 /*void DriveTrain::DriveStraightAuto(double distance){
 	distance = distance*(360/(pi*diameter));//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
@@ -119,7 +148,7 @@ void DriveTrain::StartTracking(double initialX, double initialY, double initialA
 	}
 }
 double DriveTrain::GetEncoderDistance(){
-	return (-frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
+	return (frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
 }
 void DriveTrain::SetEncoderDistance(double value){
 	frontLeftController->SetSelectedSensorPosition(value, 0,0);
