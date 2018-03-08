@@ -107,12 +107,12 @@ void DriveTrain::DriveStraight(Joystick* stick) {
 	robotDrive->ArcadeDrive(stickY, 0);
 }
 void DriveTrain::DriveStraight(double rotations){
-	frontLeftController->Set(ControlMode::Position, rotations);
+	frontLeftController->Set(ControlMode::Position, -rotations);
 	frontRightController->Set(ControlMode::Position, rotations);
 	//robotDrive->ArcadeDrive(speed, 0);
 	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
 	SmartDashboard::PutNumber("encoder right: ", frontRightController->GetSelectedSensorPosition(0));
-	SmartDashboard::PutNumber("encoder left: ", frontLeftController->GetSelectedSensorPosition(0));
+	SmartDashboard::PutNumber("encoder left: ", -frontLeftController->GetSelectedSensorPosition(0));
 }
 /*void DriveTrain::DriveStraightAuto(double distance){
 	distance = distance*(360/(pi*diameter));//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
@@ -148,7 +148,7 @@ void DriveTrain::StartTracking(double initialX, double initialY, double initialA
 	}
 }
 double DriveTrain::GetEncoderDistance(){
-	return (frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
+	return (-frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
 }
 void DriveTrain::SetEncoderDistance(double value){
 	frontLeftController->SetSelectedSensorPosition(value, 0,0);
