@@ -102,12 +102,32 @@ void DriveTrain::Drive(Joystick* stick) {
 
 // Put methods for controlling this subsystem
 // here. Call these from Commands.
-void DriveTrain::DriveStraight(Joystick* stick) {
+void DriveTrain::DriveStraight(Joystick* stick, double StartingAngle) {
+	double angle = Robot::drivetrain->GetCurrentAngle();
+
 	double stickY = stick->GetY();
 	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
 	robotDrive->ArcadeDrive(stickY, 0);
 }
-void DriveTrain::DriveStraight(double rotations){
+void DriveTrain::DriveStraight(double rotations, double StartingAngle){
+	double angle = Robot::drivetrain->GetCurrentAngle();
+
+	if(StartingAngle > angle) {
+		//frontLeftController power +
+		//frontRightController power -
+		frontLeftController->ConfigPeakOutputForward(1, kTimeoutMs);
+		frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
+		frontRightController->ConfigPeakOutputForward(0.9, kTimeoutMs);
+		frontRightController->ConfigPeakOutputReverse(-0.9, kTimeoutMs);
+	} else if (StartingAngle < angle) {
+		//frontLeftController power -
+		//frontRightController power +
+		frontLeftController->ConfigPeakOutputForward(0.9, kTimeoutMs);
+		frontLeftController->ConfigPeakOutputReverse(-0.9, kTimeoutMs);
+		frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
+		frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
+	}
+
 	frontLeftController->Set(ControlMode::Position, -rotations);
 	frontRightController->Set(ControlMode::Position, rotations);
 	//robotDrive->ArcadeDrive(speed, 0);

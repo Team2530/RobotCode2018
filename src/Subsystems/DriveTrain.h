@@ -50,8 +50,8 @@ public:
 	void InitDefaultCommand();
 	void Drive(Joystick* stick);
 	void TeleopPeriodic();
-	void DriveStraight(Joystick* stick);
-	void DriveStraight(double rotations);
+	void DriveStraight(Joystick* stick, double StartingAngle);
+	void DriveStraight(double rotations, double StartingAngle);
 	//void DriveStraightAuto(double distance);
 	void Stop();
 	void Turn(double degree);

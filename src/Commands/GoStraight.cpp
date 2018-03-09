@@ -10,12 +10,13 @@ GoStraight::GoStraight() {
 
 // Called just before this Command runs the first time
 void GoStraight::Initialize() {
+	double CurrentAngle = Robot::drivetrain->GetCurrentAngle();
 
 }
 
 // Called repeatedly when this Command is scheduled to run
 void GoStraight::Execute() {
-	Robot::drivetrain->DriveStraight(stick);
+	Robot::drivetrain->DriveStraight(stick, CurrentAngle);
 }
 
 // Make this return true when this Command no longer needs to run execute()

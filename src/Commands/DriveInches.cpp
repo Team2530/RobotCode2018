@@ -11,6 +11,7 @@ DriveInches::DriveInches(double distance) {
 void DriveInches::Initialize() {
 	double startingDistance = Robot::drivetrain->GetEncoderDistance();
 	target = startingDistance + d;
+	double CurrentAngle = Robot::drivetrain->GetCurrentAngle();
 	//rotations = d/circumference;
 	//double power;
 
@@ -20,7 +21,7 @@ void DriveInches::Initialize() {
 void DriveInches::Execute() {
 
 
-		Robot::drivetrain->DriveStraight(target); //?????????//MAY NEED TO GET RID OF POWER FUNCTION THING!!
+		Robot::drivetrain->DriveStraight(target, CurrentAngle); //?????????//MAY NEED TO GET RID OF POWER FUNCTION THING!!
 		SmartDashboard::PutNumber("d:  ", d);
 		SmartDashboard::PutNumber("target:  ", target);
 }
