@@ -97,6 +97,7 @@ void DriveTrain::Drive(Joystick* stick) {
 	//update +=1;
 	//SmartDashboard::PutNumber("update: ", update);
 	robotDrive->ArcadeDrive(stickY2, -stickZ2);//inverted is quick fix
+	frontLeftController->GetSelectedSensorVelocity(0);
 }
 
 // Put methods for controlling this subsystem
@@ -181,5 +182,5 @@ double DriveTrain::GetCurrentAngle(){
 	// (This will only occur if angleAdjustment is nonzero, as GetYaw is always in that range)
 	while (angle > 180) angle -= 360;
 	while (angle < -180) angle += 360;
-	return angle;
+	return -angle;
 }
