@@ -10,6 +10,7 @@
 class GoStraight : public frc::Command {
 private:
 	Joystick* stick;
+	double CurrentAngle;
 public:
 	GoStraight();
 	void Initialize();

@@ -18,6 +18,7 @@ private:
 	static constexpr double circumference = pi*diameter;
 	static constexpr double maxPower = 0.5;
 	static constexpr double minPower = 0.4;
+	double CurrentAngle;
 public:
 	DriveInches(double distance);
 	void Initialize();

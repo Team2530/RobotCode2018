@@ -11,7 +11,7 @@ DriveInches::DriveInches(double distance) {
 void DriveInches::Initialize() {
 	double startingDistance = Robot::drivetrain->GetEncoderDistance();
 	target = startingDistance + d;
-	double CurrentAngle = Robot::drivetrain->GetCurrentAngle();
+	CurrentAngle = Robot::drivetrain->GetCurrentAngle();
 	//rotations = d/circumference;
 	//double power;
 

@@ -10,7 +10,7 @@ GoStraight::GoStraight() {
 
 // Called just before this Command runs the first time
 void GoStraight::Initialize() {
-	double CurrentAngle = Robot::drivetrain->GetCurrentAngle();
+	CurrentAngle = Robot::drivetrain->GetCurrentAngle();
 
 }
 
