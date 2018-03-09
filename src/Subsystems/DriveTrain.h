@@ -60,6 +60,7 @@ public:
 	double GetEncoderDistance();
 	void UpdatePosition();
 	double GetCurrentAngle();
+	double ModAngle(double angle);
 	void SetEncoderDistance(double value);
 };
 

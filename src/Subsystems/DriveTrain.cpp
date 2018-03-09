@@ -204,3 +204,8 @@ double DriveTrain::GetCurrentAngle(){
 	while (angle < -180) angle += 360;
 	return -angle;
 }
+double DriveTrain::ModAngle(double angle){
+while (angle > 180) angle -= 360;
+	while (angle < -180) angle += 360;
+	return -angle;
+}
