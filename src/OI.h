@@ -15,9 +15,11 @@ class OI {
 public:
 	OI();
 	Joystick* GetJoystick();
+	Joystick* GetJoystick2();
 	XboxController* GetXbox();
 
 	Joystick* stick;
+	Joystick* stick2;
 	XboxController* xbox;
 
 	//joystick

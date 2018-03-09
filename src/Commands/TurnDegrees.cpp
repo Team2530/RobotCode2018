@@ -2,10 +2,6 @@
 
 TurnDegrees::TurnDegrees(int degrees) {
 	TurnDeg = degrees;
-	StartingAngle = Robot::drivetrain->GetCurrentAngle();
-	NewAngle = Robot::drivetrain->GetCurrentAngle();
-	TargetAngle = TurnDeg + StartingAngle;
-	Fix = 0.25;
 
 	Requires(Robot::drivetrain.get());
 	// Use Requires() here to declare subsystem dependencies
@@ -14,15 +10,19 @@ TurnDegrees::TurnDegrees(int degrees) {
 
 // Called just before this Command runs the first time
 void TurnDegrees::Initialize() {
-
+	StartingAngle = Robot::drivetrain->GetCurrentAngle();
+	TargetAngle = TurnDeg + StartingAngle;
+	SmartDashboard::PutNumber("target:  ", TargetAngle);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TurnDegrees::Execute() {
+	NewAngle = Robot::drivetrain->GetCurrentAngle();
+	SmartDashboard::PutNumber("angle:  ", NewAngle);
 		if (NewAngle > TargetAngle)
-			Fix = -0.25;
+			Fix = -1;
 		if (NewAngle < 	TargetAngle)
-			Fix = 0.25;
+			Fix = 1;
 	Robot::drivetrain->Turn(Fix);
 
 }
@@ -50,10 +50,4 @@ void TurnDegrees::Interrupted() {
 	Robot::drivetrain->Stop();
 }
 
-int TurnDegrees::Left (int TurnDegrees){
-	return TurnDegrees ;
-}
 
-int TurnDegrees::Right (int TurnDegrees){
-	return -TurnDegrees ;
-	}

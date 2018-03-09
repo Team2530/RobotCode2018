@@ -10,15 +10,15 @@
 #include <Commands/SkidStearWithJoystick.h>
 
 DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
-	ahrs(nullptr), // obtained from OI later
-	leftLastMeasurement(0),
-	rightLastMeasurement(0),
-	currentPositionX(0),
-	currentPositionY(0),
-	previousPositionX(0),
-	previousPositionY(0),
-	previousAngle(0),
-	angleAdjustment(0)
+ahrs(nullptr), // obtained from OI later
+leftLastMeasurement(0),
+rightLastMeasurement(0),
+currentPositionX(0),
+currentPositionY(0),
+previousPositionX(0),
+previousPositionY(0),
+previousAngle(0),
+angleAdjustment(0)
 {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
@@ -26,7 +26,7 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	//frontLeftController -> SetInverted(false);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
 	//frontRightController -> SetInverted(true);
-    backLeftController = new WPI_VictorSPX(kBackLeftChannel);
+	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
 	//backLeftController -> SetInverted(true);
 	//backLeftController -> SetInverted(false);
 	backLeftController->Follow(*frontLeftController);
@@ -52,12 +52,12 @@ DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 	frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
 
 	frontLeftController->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
-	frontLeftController->Config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
+	frontLeftController->Config_kP(kPIDLoopIdx, 0.03, kTimeoutMs);
 	frontLeftController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 	frontLeftController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
 	frontRightController->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
-	frontRightController->Config_kP(kPIDLoopIdx, 0.1, kTimeoutMs);
+	frontRightController->Config_kP(kPIDLoopIdx, 0.03, kTimeoutMs);
 	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
@@ -86,6 +86,10 @@ void DriveTrain::InitDefaultCommand() {
 	rightLastMeasurement = 0;
 }
 
+void DriveTrain::TankDrive(Joystick* stick1, Joystick* stick2){
+	robotDrive->TankDrive(stick1->GetY(), stick2->GetY(), 0);
+}
+
 void DriveTrain::Drive(Joystick* stick) {
 	double stickY = stick->GetY();
 	double stickZ = stick->GetZ();
@@ -104,10 +108,21 @@ void DriveTrain::Drive(Joystick* stick) {
 // here. Call these from Commands.
 void DriveTrain::DriveStraight(Joystick* stick, double StartingAngle) {
 	double angle = Robot::drivetrain->GetCurrentAngle();
+	double turn = 0;
+
+	if(StartingAngle > angle) {
+		//frontLeftController power +
+		//frontRightController power -
+		turn = 0.2;
+	} else if (StartingAngle < angle) {
+		//frontLeftController power -
+		//frontRightController power +
+		turn = -0.2;
+	}
 
 	double stickY = stick->GetY();
 	SmartDashboard::PutNumber("encoders:  ", GetEncoderDistance());
-	robotDrive->ArcadeDrive(stickY, 0);
+	robotDrive->ArcadeDrive(stickY, turn);
 }
 void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 	double angle = Robot::drivetrain->GetCurrentAngle();
@@ -146,13 +161,13 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }
-void DriveTrain::Turn(double degrees){
-		if(degrees>0){//inverted is quick fix
-			robotDrive->ArcadeDrive(0, -.1);//.1 is a guess of how much power wanted for turn. Can change
-		}
-		else{
-			robotDrive->ArcadeDrive(0,.1);//see above //inverted is quick fix
-		}
+void DriveTrain::Turn(double fix){
+	if(fix>0){//inverted is quick fix
+		robotDrive->ArcadeDrive(0,-.6);//.1 is a guess of how much power wanted for turn. Can change
+	}
+	else{
+		robotDrive->ArcadeDrive(0,.6);//see above //inverted is quick fix
+	}
 }
 
 double DriveTrain::DriveFunction(double inSpeed) {
@@ -205,7 +220,7 @@ double DriveTrain::GetCurrentAngle(){
 	return -angle;
 }
 double DriveTrain::ModAngle(double angle){
-while (angle > 180) angle -= 360;
+	while (angle > 180) angle -= 360;
 	while (angle < -180) angle += 360;
 	return -angle;
 }

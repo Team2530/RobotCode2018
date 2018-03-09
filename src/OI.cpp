@@ -57,6 +57,7 @@ OI::OI() {
 
 	//also,,,,, need drive straight button on joystick eventually
 	stick = new frc::Joystick(0);
+	stick2 = new frc::Joystick(2);
 	//Need grabber sometime soon :)
 	B3 = new frc::JoystickButton(stick, 3);
 	B7 = new frc::JoystickButton(stick, 7);
@@ -83,4 +84,7 @@ Joystick* OI::GetJoystick() {
 
 	return stick;
 
+}
+Joystick* OI::GetJoystick2(){
+	return stick2;
 }

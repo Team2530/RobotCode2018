@@ -48,13 +48,14 @@ public:
 	std::shared_ptr<NetworkTable> table;
 	DriveTrain();
 	void InitDefaultCommand();
+	void TankDrive(Joystick* stick1, Joystick* stick2);
 	void Drive(Joystick* stick);
 	void TeleopPeriodic();
 	void DriveStraight(Joystick* stick, double StartingAngle);
 	void DriveStraight(double rotations, double StartingAngle);
 	//void DriveStraightAuto(double distance);
 	void Stop();
-	void Turn(double degree);
+	void Turn(double fix);
 	void StartTracking(double initialX, double initialY, double initialAngle);
 	double DriveFunction(double inSpeed);
 	double GetEncoderDistance();
