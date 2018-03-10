@@ -2,7 +2,7 @@
 #include "TurnDegrees.h"
 
 Right::Right(double degrees) {
-	AddSequential(new TurnDegrees(degrees));
+	AddSequential(new TurnDegrees(-degrees));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

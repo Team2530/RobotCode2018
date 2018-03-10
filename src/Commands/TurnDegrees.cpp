@@ -10,16 +10,17 @@ TurnDegrees::TurnDegrees(int degrees) {
 
 // Called just before this Command runs the first time
 void TurnDegrees::Initialize() {
-	StartingAngle = Robot::drivetrain->GetCurrentAngle();
-	TargetAngle = Robot::drivetrain->ModAngle(TurnDeg + StartingAngle);
-	SmartDashboard::PutNumber("target:  ", TargetAngle);
+	StartingAngle = Robot::drivetrain->GetIdealAngle();
+	Robot::drivetrain->AddToIdealAngle(TurnDeg);
+	SmartDashboard::PutNumber("target:  ", Robot::drivetrain->GetIdealAngle());
+	SmartDashboard::PutNumber("start: ", StartingAngle);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TurnDegrees::Execute() {
 	NewAngle = Robot::drivetrain->GetCurrentAngle();
 	SmartDashboard::PutNumber("angle:  ", NewAngle);
-	Fix = .1*Robot::drivetrain->ModAngle(TargetAngle-NewAngle);
+	Fix = .1*Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle);
 
 	Robot::drivetrain->Turn(Fix);
 
@@ -27,7 +28,7 @@ void TurnDegrees::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool TurnDegrees::IsFinished() {
 
-	if(abs(Robot::drivetrain->ModAngle(TargetAngle-NewAngle))<5)
+	if(abs(Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle))<1)
 		return true;
 	else
 		return false;

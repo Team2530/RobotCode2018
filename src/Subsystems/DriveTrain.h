@@ -38,6 +38,7 @@ private:
 	double previousAngle;
 	double averageEncoder;
 	double angleAdjustment;
+	double idealAngle;
 
 	double kTimeoutMs = 10;
 	double kPIDLoopIdx=0;
@@ -63,6 +64,9 @@ public:
 	double GetCurrentAngle();
 	double ModAngle(double angle);
 	void SetEncoderDistance(double value);
+	void InitIdealAngle();
+	double GetIdealAngle();
+	void AddToIdealAngle(double degrees);
 };
 
 #endif  // DriveTrain_H

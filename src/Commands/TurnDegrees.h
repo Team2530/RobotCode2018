@@ -12,11 +12,10 @@ public:
 	bool IsFinished();
 	void End();
 	void Interrupted();
-	int TurnDeg;
-	int StartingAngle;
-	int Fix;
-	int TargetAngle;
-	int NewAngle;
+	double TurnDeg;
+	double StartingAngle;
+	double Fix;
+	double NewAngle;
 
 };
 #endif  // TurnDegrees_H

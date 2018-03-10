@@ -165,10 +165,10 @@ void DriveTrain::Stop(){
 }
 void DriveTrain::Turn(double fix){
 	if(fix>0){//inverted is quick fix
-		robotDrive->ArcadeDrive(0,-.6);//.1 is a guess of how much power wanted for turn. Can change
+		robotDrive->ArcadeDrive(0,.6);//.1 is a guess of how much power wanted for turn. Can change
 	}
 	else{
-		robotDrive->ArcadeDrive(0,.6);//see above //inverted is quick fix
+		robotDrive->ArcadeDrive(0,-.6);//see above //inverted is quick fix
 	}
 }
 
@@ -223,4 +223,13 @@ double DriveTrain::ModAngle(double angle){
 	while (angle > 180) angle -= 360;
 	while (angle < -180) angle += 360;
 	return angle;
+}
+void DriveTrain::InitIdealAngle(){
+	idealAngle = GetCurrentAngle();
+}
+double DriveTrain::GetIdealAngle(){
+	return idealAngle;
+}
+void DriveTrain::AddToIdealAngle(double degrees){
+	idealAngle = ModAngle(idealAngle+degrees);
 }
