@@ -62,6 +62,9 @@ void Robot::RobotInit() {
 	ChooserPos.AddDefault("Left", left);
 	ChooserPos.AddObject("Right", right);
 	ChooserPos.AddObject("Middle", middle);
+	//Drive Chooser
+	ChooserDrive.AddObject("TankDrive", TANK_DRIVE_WITH_JOYSTICK);
+	ChooserDrive.AddObject("SkidSteer", SKID_STEAR_WITH_JOYSTICK);
 	//Wait Chooser
 	SmartDashboard::SetDefaultNumber("WaitTime", 0);
 	SmartDashboard::PutData("Start Position", &ChooserPos);
@@ -132,7 +135,7 @@ void Robot::TeleopInit()  {
 		m_autonomousCommand->Cancel();
 		m_autonomousCommand = nullptr;
 	}
-	Command* dfault = new SkidStearWithJoystick();
+	Command* dfault = new TankDriveWithJoystick();
 	dfault->Start();
 }
 
