@@ -138,7 +138,7 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
 		frontRightController->ConfigPeakOutputForward(power, kTimeoutMs);
 		frontRightController->ConfigPeakOutputReverse(-power, kTimeoutMs);*/
-		double error = ModAngle(StartingAngle-angle);
+		double error = 0.1*ModAngle(StartingAngle-angle);
 		frontLeftController->Config_kF(kPIDLoopIdx, kF*(1-error), kTimeoutMs);
 	/*} else if (StartingAngle > angle) {
 		//frontLeftController power -
