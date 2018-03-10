@@ -83,6 +83,7 @@ void Robot::DisabledInit() {
 
 void Robot::DisabledPeriodic() {
 	frc::Scheduler::GetInstance()->Run();
+	SmartDashboard::PutNumber("disabled angle", drivetrain->GetCurrentAngle());
 }
 
 /**
@@ -110,6 +111,7 @@ void Robot::AutonomousInit()  {
 	Robot::AutoCommand leftCommand = AutoChooserLeft.GetSelected();
 
 	Robot::AutoCommand rightCommand = AutoChooserRight.GetSelected();
+	drivetrain->InitIdealAngle();
 
 	bool evade = true;
 
