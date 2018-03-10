@@ -51,12 +51,12 @@ angleAdjustment(0)
 	frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
 	frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
 
-	frontLeftController->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontLeftController->Config_kF(kPIDLoopIdx, 0.01, kTimeoutMs);
 	frontLeftController->Config_kP(kPIDLoopIdx, 0.03, kTimeoutMs);
 	frontLeftController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 	frontLeftController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
-	frontRightController->Config_kF(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontRightController->Config_kF(kPIDLoopIdx, 0.011, kTimeoutMs);
 	frontRightController->Config_kP(kPIDLoopIdx, 0.03, kTimeoutMs);
 	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
@@ -127,7 +127,7 @@ void DriveTrain::DriveStraight(Joystick* stick, double StartingAngle) {
 void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 	double angle = Robot::drivetrain->GetCurrentAngle();
 
-	if(StartingAngle > angle) {
+	if(StartingAngle < angle) {
 		//frontLeftController power +
 		//frontRightController power -
 		double power=1-(.1*(StartingAngle-angle));
@@ -135,7 +135,7 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
 		frontRightController->ConfigPeakOutputForward(power, kTimeoutMs);
 		frontRightController->ConfigPeakOutputReverse(-power, kTimeoutMs);
-	} else if (StartingAngle < angle) {
+	} else if (StartingAngle > angle) {
 		//frontLeftController power -
 		//frontRightController power +
 		double power=1-(.1*(StartingAngle-angle));
@@ -214,7 +214,7 @@ void DriveTrain::UpdatePosition(){
 	table->PutNumber("angle", currentAngle);
 }
 double DriveTrain::GetCurrentAngle(){
-	double angle =  ahrs != nullptr ? ahrs->GetYaw()+angleAdjustment : 0.01;
+	double angle =  ahrs != nullptr ? ahrs->GetYaw() : 0.01;
 	// Rotate the output around by a full resolution if it is outside of +/-180
 	// (This will only occur if angleAdjustment is nonzero, as GetYaw is always in that range)
 	return -ModAngle(angle);
@@ -225,6 +225,7 @@ double DriveTrain::ModAngle(double angle){
 	return angle;
 }
 void DriveTrain::InitIdealAngle(){
+	ahrs->Reset();
 	idealAngle = GetCurrentAngle();
 }
 double DriveTrain::GetIdealAngle(){

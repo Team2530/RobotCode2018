@@ -29,8 +29,11 @@ void DriveInches::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool DriveInches::IsFinished() {
 	if(abs(target-Robot::drivetrain->GetEncoderDistance())<buffer){
+		SmartDashboard::PutNumber("finish", 1);
 		return true;
+
 	}
+	SmartDashboard::PutNumber("finish", 0);
 	return false;
 }
 

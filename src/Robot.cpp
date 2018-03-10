@@ -111,6 +111,7 @@ void Robot::AutonomousInit()  {
 	bool evade = true;
 
 	m_autonomousCommand = new AutoMain(waitTime, gameData[0], startPos, leftCommand, rightCommand, evade);
+	drivetrain->InitIdealAngle();
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand -> Start();

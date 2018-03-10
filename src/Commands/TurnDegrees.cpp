@@ -20,7 +20,7 @@ void TurnDegrees::Initialize() {
 void TurnDegrees::Execute() {
 	NewAngle = Robot::drivetrain->GetCurrentAngle();
 	SmartDashboard::PutNumber("angle:  ", NewAngle);
-	Fix = .1*Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle);
+	Fix = .01*Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle);
 
 	Robot::drivetrain->Turn(Fix);
 

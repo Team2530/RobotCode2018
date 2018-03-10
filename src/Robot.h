@@ -12,6 +12,7 @@
 #include <StartPositions.h>
 #include <networktables/NetworkTableInstance.h>
 #include <OI.h>
+#include <Commands/TankDriveWithJoystick.h>
 
 //Auto Commands
 
