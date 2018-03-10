@@ -5,8 +5,9 @@
 #include <Robot.h>
 
 class TurnDegrees : public frc::Command {
+private:
 public:
-	TurnDegrees(int degrees);
+	TurnDegrees(double degrees);
 	void Initialize();
 	void Execute();
 	bool IsFinished();

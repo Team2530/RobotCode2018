@@ -9,6 +9,9 @@
 #include <networktables/NetworkTableInstance.h>
 #include <Commands/SkidStearWithJoystick.h>
 
+
+double constexpr kF = .001;
+
 DriveTrain::DriveTrain() : Subsystem("DriveTrainSubsystem"),
 ahrs(nullptr), // obtained from OI later
 leftLastMeasurement(0),
@@ -51,13 +54,13 @@ angleAdjustment(0)
 	frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
 	frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
 
-	frontLeftController->Config_kF(kPIDLoopIdx, 0.01, kTimeoutMs);
-	frontLeftController->Config_kP(kPIDLoopIdx, 0.03, kTimeoutMs);
+	frontLeftController->Config_kF(kPIDLoopIdx, 0.001, kTimeoutMs);
+	frontLeftController->Config_kP(kPIDLoopIdx, 0.01, kTimeoutMs);
 	frontLeftController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 	frontLeftController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
-	frontRightController->Config_kF(kPIDLoopIdx, 0.011, kTimeoutMs);
-	frontRightController->Config_kP(kPIDLoopIdx, 0.03, kTimeoutMs);
+	frontRightController->Config_kF(kPIDLoopIdx, 0.001, kTimeoutMs);
+	frontRightController->Config_kP(kPIDLoopIdx, 0.01, kTimeoutMs);
 	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 
@@ -127,15 +130,17 @@ void DriveTrain::DriveStraight(Joystick* stick, double StartingAngle) {
 void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 	double angle = Robot::drivetrain->GetCurrentAngle();
 
-	if(StartingAngle < angle) {
+	//if(StartingAngle < angle) {
 		//frontLeftController power +
 		//frontRightController power -
-		double power=1-(.1*(StartingAngle-angle));
+		/*double power=1-(.1*(StartingAngle-angle));
 		frontLeftController->ConfigPeakOutputForward(1, kTimeoutMs);
 		frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
 		frontRightController->ConfigPeakOutputForward(power, kTimeoutMs);
-		frontRightController->ConfigPeakOutputReverse(-power, kTimeoutMs);
-	} else if (StartingAngle > angle) {
+		frontRightController->ConfigPeakOutputReverse(-power, kTimeoutMs);*/
+		double error = ModAngle(StartingAngle-angle);
+		frontLeftController->Config_kF(kPIDLoopIdx, kF*(1-error), kTimeoutMs);
+	/*} else if (StartingAngle > angle) {
 		//frontLeftController power -
 		//frontRightController power +
 		double power=1-(.1*(StartingAngle-angle));
@@ -143,7 +148,7 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontLeftController->ConfigPeakOutputReverse(-power, kTimeoutMs);
 		frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
 		frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
-	}
+	}*/
 
 	frontLeftController->Set(ControlMode::Position, -rotations);
 	frontRightController->Set(ControlMode::Position, rotations);
@@ -164,12 +169,9 @@ void DriveTrain::Stop(){
 	robotDrive->ArcadeDrive(0,0);
 }
 void DriveTrain::Turn(double fix){
-	if(fix>0){//inverted is quick fix
-		robotDrive->ArcadeDrive(0,.6);//.1 is a guess of how much power wanted for turn. Can change
-	}
-	else{
-		robotDrive->ArcadeDrive(0,-.6);//see above //inverted is quick fix
-	}
+
+	robotDrive->ArcadeDrive(0,fix);//see above //inverted is quick fix
+
 }
 
 double DriveTrain::DriveFunction(double inSpeed) {
@@ -225,8 +227,10 @@ double DriveTrain::ModAngle(double angle){
 	return angle;
 }
 void DriveTrain::InitIdealAngle(){
-	ahrs->Reset();
+	ahrs->ZeroYaw();
+	while(GetCurrentAngle()!=0);
 	idealAngle = GetCurrentAngle();
+	SmartDashboard::PutNumber("initial ideal", idealAngle);
 }
 double DriveTrain::GetIdealAngle(){
 	return idealAngle;
@@ -234,3 +238,4 @@ double DriveTrain::GetIdealAngle(){
 void DriveTrain::AddToIdealAngle(double degrees){
 	idealAngle = ModAngle(idealAngle+degrees);
 }
+

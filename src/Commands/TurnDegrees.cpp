@@ -1,6 +1,6 @@
 #include "TurnDegrees.h"
 
-TurnDegrees::TurnDegrees(int degrees) {
+TurnDegrees::TurnDegrees(double degrees) {
 	TurnDeg = degrees;
 
 	Requires(Robot::drivetrain.get());
@@ -11,16 +11,33 @@ TurnDegrees::TurnDegrees(int degrees) {
 // Called just before this Command runs the first time
 void TurnDegrees::Initialize() {
 	StartingAngle = Robot::drivetrain->GetIdealAngle();
+	SmartDashboard::PutNumber("start: ", StartingAngle);
 	Robot::drivetrain->AddToIdealAngle(TurnDeg);
 	SmartDashboard::PutNumber("target:  ", Robot::drivetrain->GetIdealAngle());
-	SmartDashboard::PutNumber("start: ", StartingAngle);
 }
 
 // Called repeatedly when this Command is scheduled to run
 void TurnDegrees::Execute() {
 	NewAngle = Robot::drivetrain->GetCurrentAngle();
 	SmartDashboard::PutNumber("angle:  ", NewAngle);
-	Fix = .01*Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle);
+	Fix = .015*Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle);
+	SmartDashboard::PutNumber("Fix: ", Fix);
+	double constexpr maxPow=.9;
+	double constexpr minPowLeft=.4;
+	double constexpr minPowRight=.2;
+	if(Fix<0){
+		if(Fix<-maxPow)
+			Fix=-maxPow;
+		if(Fix>-minPowRight)
+			Fix=-minPowRight;
+	}
+	else{
+		if(Fix>maxPow)
+			Fix=maxPow;
+		if(Fix<minPowLeft)
+			Fix=minPowLeft;
+	}
+
 
 	Robot::drivetrain->Turn(Fix);
 
@@ -28,11 +45,14 @@ void TurnDegrees::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool TurnDegrees::IsFinished() {
 
-	if(abs(Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle))<1)
+	if(fabs(Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle))<1){
+		SmartDashboard::PutNumber("turn finished", 1);
 		return true;
-	else
+	}
+	else{
+		SmartDashboard::PutNumber("turn finished", 0);
 		return false;
-
+	}
 	/*if (NewAngle >= TargetAngle + 5)
 		return false;
 	if (NewAngle <= TargetAngle - 5)
