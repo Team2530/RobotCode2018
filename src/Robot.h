@@ -56,7 +56,9 @@ public:
 			CROSS_LINE_RIGHT,
 			DELIVER_FRONT,
 			DELIVER_SIDE_CROSS_FRONT,
-			DELIVER_SIDE_CROSS_BACK
+			DELIVER_SIDE_CROSS_BACK,
+			TANK_DRIVE_WITH_JOYSTICK,
+			SKID_STEAR_WITH_JOYSTICK
 		};
 
 private:
@@ -66,6 +68,7 @@ private:
 	frc::SendableChooser<AutoCommand> AutoChooserLeft;
 	frc::SendableChooser<AutoCommand> AutoChooserRight;
 	frc::SendableChooser<StartPosition> ChooserPos;
+	frc::SendableChooser<AutoCommand> ChooserDrive;
 	frc::SendableChooser<int> WaitTime;
 	nt::NetworkTableInstance GSSinst;
 };
