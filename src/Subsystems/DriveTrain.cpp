@@ -141,6 +141,8 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
 		frontRightController->ConfigPeakOutputForward(power, kTimeoutMs);
 		frontRightController->ConfigPeakOutputReverse(-power, kTimeoutMs);
+		frontLeftController->Config_kP(kPIDLoopIdx, kP*(1-error), kTimeoutMs);
+		frontRightController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
 	}
 //		frontLeftController->Config_kF(kPIDLoopIdx, kF*(1-error), kTimeoutMs);
 	else if (error > 0) {
@@ -151,9 +153,10 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontLeftController->ConfigPeakOutputReverse(-power, kTimeoutMs);
 		frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
 		frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
+		frontRightController->Config_kP(kPIDLoopIdx, kP*(1+error), kTimeoutMs);
+		frontLeftController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
 	}
 
-	frontLeftController->Config_kP(kPIDLoopIdx, kP*(1-error), kTimeoutMs);
 	frontLeftController->Set(ControlMode::Position, -rotations);
 	frontRightController->Set(ControlMode::Position, rotations);
 	//robotDrive->ArcadeDrive(speed, 0);
