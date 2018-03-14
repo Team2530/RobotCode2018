@@ -273,3 +273,7 @@ void DriveTrain::ResetPIDs(){
 	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
 	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
 }
+void DriveTrain::ResetEncoders(){
+	frontRightController->SetSelectedSensorPosition(0,0,0);
+	frontLeftController->SetSelectedSensorPosition(0,0,0);
+}

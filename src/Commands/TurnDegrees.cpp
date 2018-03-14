@@ -23,8 +23,8 @@ void TurnDegrees::Execute() {
 	Fix = .015*Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle);
 	SmartDashboard::PutNumber("Fix: ", Fix);
 	double constexpr maxPow=.9;
-	double constexpr minPowLeft=.4;
-	double constexpr minPowRight=.2;
+	double constexpr minPowLeft=.6;
+	double constexpr minPowRight=.3;
 	if(Fix<0){
 		if(Fix<-maxPow)
 			Fix=-maxPow;
@@ -45,7 +45,7 @@ void TurnDegrees::Execute() {
 // Make this return true when this Command no longer needs to run execute()
 bool TurnDegrees::IsFinished() {
 
-	if(fabs(Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle))<1){
+	if(fabs(Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle))<3){
 		SmartDashboard::PutNumber("turn finished", 1);
 		return true;
 	}
