@@ -42,8 +42,9 @@ angleAdjustment(0)
 	frontLeftController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0, 0);
 	frontRightController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,0);
 
+	ResetPIDs();
 	//frontLeftController->SetSelectedSensorPosition(frontLeftController->GetSelectedSensorPosition(0), 0,0);
-	frontLeftController->ConfigNominalOutputForward(0,kTimeoutMs);
+/*	frontLeftController->ConfigNominalOutputForward(0,kTimeoutMs);
 	frontLeftController->ConfigNominalOutputReverse(0, kTimeoutMs);
 	frontLeftController->ConfigPeakOutputForward(1, kTimeoutMs);
 	frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
@@ -63,7 +64,7 @@ angleAdjustment(0)
 	frontRightController->Config_kF(kPIDLoopIdx, kF, kTimeoutMs);
 	frontRightController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
 	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
-	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);*/
 
 	//SmartDashboard::PutNumber("Left encoder start: ", frontLeftController->GetSelectedSensorPosition(0));
 	//SmartDashboard::PutNumber("Right Encoder start: ", frontRightController->GetSelectedSensorPosition(0));
@@ -156,6 +157,10 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontRightController->Config_kP(kPIDLoopIdx, kP*(1+error), kTimeoutMs);
 		frontLeftController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
 	}
+	frontLeftController->ConfigNominalOutputForward(.2, kTimeoutMs);
+	frontLeftController->ConfigNominalOutputReverse(-.2, kTimeoutMs);
+	frontRightController->ConfigNominalOutputForward(.2, kTimeoutMs);
+	frontRightController->ConfigNominalOutputReverse(-.2, kTimeoutMs);
 
 	frontLeftController->Set(ControlMode::Position, -rotations);
 	frontRightController->Set(ControlMode::Position, rotations);
@@ -245,4 +250,26 @@ double DriveTrain::GetIdealAngle(){
 void DriveTrain::AddToIdealAngle(double degrees){
 	idealAngle = ModAngle(idealAngle+degrees);
 }
+void DriveTrain::ResetPIDs(){
+	frontLeftController->ConfigNominalOutputForward(0,kTimeoutMs);
+	frontLeftController->ConfigNominalOutputReverse(0, kTimeoutMs);
+	frontLeftController->ConfigPeakOutputForward(1, kTimeoutMs);
+	frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
+	//frontLeftController->SetSensorPhase(true);
 
+	//frontRightController->SetSelectedSensorPosition(frontRightController->GetSelectedSensorPosition(0), 0,0);
+	frontRightController->ConfigNominalOutputForward(0,kTimeoutMs);
+	frontRightController->ConfigNominalOutputReverse(0, kTimeoutMs);
+	frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
+	frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
+
+	frontLeftController->Config_kF(kPIDLoopIdx, kF, kTimeoutMs);
+	frontLeftController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
+	frontLeftController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontLeftController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
+
+	frontRightController->Config_kF(kPIDLoopIdx, kF, kTimeoutMs);
+	frontRightController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
+	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
+	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
+}
