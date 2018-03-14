@@ -68,6 +68,7 @@ public:
 	double GetIdealAngle();
 	void AddToIdealAngle(double degrees);
 	void ResetPIDs();
+	void ResetEncoders();
 };
 
 #endif  // DriveTrain_H
