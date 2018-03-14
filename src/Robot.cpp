@@ -104,19 +104,17 @@ void Robot::AutonomousInit()  {
 	//std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 	// Return the switch & scale data pulled from the NetworkTable entry.
 	std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
+
 	double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
 
 	StartPosition startPos = ChooserPos.GetSelected();
-
 	Robot::AutoCommand leftCommand = AutoChooserLeft.GetSelected();
 
 	Robot::AutoCommand rightCommand = AutoChooserRight.GetSelected();
 	drivetrain->InitIdealAngle();
 
 	bool evade = true;
-
 	m_autonomousCommand = new AutoMain(waitTime, gameData[0], startPos, leftCommand, rightCommand, evade);
-	drivetrain->InitIdealAngle();
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand -> Start();
