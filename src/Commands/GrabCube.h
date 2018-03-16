@@ -8,8 +8,6 @@
 #ifndef SRC_COMMANDS_GRABCUBE_H_
 #define SRC_COMMANDS_GRABCUBE_H_
 
-#include <OI.h>
-#include <Robot.h>
 
 #include "Commands/Command.h"
 

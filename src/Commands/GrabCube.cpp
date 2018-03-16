@@ -5,6 +5,9 @@
  *      Author: Team2530
  */
 #include <Commands/GrabCube.h>
+#include <Robot.h>
+#include "Subsystems/Sol.h"
+
 
 GrabCube::GrabCube() {
 	Requires(Robot::sol.get());

@@ -1,4 +1,7 @@
 #include "LowerLeft.h"
+#include "Robot.h"
+#include "Subsystems/Ramp.h"
+
 
 LowerLeft::LowerLeft() {
 	Requires(Robot::ramp.get());

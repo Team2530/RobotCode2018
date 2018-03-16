@@ -2,8 +2,6 @@
 #define LowerArm_H
 
 #include "Commands/Command.h"
-#include "Subsystems/Elevator.h"
-#include "Robot.h"
 
 class LowerArm : public frc::Command {
 public:

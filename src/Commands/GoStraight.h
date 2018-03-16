@@ -2,10 +2,10 @@
 #define GoStraight_H
 
 #include <Commands/Command.h>
-#include <Subsystems/DriveTrain.h>
-#include <Robot.h>
-#include <RobotMap.h>
-#include <Joystick.h>
+
+namespace frc {
+class Joystick;
+};
 
 class GoStraight : public frc::Command {
 private:

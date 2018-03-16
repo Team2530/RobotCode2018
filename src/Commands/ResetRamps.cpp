@@ -1,4 +1,6 @@
 #include "ResetRamps.h"
+#include "Robot.h"
+#include "Subsystems/Ramp.h"
 
 ResetRamps::ResetRamps() {
 	// Use Requires() here to declare subsystem dependencies

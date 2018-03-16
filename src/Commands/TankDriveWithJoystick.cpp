@@ -6,9 +6,9 @@
 /*----------------------------------------------------------------------------*/
 
 #include "TankDriveWithJoystick.h"
-#include "Subsystems/DriveTrain.h"
-#include "../OI.h"
 #include "Robot.h"
+#include "Subsystems/DriveTrain.h"
+#include "OI.h"
 
 TankDriveWithJoystick::TankDriveWithJoystick() {
 	// Use Requires() here to declare subsystem dependencies

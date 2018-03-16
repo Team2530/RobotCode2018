@@ -1,4 +1,6 @@
 #include "RaiseRight.h"
+#include "Robot.h"
+#include "Subsystems/Ramp.h"
 
 RaiseRight::RaiseRight() {
 	Requires(Robot::ramp.get());

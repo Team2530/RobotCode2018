@@ -1,5 +1,9 @@
 #include "AutoRightToDeliverSideCrossInBackLeft.h"
 
+#include <Commands/Right.h>
+#include <Commands/Left.h>
+#include <Commands/DriveInches.h>
+
 AutoRightToDeliverSideCrossInBackLeft::AutoRightToDeliverSideCrossInBackLeft() {
 	AddSequential(new DriveInches(distanceBaseLinePastSwitch));
 	AddSequential(new Left(90));//DONT KNOW WHICH WAY POSITIVE: LEFT POS

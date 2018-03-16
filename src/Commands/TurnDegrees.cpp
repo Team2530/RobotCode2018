@@ -1,4 +1,6 @@
 #include "TurnDegrees.h"
+#include <Robot.h>
+#include "Subsystems/DriveTrain.h"
 
 TurnDegrees::TurnDegrees(double degrees) {
 	TurnDeg = degrees;

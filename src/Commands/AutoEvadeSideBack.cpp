@@ -1,6 +1,5 @@
 #include <Commands/AutoEvadeSideBack.h>
 #include <Commands/DriveInches.h>
-#include <Commands/TurnDegrees.h>
 
 AutoEvadeSideBack::AutoEvadeSideBack() {
 	AddSequential(new DriveInches(GetOutOfTheWay));

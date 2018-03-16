@@ -2,7 +2,6 @@
 #define ReleaseCube_H
 
 #include "Commands/Command.h"
-#include "../Robot.h"
 
 class ReleaseCube : public frc::Command {
 public:

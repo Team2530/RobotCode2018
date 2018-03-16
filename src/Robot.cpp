@@ -14,6 +14,13 @@
 #include <Robot.h>
 #include <Commands/AutoMain.h>
 #include <Commands/SkidStearWithJoystick.h>
+#include <Commands/TankDriveWithJoystick.h>
+
+#include "Subsystems/Ramp.h"
+#include "Subsystems/DriveTrain.h"
+#include "Subsystems/Elevator.h"
+#include "Subsystems/Sol.h"
+#include "OI.h"
 
 std::shared_ptr<DriveTrain> Robot::drivetrain;
 std::shared_ptr<Sol> Robot::sol;

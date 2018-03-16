@@ -1,4 +1,6 @@
 #include <Commands/ReleaseCube.h>
+#include "../Robot.h"
+#include "Subsystems/Sol.h"
 
 ReleaseCube::ReleaseCube() {
 	// Use Requires() here to declare subsystem dependencies

@@ -1,4 +1,8 @@
 #include "DropRamps.h"
+#include "Robot.h"
+#include "Subsystems/Ramp.h"
+#include "Subsystems/DriveTrain.h"
+#include "Subsystems/Elevator.h"
 
 DropRamps::DropRamps() {
 	Requires(Robot::ramp.get());

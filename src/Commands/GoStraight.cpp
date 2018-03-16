@@ -1,4 +1,7 @@
 #include "GoStraight.h"
+#include <Robot.h>
+#include <Joystick.h>
+#include "Subsystems/DriveTrain.h"
 
 GoStraight::GoStraight() {
 	Requires(Robot::drivetrain.get());

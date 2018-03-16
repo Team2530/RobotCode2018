@@ -2,8 +2,6 @@
 #define LowerRamp_H
 
 #include "Commands/CommandGroup.h"
-#include "Subsystems/Ramp.h"
-#include "Robot.h"
 
 class LowerRamp : public Command {
 public:

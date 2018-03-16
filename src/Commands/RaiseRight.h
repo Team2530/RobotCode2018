@@ -2,8 +2,6 @@
 #define RaiseRight_H
 
 #include "Commands/Command.h"
-#include "Subsystems/Ramp.h"
-#include "Robot.h"
 
 class RaiseRight : public frc::Command {
 public:

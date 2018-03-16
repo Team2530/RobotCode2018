@@ -2,8 +2,6 @@
 #define ResetRamps_H
 
 #include "Commands/Command.h"
-#include "Subsystems/Ramp.h"
-#include "Robot.h"
 
 class ResetRamps : public Command {
 public:

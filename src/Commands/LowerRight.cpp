@@ -1,4 +1,6 @@
 #include "LowerRight.h"
+#include "Robot.h"
+#include "Subsystems/Ramp.h"
 
 LowerRight::LowerRight() {
 	Requires(Robot::ramp.get());

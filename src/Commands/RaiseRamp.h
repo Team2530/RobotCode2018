@@ -2,8 +2,6 @@
 #define RaiseRamp_H
 
 #include "Commands/Command.h"
-#include "Subsystems/Ramp.h"
-#include "Robot.h"
 
 class RaiseRamp : public frc::Command {
 public:

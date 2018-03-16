@@ -2,7 +2,7 @@
 #include <Commands/DriveInches.h>
 #include <Commands/Right.h>
 #include <Commands/Left.h>
-#include <Robot.h>
+
 
 AutoMiddleToDeliverSideCrossInFrontLeft::AutoMiddleToDeliverSideCrossInFrontLeft() {
 	AddSequential(new DriveInches(40)); //drive into area

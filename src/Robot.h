@@ -5,20 +5,24 @@
 //Commands
 
 #include <SmartDashboard/SendableChooser.h>
-#include <Subsystems/Sol.h>
-#include "Subsystems/DriveTrain.h"
-#include <Subsystems/Elevator.h>
-#include <Subsystems/Ramp.h>
+//#include <Subsystems/Sol.h>
+//#include "Subsystems/DriveTrain.h"
+//#include <Subsystems/Elevator.h>
+//#include <Subsystems/Ramp.h>
 #include <StartPositions.h>
 #include <networktables/NetworkTableInstance.h>
-#include <OI.h>
-#include <Commands/TankDriveWithJoystick.h>
+//#include <OI.h>
+//#include <Commands/TankDriveWithJoystick.h>
+#include <TimedRobot.h>
 
 //Auto Commands
 
+class DriveTrain;
+class Sol;
+class Elevator;
+class Ramp;
+class OI;
 
-
-#include <SmartDashboard/SendableChooser.h>
 
 
 class Robot : public frc::TimedRobot {
@@ -31,8 +35,6 @@ public:
 	static std::shared_ptr<Ramp> ramp;
 	static std::shared_ptr<OI> oi;
 	static std::string gameData;
-
-	std::string getGameSpecificMessage();
 
 	virtual void RobotInit() override ;
 

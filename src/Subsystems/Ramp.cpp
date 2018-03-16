@@ -1,5 +1,5 @@
 #include "Ramp.h"
-#include "../RobotMap.h"
+
 
 Ramp::Ramp() : Subsystem("Ramp") {
 	RampMotorLeft = new VictorSP(ChannelLeft);

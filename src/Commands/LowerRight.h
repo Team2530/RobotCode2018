@@ -2,8 +2,6 @@
 #define LowerRight_H
 
 #include "Commands/Command.h"
-#include "Subsystems/Ramp.h"
-#include "Robot.h"
 
 class LowerRight : public Command{
 public:

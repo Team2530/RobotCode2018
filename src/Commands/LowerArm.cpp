@@ -1,4 +1,7 @@
 #include "LowerArm.h"
+#include "Robot.h"
+#include "Subsystems/Elevator.h"
+
 
 LowerArm::LowerArm() {
 	// Use Requires() here to declare subsystem dependencies
