@@ -5,7 +5,7 @@
 
 class AutoLeftToDeliverFrontLeft : public frc::CommandGroup {
 private:
-	double static constexpr buffer = 22;
+	//double static constexpr buffer = 22;
 public:
 	AutoLeftToDeliverFrontLeft();
 };

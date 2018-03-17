@@ -4,9 +4,11 @@
 #include <Commands/Right.h>
 
 AutoRightToDeliverFrontRight::AutoRightToDeliverFrontRight() {
-	AddSequential(new DriveInches(135)); //goes towards switch
+	AddSequential(new DriveInches(100)); //goes towards switch
 	AddSequential(new Left(90));
-	AddSequential(new DriveInches(23)); //drive to switch
+	AddSequential(new DriveInches(65)); //drive to switch
+	AddSequential(new Right(90));
+	AddSequential(new DriveInches(20), 3.0);
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

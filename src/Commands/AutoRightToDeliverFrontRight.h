@@ -5,7 +5,7 @@
 
 class AutoRightToDeliverFrontRight : public frc::CommandGroup {
 private:
-	double buffer = 22;
+	//double buffer = 22;
 public:
 	AutoRightToDeliverFrontRight();
 };
