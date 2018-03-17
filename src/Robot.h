@@ -67,12 +67,10 @@ private:
 
 	frc::Command* m_autonomousCommand = nullptr;
 	//frc::SendableChooser<frc::Command*> m_chooser;
-	frc::SendableChooser<AutoCommand> AutoChooserLeft;
-	frc::SendableChooser<AutoCommand> AutoChooserRight;
-	frc::SendableChooser<StartPosition> ChooserPos;
-	frc::SendableChooser<AutoCommand> ChooserDrive;
-	frc::SendableChooser<int> WaitTime;
-	nt::NetworkTableInstance GSSinst;
+	frc::SendableChooser<AutoCommand> *AutoChooserLeft;
+	frc::SendableChooser<AutoCommand> *AutoChooserRight;
+	frc::SendableChooser<StartPosition> *ChooserPos;
+	frc::SendableChooser<AutoCommand> *ChooserDrive;
 };
 
 #endif /* SRC_ROBOT_H_ */

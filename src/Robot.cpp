@@ -48,33 +48,37 @@ void Robot::RobotInit() {
 	camera.SetBrightness(100);
 
 	//Left Chooser
-	AutoChooserLeft.AddDefault("Do Nothing Left", DO_NOTHING);
-	AutoChooserLeft.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
-	AutoChooserLeft.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
-	AutoChooserLeft.AddObject("Deliver Front", DELIVER_FRONT);
-	AutoChooserLeft.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
-	AutoChooserLeft.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
-	SmartDashboard::PutData("Auto Left", &AutoChooserLeft);
+	AutoChooserLeft = new frc::SendableChooser<AutoCommand>;
+	AutoChooserLeft->AddDefault("Do Nothing Left", DO_NOTHING);
+	AutoChooserLeft->AddObject("Auto Line Left", CROSS_LINE_LEFT);
+	AutoChooserLeft->AddObject("Auto Line Right", CROSS_LINE_RIGHT);
+	AutoChooserLeft->AddObject("Deliver Front", DELIVER_FRONT);
+	AutoChooserLeft->AddObject("Deliver Side Cross Front", DELIVER_SIDE_CROSS_FRONT);
+	AutoChooserLeft->AddObject("Deliver Side Cross Back", DELIVER_SIDE_CROSS_BACK);
+	SmartDashboard::PutData("Automode Left", AutoChooserLeft);
 
 	//Right Chooser
-	AutoChooserRight.AddDefault("Do Nothing Right", DO_NOTHING);
-	AutoChooserRight.AddObject("Cross Auto Line Left", CROSS_LINE_LEFT);
-	AutoChooserRight.AddObject("Cross Auto Line Right", CROSS_LINE_RIGHT);
-	AutoChooserRight.AddObject("Deliver Front", DELIVER_FRONT);
-	AutoChooserRight.AddObject("Deliver Side Crossing Front", DELIVER_SIDE_CROSS_FRONT);
-	AutoChooserRight.AddObject("Deliver Side Crossing Back", DELIVER_SIDE_CROSS_BACK);
-	SmartDashboard::PutData("Auto Right", &AutoChooserRight);
+	AutoChooserRight = new frc::SendableChooser<AutoCommand>;
+	AutoChooserRight->AddDefault("Do Nothing Right", DO_NOTHING);
+	AutoChooserRight->AddObject("Auto Line Left", CROSS_LINE_LEFT);
+	AutoChooserRight->AddObject("Auto Line Right", CROSS_LINE_RIGHT);
+	AutoChooserRight->AddObject("Deliver Front", DELIVER_FRONT);
+	AutoChooserRight->AddObject("Deliver Side Cross Front", DELIVER_SIDE_CROSS_FRONT);
+	AutoChooserRight->AddObject("Deliver Side Cross Back", DELIVER_SIDE_CROSS_BACK);
+	SmartDashboard::PutData("Automode Right", AutoChooserRight);
 
 	//Position Chooser
-	ChooserPos.AddDefault("Left", left);
-	ChooserPos.AddObject("Right", right);
-	ChooserPos.AddObject("Middle", middle);
+	ChooserPos = new frc::SendableChooser<StartPosition>;
+	ChooserPos->AddDefault("Left", left);
+	ChooserPos->AddObject("Right", right);
+	ChooserPos->AddObject("Middle", middle);
+	SmartDashboard::PutData("Start Position", ChooserPos);
 	//Drive Chooser
-	ChooserDrive.AddObject("TankDrive", TANK_DRIVE_WITH_JOYSTICK);
-	ChooserDrive.AddObject("SkidSteer", SKID_STEAR_WITH_JOYSTICK);
+	ChooserDrive = new frc::SendableChooser<AutoCommand>;
+	ChooserDrive->AddObject("TankDrive", TANK_DRIVE_WITH_JOYSTICK);
+	ChooserDrive->AddObject("SkidSteer", SKID_STEAR_WITH_JOYSTICK);
 	//Wait Chooser
 	SmartDashboard::SetDefaultNumber("WaitTime", 0);
-	SmartDashboard::PutData("Start Position", &ChooserPos);
 	// Open up a NetworkTables connection to the powerup-gss server. This will reconnect on it's own if
 	// the powerup-gss server is not available. The AddLogger will remove all error messages for this NT instance,
 	// so if you are experiencing difficulties making this work, comment that line out.
@@ -110,12 +114,17 @@ void Robot::AutonomousInit()  {
 	// Return the switch & scale data pulled from the NetworkTable entry.
 	//std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
 
-	double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
+	double waitTime = SmartDashboard::GetNumber("WaitTime", 0);
 
-	StartPosition startPos = ChooserPos.GetSelected();
-	AutoCommand leftCommand = AutoChooserLeft.GetSelected();
-	AutoCommand rightCommand = AutoChooserRight.GetSelected();
+	StartPosition startPos = ChooserPos->GetSelected();
+	AutoCommand leftCommand = AutoChooserLeft->GetSelected();
+	AutoCommand rightCommand = AutoChooserRight->GetSelected();
 	drivetrain->InitIdealAngle();
+
+	SmartDashboard::PutNumber("WaitTime:", waitTime);
+	SmartDashboard::PutNumber("StartPos:", startPos);
+	SmartDashboard::PutNumber("leftCommand:", leftCommand);
+	SmartDashboard::PutNumber("rightCommand:", rightCommand);
 
 	bool evade = true;
 	m_autonomousCommand = new AutoMain(waitTime, gameData[0], startPos, leftCommand, rightCommand, evade);
