@@ -4,11 +4,11 @@
 #include <Commands/Right.h>
 
 AutoRightToCrossLineRight::AutoRightToCrossLineRight() {
-	AddSequential(new DriveInches(40));
-	AddSequential(new Right(90));
-	AddSequential(new DriveInches(33));
-	AddSequential(new Left(90));
-	AddSequential(new DriveInches(153));
+	AddSequential(new DriveInches(193));//40 //jjust go straight not so complicated man thx
+	//AddSequential(new Right(90));
+	//AddSequential(new DriveInches(33));
+	//AddSequential(new Left(90));
+	//AddSequential(new DriveInches(153));
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

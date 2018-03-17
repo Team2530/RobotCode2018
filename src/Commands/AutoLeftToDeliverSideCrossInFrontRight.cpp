@@ -9,9 +9,9 @@ AutoLeftToDeliverSideCrossInFrontRight::AutoLeftToDeliverSideCrossInFrontRight()
 	AddSequential(new Right(90));
 	AddSequential(new DriveInches(distanceCrossSwitch));
 	AddSequential(new Left(90));
-	AddSequential(new DriveInches(finalYDistance));
+	AddSequential(new DriveInches(93));
 	AddSequential(new Left(90));
-	AddSequential(new DriveInches(buffer));
+	AddSequential(new DriveInches(30), 3.0);
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

@@ -5,9 +5,7 @@
 
 class AutoLeftToDeliverSideCrossInFrontRight : public frc::CommandGroup {
 private:
-	double buffer = 22;
-	double distanceCrossSwitch = 238.75 + buffer;
-	double finalYDistance = 93;
+	double distanceCrossSwitch = 180;
 
 public:
 	AutoLeftToDeliverSideCrossInFrontRight();
