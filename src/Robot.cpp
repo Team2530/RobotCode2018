@@ -32,6 +32,15 @@ std::string Robot::gameData;
 StartPosition left = START_LEFT;
 StartPosition right = START_RIGHT;
 StartPosition middle = START_MIDDLE;
+
+Robot::AutoCommand doNothing = Robot::DO_NOTHING;
+Robot::AutoCommand crossLineLeft = Robot::CROSS_LINE_LEFT;
+Robot::AutoCommand crossLineRight = Robot::CROSS_LINE_RIGHT;
+Robot::AutoCommand deliverFront = Robot::DELIVER_FRONT;
+Robot::AutoCommand deliverSideCrossFront = Robot::DELIVER_SIDE_CROSS_FRONT;
+Robot::AutoCommand deliverSideCrossBack = Robot::DELIVER_SIDE_CROSS_BACK;
+
+
 void Robot::RobotInit() {
 
 	drivetrain = std::make_shared<DriveTrain>();
@@ -48,30 +57,30 @@ void Robot::RobotInit() {
 	camera.SetBrightness(100);
 
 	//Left Chooser
-	AutoChooserLeft = new frc::SendableChooser<AutoCommand>;
-	AutoChooserLeft->AddDefault("Do Nothing Left", DO_NOTHING);
-	AutoChooserLeft->AddObject("Auto Line Left", CROSS_LINE_LEFT);
-	AutoChooserLeft->AddObject("Auto Line Right", CROSS_LINE_RIGHT);
-	AutoChooserLeft->AddObject("Deliver Front", DELIVER_FRONT);
-	AutoChooserLeft->AddObject("Deliver Side Cross Front", DELIVER_SIDE_CROSS_FRONT);
-	AutoChooserLeft->AddObject("Deliver Side Cross Back", DELIVER_SIDE_CROSS_BACK);
+	AutoChooserLeft = new frc::SendableChooser<AutoCommand*>;
+	AutoChooserLeft->AddDefault("Do Nothing Left", &doNothing);
+	AutoChooserLeft->AddObject("Auto Line Left", &crossLineLeft);
+	AutoChooserLeft->AddObject("Auto Line Right", &crossLineRight);
+	AutoChooserLeft->AddObject("Deliver Front", &deliverFront);
+	AutoChooserLeft->AddObject("Deliver Side Cross Front", &deliverSideCrossFront);
+	AutoChooserLeft->AddObject("Deliver Side Cross Back", &deliverSideCrossBack);
 	SmartDashboard::PutData("Automode Left", AutoChooserLeft);
 
 	//Right Chooser
-	AutoChooserRight = new frc::SendableChooser<AutoCommand>;
-	AutoChooserRight->AddDefault("Do Nothing Right", DO_NOTHING);
-	AutoChooserRight->AddObject("Auto Line Left", CROSS_LINE_LEFT);
-	AutoChooserRight->AddObject("Auto Line Right", CROSS_LINE_RIGHT);
-	AutoChooserRight->AddObject("Deliver Front", DELIVER_FRONT);
-	AutoChooserRight->AddObject("Deliver Side Cross Front", DELIVER_SIDE_CROSS_FRONT);
-	AutoChooserRight->AddObject("Deliver Side Cross Back", DELIVER_SIDE_CROSS_BACK);
+	AutoChooserRight = new frc::SendableChooser<AutoCommand*>;
+	AutoChooserRight->AddDefault("Do Nothing Right", &doNothing);
+	AutoChooserRight->AddObject("Auto Line Left", &crossLineLeft);
+	AutoChooserRight->AddObject("Auto Line Right", &crossLineRight);
+	AutoChooserRight->AddObject("Deliver Front", &deliverFront);
+	AutoChooserRight->AddObject("Deliver Side Cross Front", &deliverSideCrossFront);
+	AutoChooserRight->AddObject("Deliver Side Cross Back", &deliverSideCrossBack);
 	SmartDashboard::PutData("Automode Right", AutoChooserRight);
 
 	//Position Chooser
-	ChooserPos = new frc::SendableChooser<StartPosition>;
-	ChooserPos->AddDefault("Left", left);
-	ChooserPos->AddObject("Right", right);
-	ChooserPos->AddObject("Middle", middle);
+	ChooserPos = new frc::SendableChooser<StartPosition*>;
+	ChooserPos->AddDefault("Left", &left);
+	ChooserPos->AddObject("Right", &right);
+	ChooserPos->AddObject("Middle", &middle);
 	SmartDashboard::PutData("Start Position", ChooserPos);
 	//Drive Chooser
 	ChooserDrive = new frc::SendableChooser<AutoCommand>;
@@ -116,9 +125,9 @@ void Robot::AutonomousInit()  {
 
 	double waitTime = SmartDashboard::GetNumber("WaitTime", 0);
 
-	StartPosition startPos = ChooserPos->GetSelected();
-	AutoCommand leftCommand = AutoChooserLeft->GetSelected();
-	AutoCommand rightCommand = AutoChooserRight->GetSelected();
+	StartPosition startPos = *ChooserPos->GetSelected();
+	AutoCommand leftCommand = *AutoChooserLeft->GetSelected();
+	AutoCommand rightCommand = *AutoChooserRight->GetSelected();
 	drivetrain->InitIdealAngle();
 
 	SmartDashboard::PutNumber("WaitTime:", waitTime);

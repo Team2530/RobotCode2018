@@ -67,9 +67,9 @@ private:
 
 	frc::Command* m_autonomousCommand = nullptr;
 	//frc::SendableChooser<frc::Command*> m_chooser;
-	frc::SendableChooser<AutoCommand> *AutoChooserLeft;
-	frc::SendableChooser<AutoCommand> *AutoChooserRight;
-	frc::SendableChooser<StartPosition> *ChooserPos;
+	frc::SendableChooser<AutoCommand*> *AutoChooserLeft;
+	frc::SendableChooser<AutoCommand*> *AutoChooserRight;
+	frc::SendableChooser<StartPosition*> *ChooserPos;
 	frc::SendableChooser<AutoCommand> *ChooserDrive;
 };
 
