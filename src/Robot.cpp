@@ -79,9 +79,7 @@ void Robot::RobotInit() {
 	// the powerup-gss server is not available. The AddLogger will remove all error messages for this NT instance,
 	// so if you are experiencing difficulties making this work, comment that line out.
 	// Note: This should probably be split into it's own subsystem so the code layout and function is cleaner.
-	GSSinst = nt::NetworkTableInstance::Create();
-	GSSinst.StartClient("10.0.100.5",1735);
-	GSSinst.AddLogger({}, 0, 99);
+
 	drivetrain->SetEncoderDistance(0.0);
 }
 
@@ -108,9 +106,9 @@ void Robot::DisabledPeriodic() {
  * to the if-else structure below with additional strings & commands.
  */
 void Robot::AutonomousInit()  {
-	//std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+	std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
 	// Return the switch & scale data pulled from the NetworkTable entry.
-	std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
+	//std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
 
 	double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
 
