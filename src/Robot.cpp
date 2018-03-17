@@ -115,9 +115,8 @@ void Robot::AutonomousInit()  {
 	double waitTime = SmartDashboard::GetNumber("Wait Time", 0);
 
 	StartPosition startPos = ChooserPos.GetSelected();
-	Robot::AutoCommand leftCommand = AutoChooserLeft.GetSelected();
-
-	Robot::AutoCommand rightCommand = AutoChooserRight.GetSelected();
+	AutoCommand leftCommand = AutoChooserLeft.GetSelected();
+	AutoCommand rightCommand = AutoChooserRight.GetSelected();
 	drivetrain->InitIdealAngle();
 
 	bool evade = true;

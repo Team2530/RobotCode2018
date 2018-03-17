@@ -2,7 +2,8 @@
 #include <Subsystems/Sol.h>
 
 Sol::Sol() : Subsystem("Sol") {
-	SMOL = new frc::Solenoid(solenoidChannel);
+	//SMOL = new frc::Solenoid(solenoidChannel);
+	frc::DoubleSolenoid SMOL {solenoidChannel1, solenoidChannel2};
 }
 
 void Sol::InitDefaultCommand() {
@@ -11,10 +12,10 @@ void Sol::InitDefaultCommand() {
 
 }
 void Sol::Grab(){
-	SMOL->Set(true);
+	SMOL->Set(frc::DoubleSolenoid::Value::kForward);
 }
 void Sol::Release(){
-	SMOL->Set(false);
+	SMOL->Set(frc::DoubleSolenoid::Value::kOff);
 }
 
 // Put methods for controlling this subsystem

@@ -7,7 +7,8 @@
 
 class Sol : public frc::Subsystem {
 private:
-	static constexpr int solenoidChannel=0;//this is a placeholder port
+	static constexpr int solenoidChannel1=0;//this is a placeholder port
+	static constexpr int solenoidChannel2=1;//place holder as well
 
 	frc::Solenoid *SMOL;
 
