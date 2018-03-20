@@ -4,9 +4,9 @@
 #include <Commands/Left.h>
 
 AutoRightToDeliverSideRight::AutoRightToDeliverSideRight() {
-	AddSequential(new DriveInches(212)); //drive to the side of the switch
+	AddSequential(new DriveInches(134)); //drive to the side of the switch
 	AddSequential(new Left(90));
-	AddSequential(new DriveInches(56)); //drive the final distance to the switch
+	AddSequential(new DriveInches(34), 3.0); //drive the final distance to the switch
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

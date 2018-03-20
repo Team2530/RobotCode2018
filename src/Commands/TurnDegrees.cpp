@@ -25,8 +25,8 @@ void TurnDegrees::Execute() {
 	Fix = .015*Robot::drivetrain->ModAngle(Robot::drivetrain->GetIdealAngle()-NewAngle);
 	SmartDashboard::PutNumber("Fix: ", Fix);
 	double constexpr maxPow=.9;
-	double constexpr minPowLeft=.6;
-	double constexpr minPowRight=.5;
+	double constexpr minPowLeft=.55;
+	double constexpr minPowRight=.55;
 	if(Fix<0){
 		if(Fix<-maxPow)
 			Fix=-maxPow;

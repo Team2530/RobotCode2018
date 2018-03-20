@@ -4,11 +4,11 @@
 #include <Commands/Left.h>
 
 AutoLeftToDeliverFrontLeft::AutoLeftToDeliverFrontLeft() {
-	AddSequential(new DriveInches(100));//forward distance-turn radius
+	AddSequential(new DriveInches(60));//forward distance-turn radius
 	AddSequential(new Right(90));
-	AddSequential(new DriveInches(65));//drive over a lil bit so better lined up with switch
+	AddSequential(new DriveInches(57));//drive over a lil bit so better lined up with switch
 	AddSequential(new Left(90));
-	AddSequential(new DriveInches(20), 3.0);//last distance
+	AddSequential(new DriveInches(46), 3.0);//last distance
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
