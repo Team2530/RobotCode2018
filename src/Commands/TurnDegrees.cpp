@@ -26,7 +26,7 @@ void TurnDegrees::Execute() {
 	SmartDashboard::PutNumber("Fix: ", Fix);
 	double constexpr maxPow=.9;
 	double constexpr minPowLeft=.6;
-	double constexpr minPowRight=.3;
+	double constexpr minPowRight=.5;
 	if(Fix<0){
 		if(Fix<-maxPow)
 			Fix=-maxPow;
