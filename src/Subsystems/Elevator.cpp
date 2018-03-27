@@ -14,7 +14,7 @@ void Elevator::InitDefaultCommand() {
 	// SetDefaultCommand(new MySpecialCommand());
 }
 void Elevator::Raise(){
-	if (!TopLimitSwitch->IsLimitReached())
+	 if(!TopLimitSwitch->IsLimitReached())
 		ElevatorMotor->Set(-maxPow);
 	else
 		ElevatorMotor->Set(0);
@@ -23,7 +23,7 @@ void Elevator::Lower(){
 	/*if (BottomLimitSwitch->Get())
 		ElevatorMotor->Set(0);
 	else*/
-		ElevatorMotor->Set(maxPow);
+		ElevatorMotor->Set(minPow);
 }
 void Elevator::Stop(){
 	ElevatorMotor->Set(0);

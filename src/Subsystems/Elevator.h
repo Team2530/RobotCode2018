@@ -6,10 +6,10 @@
 
 class Elevator : public Subsystem {
 private:
-	static constexpr int ChannelElevator = 3; //placeholder number
+	static constexpr int ChannelElevator = 3;
 	VictorSP* ElevatorMotor;
-	static constexpr double minPow = 0.1;
-	static constexpr double maxPow = 0.3;
+	static constexpr double minPow = 0.4;
+	static constexpr double maxPow =0.6;// 0.3;
 	LimitSwitch* TopLimitSwitch;
 	//frc::DigitalInput* MiddleLimitSwitch;
 	//frc::DigitalInput* BottomLimitSwitch;

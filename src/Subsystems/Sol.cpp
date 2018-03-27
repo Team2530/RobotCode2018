@@ -3,7 +3,7 @@
 
 Sol::Sol() : Subsystem("Sol") {
 	//SMOL = new frc::Solenoid(solenoidChannel);
-	frc::DoubleSolenoid SMOL {solenoidChannel1, solenoidChannel2};
+	SMOL = new frc::DoubleSolenoid(solenoidChannel1, solenoidChannel2);
 }
 
 void Sol::InitDefaultCommand() {
@@ -12,10 +12,10 @@ void Sol::InitDefaultCommand() {
 
 }
 void Sol::Grab(){
-	SMOL->Set(frc::DoubleSolenoid::Value::kForward);
+	SMOL->Set(frc::DoubleSolenoid::Value::kForward);//koff//reverse//forward
 }
 void Sol::Release(){
-	SMOL->Set(frc::DoubleSolenoid::Value::kOff);
+	SMOL->Set(frc::DoubleSolenoid::Value::kReverse);//kforward//off//reverse
 }
 
 // Put methods for controlling this subsystem

@@ -6,12 +6,11 @@
 AutoMiddleToDeliverSideCrossInFrontRight::AutoMiddleToDeliverSideCrossInFrontRight() {
 	AddSequential(new DriveInches(33));//drive into mid field
 	AddSequential(new Right(90));//turn right towards side of switch
-	AddSequential(new DriveInches(144));//drive towards side of switch
-	AddSequential(new DriveInches(buffer));//buffer to account for turn radius
+	AddSequential(new DriveInches(150));//drive towards side of switch
 	AddSequential(new Left(90));//turn left to face side of switch
 	AddSequential(new DriveInches(102));//drive to side of switch
 	AddSequential(new Left(90));//turn to face side of switch
-	AddSequential(new DriveInches(buffer));// Add Commands here:
+	AddSequential(new DriveInches(30), 3.0);// GUESTIMATE!!!
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());
 	// these will run in order.

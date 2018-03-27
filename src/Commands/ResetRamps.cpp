@@ -30,5 +30,5 @@ void ResetRamps::End() {
 // Called when another command which requires one or more of the same
 // subsystems is scheduled to run
 void ResetRamps::Interrupted() {
-	Robot::ramp->Stop();
+	Robot::ramp->ReleaseStop();
 }

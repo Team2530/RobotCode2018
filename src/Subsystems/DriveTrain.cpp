@@ -26,16 +26,16 @@ angleAdjustment(0)
 {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
-	//frontLeftController -> SetInverted(true);
+	frontLeftController -> SetInverted(true);
 	//frontLeftController -> SetInverted(false);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
-	//frontRightController -> SetInverted(true);
+	frontRightController -> SetInverted(true);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
-	//backLeftController -> SetInverted(true);
+	backLeftController -> SetInverted(true);
 	//backLeftController -> SetInverted(false);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
-	//backRightController -> SetInverted(true);
+	backRightController -> SetInverted(true);
 	backRightController->Follow(*frontRightController);
 	robotDrive = new DifferentialDrive(*frontLeftController, *frontRightController); //pointer to reference again :)
 
@@ -98,6 +98,9 @@ void DriveTrain::TankDrive(Joystick* stick1, Joystick* stick2){
 void DriveTrain::Drive(Joystick* stick) {
 	double stickY = stick->GetY();
 	double stickZ = stick->GetZ();
+	if(stickZ > 0.7){
+		stickZ = 0.7;
+	}
 	double stickY2 = DriveFunction(stickY);
 	double stickZ2 = DriveFunction(stickZ);
 	SmartDashboard::PutNumber("y: ", stickY);
@@ -105,7 +108,7 @@ void DriveTrain::Drive(Joystick* stick) {
 	//SmartDashboard::PutNumber("Right Encoder2: ", frontRightController->GetSelectedSensorPosition(0));
 	//update +=1;
 	//SmartDashboard::PutNumber("update: ", update);
-	robotDrive->ArcadeDrive(stickY2, -stickZ2);//inverted is quick fix
+	robotDrive->ArcadeDrive(stickY2, stickZ2);//inverted is quick fix
 	frontLeftController->GetSelectedSensorVelocity(0);
 }
 
@@ -157,10 +160,10 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontRightController->Config_kP(kPIDLoopIdx, kP*(1+error), kTimeoutMs);
 		frontLeftController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
 	}
-	frontLeftController->ConfigNominalOutputForward(.2, kTimeoutMs);
-	frontLeftController->ConfigNominalOutputReverse(-.2, kTimeoutMs);
-	frontRightController->ConfigNominalOutputForward(.2, kTimeoutMs);
-	frontRightController->ConfigNominalOutputReverse(-.2, kTimeoutMs);
+	frontLeftController->ConfigNominalOutputForward(.1, kTimeoutMs);
+	frontLeftController->ConfigNominalOutputReverse(-.1, kTimeoutMs);
+	frontRightController->ConfigNominalOutputForward(.1, kTimeoutMs);
+	frontRightController->ConfigNominalOutputReverse(-.1, kTimeoutMs);
 
 	frontLeftController->Set(ControlMode::Position, -rotations);
 	frontRightController->Set(ControlMode::Position, rotations);
@@ -182,7 +185,7 @@ void DriveTrain::Stop(){
 }
 void DriveTrain::Turn(double fix){
 
-	robotDrive->ArcadeDrive(0,fix);//see above //inverted is quick fix
+	robotDrive->ArcadeDrive(0,-fix);//see above //inverted is quick fix
 
 }
 

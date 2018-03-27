@@ -28,7 +28,7 @@ OI::OI() {
 	// Process operator interface input here.
 	//bool pulse=false;
 	//XBOX Controller Stuff Here PLEEEEAAASE
-	xbox = new frc::XboxController(1);//is this zero? is this zero?
+	xbox = new frc::XboxController(0);//is this zero? is this zero?
 
 	A = new frc::JoystickButton(xbox, 1);//raises the arm
 	B = new frc::JoystickButton(xbox, 2);
@@ -48,15 +48,15 @@ OI::OI() {
 
 
 
-	X->WhileHeld(new RaiseRamp());
-	Y->WhileHeld(new LowerRamp());
+	Y->WhileHeld(new RaiseRamp());
+	X->WhileHeld(new LowerRamp());
 
 	//X->WhenPressed(new ReleaseRamp());
 
 	//OK, JOYSTICK Stuff Here Please
 
 	//also,,,,, need drive straight button on joystick eventually
-	stick = new frc::Joystick(0);
+	stick = new frc::Joystick(1);
 	stick2 = new frc::Joystick(2);
 	//Need grabber sometime soon :)
 	B3 = new frc::JoystickButton(stick, 3);
@@ -76,8 +76,8 @@ OI::OI() {
 	B12->WhileHeld(new DropRamps());
 	B11->WhileHeld(new ResetRamps());
 
-	B7->WhenPressed(new LowerLeft());//temp
-	B8->WhenPressed(new LowerRight());//temp
+	B8->WhenPressed(new LowerLeft());//temp
+	B7->WhenPressed(new LowerRight());//temp
 }
 
 Joystick* OI::GetJoystick() {

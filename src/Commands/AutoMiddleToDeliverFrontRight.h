@@ -4,8 +4,6 @@
 #include <Commands/CommandGroup.h>
 
 class AutoMiddleToDeliverFrontRight : public frc::CommandGroup {
-private:
-	double buffer = 22;
 public:
 	AutoMiddleToDeliverFrontRight();
 };

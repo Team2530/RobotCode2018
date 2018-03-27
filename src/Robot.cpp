@@ -22,6 +22,7 @@
 #include "Subsystems/Sol.h"
 #include "OI.h"
 
+
 std::shared_ptr<DriveTrain> Robot::drivetrain;
 std::shared_ptr<Sol> Robot::sol;
 std::shared_ptr<Elevator> Robot::elevator;
@@ -32,6 +33,8 @@ std::string Robot::gameData;
 StartPosition left = START_LEFT;
 StartPosition right = START_RIGHT;
 StartPosition middle = START_MIDDLE;
+
+int switchPlace=0;
 
 Robot::AutoCommand doNothing = Robot::DO_NOTHING;
 Robot::AutoCommand crossLineLeft = Robot::CROSS_LINE_LEFT;
@@ -54,7 +57,7 @@ void Robot::RobotInit() {
 	// Sets resolution
 	camera.SetResolution(320, 240);
 	camera.SetExposureManual(20);
-	camera.SetBrightness(100);
+	camera.SetBrightness(25);
 
 	//Left Chooser
 	AutoChooserLeft = new frc::SendableChooser<AutoCommand*>;
@@ -119,7 +122,13 @@ void Robot::DisabledPeriodic() {
  * to the if-else structure below with additional strings & commands.
  */
 void Robot::AutonomousInit()  {
-	std::string gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+	std::string gameData="";
+	while(gameData.empty()){
+		gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+	}
+	while((gameData[switchPlace] != 'L') & (gameData[switchPlace] != 'R')){
+		gameData = frc::DriverStation::GetInstance().GetGameSpecificMessage();
+	}
 	// Return the switch & scale data pulled from the NetworkTable entry.
 	//std::string gameData = GSSinst.GetTable("OffseasonFMSInfo")->GetEntry("GameData").GetString("defaultValue");
 
@@ -136,7 +145,7 @@ void Robot::AutonomousInit()  {
 	SmartDashboard::PutNumber("rightCommand:", rightCommand);
 
 	bool evade = true;
-	m_autonomousCommand = new AutoMain(waitTime, gameData[0], startPos, leftCommand, rightCommand, evade);
+	m_autonomousCommand = new AutoMain(waitTime, gameData[switchPlace], startPos, leftCommand, rightCommand, evade);
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand -> Start();

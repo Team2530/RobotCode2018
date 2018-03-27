@@ -7,13 +7,13 @@
 
 class Ramp : public Subsystem {
 private:
-	static constexpr int ChannelLeft = 0; //placeholder number
+	static constexpr int ChannelLeft = 2;
 	VictorSP* RampMotorLeft;
 
-	static constexpr int ChannelRight = 1; //also placeholder number
+	static constexpr int ChannelRight = 1;
 	VictorSP* RampMotorRight;
 
-	static constexpr int ChannelMid = 2;
+	static constexpr int ChannelMid = 0;
 	VictorSP* RampMotorMid;
 	//Encoder* RampLeft;
 	//Encoder* RampRight;
@@ -27,8 +27,8 @@ private:
 	LimitSwitch* BottomLimitSwitchRight;
 
 public:
-	double LeftPow=0.4;
-	double RightPow =0.4;
+	double LeftPow=1;
+	double RightPow =1;
 	double LowerLeftPow =-0.4;
 	double LowerRightPow =-0.4;
 	double MidReleasePow = 1;
@@ -44,6 +44,8 @@ public:
 	void Stop();
 	void ReleaseStop();
 	void Reset();
+	void StopRight();
+	void StopLeft();
 };
 
 #endif  // Ramp_H

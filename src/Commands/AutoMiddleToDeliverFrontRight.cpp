@@ -6,11 +6,9 @@
 AutoMiddleToDeliverFrontRight::AutoMiddleToDeliverFrontRight() {
 	AddSequential(new DriveInches(65));//drive into middle of area
 	AddSequential(new Right(90));//turn right towards right switch
-	AddSequential(new DriveInches(126));//drive towards right switch
-	AddSequential(new DriveInches(buffer));//buffer for turn radius
+	AddSequential(new DriveInches(150));//drive towards right switch
 	AddSequential(new Left(90));//turn to face switch
-	AddSequential(new DriveInches(75));//drive towards switch
-	AddSequential(new Left(90));//turn into switch
+	AddSequential(new DriveInches(75), 3.0);//drive towards switch
 	// Add Commands here:
 	// e.g. AddSequential(new Command1());
 	//      AddSequential(new Command2());

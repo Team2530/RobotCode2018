@@ -19,11 +19,13 @@ void ReleaseCube::Execute() {
 
 // Make this return true when this Command no longer needs to run execute()
 bool ReleaseCube::IsFinished() {
+	SmartDashboard::PutNumber("Finished : ", 0);
 	return false;
 }
 
 // Called once after isFinished returns true
 void ReleaseCube::End() {
+	SmartDashboard::PutNumber("Finished: ", 1);
 	//Robot::sol->Stop();
 }
 

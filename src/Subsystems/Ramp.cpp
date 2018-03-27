@@ -42,12 +42,12 @@ void Ramp::Raise() {
 		}*/
 		timeInSec = timeInSec + 0.005;
 
-		if(timeInSec == 3) {
-			LeftPow = 0.7;
-			RightPow = 0.7;
-		} else if(timeInSec == 7) {
-			LeftPow = 1;
-			RightPow = 1;
+		//if(timeInSec == 3) {
+			//LeftPow = 0.7;
+			//RightPow = 0.7;
+		//} else if(timeInSec == 7) {
+			//LeftPow = 1;
+			//RightPow = 1;
 			}
 		if(!TopLimitSwitchLeft->IsLimitReached() && !TopLimitSwitchRight->IsLimitReached()){
 			RampMotorLeft->Set(LeftPow);
@@ -59,11 +59,11 @@ void Ramp::Raise() {
 
 
 
-	}
+	//}
 }
 void Ramp::RaiseLeft() {
 	if(released){
-		LeftPow=0.4;
+		LeftPow=1;
 		if(!TopLimitSwitchLeft->IsLimitReached())
 			RampMotorLeft->Set(LeftPow);
 		else
@@ -72,7 +72,7 @@ void Ramp::RaiseLeft() {
 }
 void Ramp::RaiseRight() {
 	if(released){
-		RightPow=0.4;
+		RightPow=1;
 		if(!TopLimitSwitchRight->IsLimitReached())
 			RampMotorRight->Set(RightPow);
 		else
@@ -94,14 +94,15 @@ void Ramp::LowerLeft() {
 	if(!BottomLimitSwitchLeft->IsLimitReached())
 		RampMotorLeft->Set(LowerLeftPow);
 	else
-		Stop();
+		StopRight();
 
 }
 void Ramp::LowerRight() {
-	if(!BottomLimitSwitchRight->IsLimitReached())
-		RampMotorRight->Set(LowerRightPow);
-	else
-		Stop();
+			RightPow=0.4;
+			if(!BottomLimitSwitchRight->IsLimitReached())
+				RampMotorRight->Set(LowerRightPow);
+			else
+				Stop();
 }
 void Ramp::Release(){
 	RampMotorMid->Set(MidReleasePow);
@@ -110,7 +111,7 @@ void Ramp::Release(){
 }
 void Ramp::Reset(){
 	RampMotorMid->Set(-MidReleasePow);
-	released=false;
+	//released=false;
 }
 
 void Ramp::Stop() {
@@ -120,6 +121,12 @@ void Ramp::Stop() {
 
 void Ramp::ReleaseStop() {
 	RampMotorMid->Set(0);
+}
+void Ramp::StopRight(){
+	RampMotorRight->Set(0);
+}
+void Ramp::StopLeft(){
+	RampMotorLeft->Set(0);
 }
 // Put methods for controlling this subsystem
 // here. Call these from Commands.

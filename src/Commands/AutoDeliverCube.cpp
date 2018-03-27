@@ -1,9 +1,11 @@
 #include "AutoDeliverCube.h"
 #include <Commands/RaiseArm.h>
 #include <Commands/ReleaseCube.h>
+#include <Commands/DriveInches.h>
 
 AutoDeliverCube::AutoDeliverCube() {
 	AddSequential(new RaiseArm(), 0.5); //Lift for 0.5 seconds
+	AddSequential(new DriveInches(-20), 3.0);
 	AddSequential(new ReleaseCube());
 }
 	// Add Commands here:
