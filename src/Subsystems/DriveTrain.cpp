@@ -160,10 +160,10 @@ void DriveTrain::DriveStraight(double rotations, double StartingAngle){
 		frontRightController->Config_kP(kPIDLoopIdx, kP*(1+error), kTimeoutMs);
 		frontLeftController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
 	}
-	frontLeftController->ConfigNominalOutputForward(.1, kTimeoutMs);
-	frontLeftController->ConfigNominalOutputReverse(-.1, kTimeoutMs);
-	frontRightController->ConfigNominalOutputForward(.1, kTimeoutMs);
-	frontRightController->ConfigNominalOutputReverse(-.1, kTimeoutMs);
+	frontLeftController->ConfigNominalOutputForward(.2, kTimeoutMs);  //Robot 2 requires more power (.2) than robot 1 (.1)
+	frontLeftController->ConfigNominalOutputReverse(-.2, kTimeoutMs);
+	frontRightController->ConfigNominalOutputForward(.2, kTimeoutMs);
+	frontRightController->ConfigNominalOutputReverse(-.2, kTimeoutMs);
 
 	frontLeftController->Set(ControlMode::Position, -rotations);
 	frontRightController->Set(ControlMode::Position, rotations);
