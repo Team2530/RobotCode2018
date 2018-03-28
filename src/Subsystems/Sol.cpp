@@ -12,10 +12,10 @@ void Sol::InitDefaultCommand() {
 
 }
 void Sol::Grab(){
-	SMOL->Set(frc::DoubleSolenoid::Value::kForward);//koff//reverse//forward
+	SMOL->Set(frc::DoubleSolenoid::Value::kReverse);//koff//reverse//forward
 }
 void Sol::Release(){
-	SMOL->Set(frc::DoubleSolenoid::Value::kReverse);//kforward//off//reverse
+	SMOL->Set(frc::DoubleSolenoid::Value::kForward);//kforward//off//reverse
 }
 
 // Put methods for controlling this subsystem
