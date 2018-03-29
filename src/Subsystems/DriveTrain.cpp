@@ -26,16 +26,16 @@ angleAdjustment(0)
 {
 
 	frontLeftController = new WPI_TalonSRX(kFrontLeftChannel);
-	frontLeftController -> SetInverted(true);
+	//frontLeftController -> SetInverted(true);
 	//frontLeftController -> SetInverted(false);
 	frontRightController = new WPI_TalonSRX(kFrontRightChannel);
-	frontRightController -> SetInverted(true);
+	//frontRightController -> SetInverted(true);
 	backLeftController = new WPI_VictorSPX(kBackLeftChannel);
-	backLeftController -> SetInverted(true);
+	//backLeftController -> SetInverted(true);
 	//backLeftController -> SetInverted(false);
 	backLeftController->Follow(*frontLeftController);
 	backRightController = new WPI_VictorSPX(kBackRightChannel);
-	backRightController -> SetInverted(true);
+	//backRightController -> SetInverted(true);
 	backRightController->Follow(*frontRightController);
 	robotDrive = new DifferentialDrive(*frontLeftController, *frontRightController); //pointer to reference again :)
 
@@ -43,34 +43,7 @@ angleAdjustment(0)
 	frontRightController->ConfigSelectedFeedbackSensor(FeedbackDevice::QuadEncoder, 0,0);
 
 	ResetPIDs();
-	//frontLeftController->SetSelectedSensorPosition(frontLeftController->GetSelectedSensorPosition(0), 0,0);
-/*	frontLeftController->ConfigNominalOutputForward(0,kTimeoutMs);
-	frontLeftController->ConfigNominalOutputReverse(0, kTimeoutMs);
-	frontLeftController->ConfigPeakOutputForward(1, kTimeoutMs);
-	frontLeftController->ConfigPeakOutputReverse(-1, kTimeoutMs);
-	//frontLeftController->SetSensorPhase(true);
 
-	//frontRightController->SetSelectedSensorPosition(frontRightController->GetSelectedSensorPosition(0), 0,0);
-	frontRightController->ConfigNominalOutputForward(0,kTimeoutMs);
-	frontRightController->ConfigNominalOutputReverse(0, kTimeoutMs);
-	frontRightController->ConfigPeakOutputForward(1, kTimeoutMs);
-	frontRightController->ConfigPeakOutputReverse(-1, kTimeoutMs);
-
-	frontLeftController->Config_kF(kPIDLoopIdx, kF, kTimeoutMs);
-	frontLeftController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
-	frontLeftController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
-	frontLeftController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);
-
-	frontRightController->Config_kF(kPIDLoopIdx, kF, kTimeoutMs);
-	frontRightController->Config_kP(kPIDLoopIdx, kP, kTimeoutMs);
-	frontRightController->Config_kI(kPIDLoopIdx, 0.0, kTimeoutMs);
-	frontRightController->Config_kD(kPIDLoopIdx, 0.0, kTimeoutMs);*/
-
-	//SmartDashboard::PutNumber("Left encoder start: ", frontLeftController->GetSelectedSensorPosition(0));
-	//SmartDashboard::PutNumber("Right Encoder start: ", frontRightController->GetSelectedSensorPosition(0));
-	//update=0;
-	//leftEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
-	//rightEncoder->SetDistancePerPulse(ticksPerRevolution*diameter*pi);
 	//ROBOT 27.5inch by 32.5inch, drives long end front
 
 	nt::NetworkTableInstance nti;
@@ -98,9 +71,9 @@ void DriveTrain::TankDrive(Joystick* stick1, Joystick* stick2){
 void DriveTrain::Drive(Joystick* stick) {
 	double stickY = stick->GetY();
 	double stickZ = stick->GetZ();
-	if(stickZ > 0.7){
+	/*if(stickZ > 0.7){//so the competition robot is more touchy than practice. That's what this is for
 		stickZ = 0.7;
-	}
+	}*/
 	double stickY2 = DriveFunction(stickY);
 	double stickZ2 = DriveFunction(stickZ);
 	SmartDashboard::PutNumber("y: ", stickY);
@@ -108,7 +81,7 @@ void DriveTrain::Drive(Joystick* stick) {
 	//SmartDashboard::PutNumber("Right Encoder2: ", frontRightController->GetSelectedSensorPosition(0));
 	//update +=1;
 	//SmartDashboard::PutNumber("update: ", update);
-	robotDrive->ArcadeDrive(stickY2, stickZ2);//inverted is quick fix
+	robotDrive->ArcadeDrive(stickY2, -stickZ2);//inverted is quick fix
 	frontLeftController->GetSelectedSensorVelocity(0);
 }
 
@@ -185,7 +158,7 @@ void DriveTrain::Stop(){
 }
 void DriveTrain::Turn(double fix){
 
-	robotDrive->ArcadeDrive(0,-fix);//see above //inverted is quick fix
+	robotDrive->ArcadeDrive(0,fix);//see above //inverted is quick fix
 
 }
 
@@ -280,3 +253,4 @@ void DriveTrain::ResetEncoders(){
 	frontRightController->SetSelectedSensorPosition(0,0,0);
 	frontLeftController->SetSelectedSensorPosition(0,0,0);
 }
+
