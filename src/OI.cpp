@@ -40,8 +40,8 @@ OI::OI() {
 	LT = new frc::JoystickButton(xbox, 11);
 	RT = new frc::JoystickButton(xbox, 12);//raise ramp
 
-	RB->WhenPressed(new GrabCube());
-	LB->WhenPressed(new ReleaseCube());
+	LB->WhenPressed(new GrabCube());
+	RB->WhenPressed(new ReleaseCube());
 
 	A->WhileHeld(new RaiseArm());
 	B->WhileHeld(new LowerArm());
