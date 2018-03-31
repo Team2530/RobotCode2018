@@ -7,6 +7,9 @@ DriveInches::DriveInches(double distance) {
 	// Use Requires() here to declare subsystem dependencies
 	// eg. Requires(Robot::chassis.get());
 	d = distance*ticksPerInch;//WE MUST CHECK THIS GWUYS ticks = inches*(360/circumference)
+	SmartDashboard::PutNumber("starting d", d);
+	SmartDashboard::PutNumber("distance", distance);
+	SmartDashboard::PutNumber("TicksPerInch", ticksPerInch);
 	Requires(Robot::drivetrain.get());
 }
 

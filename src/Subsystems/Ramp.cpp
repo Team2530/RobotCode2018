@@ -11,7 +11,7 @@ Ramp::Ramp() : Subsystem("Ramp") {
 	TopLimitSwitchRight = new LimitSwitch(8);
 	BottomLimitSwitchLeft = new LimitSwitch(7);
 	BottomLimitSwitchRight = new LimitSwitch(9);
-	released=false;
+	released=true;
 	timeInSec = 0;
 }
 
@@ -80,11 +80,9 @@ void Ramp::RaiseRight() {
 	}
 }
 void Ramp::Lower() {
-	LeftPow=.4;
-	RightPow=.4;
 	if(!BottomLimitSwitchLeft->IsLimitReached() && !BottomLimitSwitchRight->IsLimitReached()){
-		RampMotorLeft->Set(-LeftPow);
-		RampMotorRight->Set(-RightPow);
+		RampMotorLeft->Set(LowerLeftPow);
+		RampMotorRight->Set(LowerRightPow);
 	}
 	else{
 		Stop();
@@ -98,11 +96,10 @@ void Ramp::LowerLeft() {
 
 }
 void Ramp::LowerRight() {
-			RightPow=0.4;
-			if(!BottomLimitSwitchRight->IsLimitReached())
-				RampMotorRight->Set(LowerRightPow);
-			else
-				Stop();
+	if(!BottomLimitSwitchRight->IsLimitReached())
+		RampMotorRight->Set(LowerRightPow);
+	else
+		Stop();
 }
 void Ramp::Release(){
 	RampMotorMid->Set(MidReleasePow);

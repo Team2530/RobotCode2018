@@ -9,9 +9,9 @@ private:
 	double target;
 	double buffer=1000;//need test!!!
 	double rotations;
-	static constexpr double ticksPerRevolution = 8192/1;//ballparkin it
+	static constexpr double ticksPerRevolution = 8192/1;
 	static constexpr double diameter = 6; //inches
-	static constexpr double pi = 2*acos(0.0);
+	static constexpr double pi = 3.14159265358979323;//2*acos(0.0);
 	double ticksPerInch = ticksPerRevolution/(pi*diameter);
 	static constexpr double circumference = pi*diameter;
 	static constexpr double maxPower = 0.5;

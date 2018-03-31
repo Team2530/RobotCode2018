@@ -15,6 +15,7 @@
 #include <Commands/AutoMain.h>
 #include <Commands/SkidStearWithJoystick.h>
 #include <Commands/TankDriveWithJoystick.h>
+#include <Commands/AutoLeftDeliverToSideLeft.h>
 
 #include "Subsystems/Ramp.h"
 #include "Subsystems/DriveTrain.h"
@@ -145,7 +146,8 @@ void Robot::AutonomousInit()  {
 	SmartDashboard::PutNumber("rightCommand:", rightCommand);
 
 	bool evade = true;
-	m_autonomousCommand = new AutoMain(waitTime, gameData[switchPlace], startPos, leftCommand, rightCommand, evade);
+	//m_autonomousCommand = new AutoMain(waitTime, gameData[switchPlace], startPos, leftCommand, rightCommand, evade);
+	m_autonomousCommand = new AutoLeftDeliverToSideLeft();
 
 	if (m_autonomousCommand != nullptr) {
 		m_autonomousCommand -> Start();

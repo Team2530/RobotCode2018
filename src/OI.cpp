@@ -76,8 +76,8 @@ OI::OI() {
 	B12->WhileHeld(new DropRamps());
 	B11->WhileHeld(new ResetRamps());
 
-	B8->WhenPressed(new LowerLeft());//temp
-	B7->WhenPressed(new LowerRight());//temp
+	B8->WhileHeld(new LowerLeft());//temp
+	B7->WhileHeld(new LowerRight());//temp
 }
 
 Joystick* OI::GetJoystick() {

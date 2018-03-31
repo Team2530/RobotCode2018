@@ -176,7 +176,8 @@ void DriveTrain::StartTracking(double initialX, double initialY, double initialA
 	}
 }
 double DriveTrain::GetEncoderDistance(){
-	return (-frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
+	return (-frontLeftController->GetSelectedSensorPosition(0));
+	//return (-frontLeftController->GetSelectedSensorPosition(0) + frontRightController->GetSelectedSensorPosition(0))/2;
 }
 void DriveTrain::SetEncoderDistance(double value){
 	frontLeftController->SetSelectedSensorPosition(value, 0,0);
