@@ -23,21 +23,23 @@ public:
 	XboxController* xbox;
 
 	//joystick
-	JoystickButton* B3;
-	JoystickButton* B7;//temp
-	JoystickButton* B8;//temp
+	JoystickButton* B3;//
+	JoystickButton* B6;
+	JoystickButton* B7;
+	JoystickButton* B8;
 	JoystickButton* B9;
 	JoystickButton* B10;
 	JoystickButton* B11;
-	JoystickButton* B12;
+	//JoystickButton* B12;
+
 
 	//xbox
-	JoystickButton* RB;//grab
-	JoystickButton* LB;//release
-	JoystickButton* A;//lift arm
-	JoystickButton* Y;//who knows yet
-	JoystickButton* RT;
-	JoystickButton* B;
-	JoystickButton* X;
-	JoystickButton* LT;
+	JoystickButton* RB;//release
+	JoystickButton* LB;//grab
+	JoystickButton* A;//raise arm
+	JoystickButton* Y;//raise ramp
+	//JoystickButton* RT; not using so why declare
+	JoystickButton* B;//lower arm
+	JoystickButton* X;//lower ramp
+	//JoystickButton* LT; not using so why declare
 };
