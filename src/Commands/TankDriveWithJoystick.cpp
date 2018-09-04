@@ -24,7 +24,7 @@ void TankDriveWithJoystick::Initialize() {
 void TankDriveWithJoystick::Execute() {
 	Joystick* stick1 = Robot::oi->GetJoystick();
 	Joystick* stick2 = Robot::oi->GetJoystick2();
-	Robot::drivetrain->TankDrive(stick1, stick2);
+	Robot::drivetrain->TankDrive(stick2, stick1);
 
 }
 

@@ -65,7 +65,7 @@ void DriveTrain::InitDefaultCommand() {
 }
 
 void DriveTrain::TankDrive(Joystick* stick1, Joystick* stick2){
-	robotDrive->TankDrive(stick1->GetY(), stick2->GetY(), 0);
+	robotDrive->TankDrive(-stick1->GetY(), -stick2->GetY(), 0);
 }
 
 void DriveTrain::Drive(Joystick* stick) {

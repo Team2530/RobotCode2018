@@ -28,7 +28,7 @@ OI::OI() {
 	// Process operator interface input here.
 	//bool pulse=false;
 	//XBOX Controller Stuff Here PLEEEEAAASE
-	xbox = new frc::XboxController(0);//is this zero? is this zero? yes, this is zero
+	xbox = new frc::XboxController(1);//is this zero? is this zero? yes, this is zero
 
 	A = new frc::JoystickButton(xbox, 1);//raises the arm
 	B = new frc::JoystickButton(xbox, 2);//lower the arm
@@ -40,8 +40,8 @@ OI::OI() {
 	//LT = new frc::JoystickButton(xbox, 11); not using so why declare
 	//RT = new frc::JoystickButton(xbox, 12); not using so why declare
 
-	LB->WhenPressed(new GrabCube());
-	RB->WhenPressed(new ReleaseCube());
+	RB->WhenPressed(new GrabCube());
+	LB->WhenPressed(new ReleaseCube());
 
 	A->WhileHeld(new RaiseArm());
 	B->WhileHeld(new LowerArm());
@@ -51,8 +51,8 @@ OI::OI() {
 
 	//OK, JOYSTICK Stuff Here Please
 
-	stick = new frc::Joystick(1);
-	stick2 = new frc::Joystick(2);
+	stick = new frc::Joystick(2);
+	stick2 = new frc::Joystick(3);
 	//Need grabber sometime soon :)
 	B3 = new frc::JoystickButton(stick, 3);//
 	B6 = new frc::JoystickButton(stick, 6);
